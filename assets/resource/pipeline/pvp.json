@@ -1,0 +1,382 @@
+{
+  "clickBlankForPvp": {
+    "recognition": "DirectHit",
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          335,
+          603,
+          48,
+          36
+        ]
+      }
+    },
+    "next": [
+      "enterPvp"
+    ]
+  },
+  "enterPvp": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "pvp_enter.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "enterPvpFlag"
+    ]
+  },
+  "enterPvpFlag": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "pvp_flag.png",
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_wait_freezes": {
+      "time": 6000,
+      "target": [
+        416,
+        607,
+        228,
+        89
+      ]
+    },
+    "next": [
+      "lastWeekResult",
+      "checkPvpVersionTime"
+    ]
+  },
+  "lastWeekResult": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "last_week_result.png",
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          587,
+          653,
+          106,
+          39
+        ]
+      }
+    },
+    "post_wait_freezes": {
+      "time": 6000,
+      "target": [
+        416,
+        607,
+        228,
+        89
+      ]
+    },
+    "next": [
+      "thisWeekStart",
+      "checkPvpVersionTime"
+    ]
+  },
+  "thisWeekStart": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "this_week_start.png",
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          587,
+          653,
+          106,
+          39
+        ]
+      }
+    },
+    "post_wait_freezes": {
+      "time": 6000,
+      "target": [
+        416,
+        607,
+        228,
+        89
+      ]
+    },
+    "next": [
+      "checkPvpVersionTime"
+    ]
+  },
+  "checkPvpVersionTime": {
+    "recognition": "Custom",
+    "custom_recognition": "checkPvpVersionTime",
+    "action": "DoNothing"
+  },
+  "backToPvpFlag": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "back_to_pvp_flag.png",
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_wait_freezes": {
+      "time": 3000,
+      "target": [
+        334,
+        648,
+        945,
+        71
+      ]
+    },
+    "next": [
+      "backToHome"
+    ]
+  },
+  "backToHome": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "back_to_home.png",
+        "threshold": 0.9
+      }
+    },
+    "post_wait_freezes": {
+      "time": 10000,
+      "target": [
+        334,
+        648,
+        945,
+        71
+      ]
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "readPvpData": {
+    "recognition": {
+      "type": "OCR"
+    }
+  },
+  "startCombat": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "start_combat.png",
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "goCombat"
+    ]
+  },
+  "startCombatOutTime": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "start_combat_out_time.png",
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "goCombat"
+    ]
+  },
+  "goCombat": {
+    "post_delay": 1000,
+    "timeout": 600000,
+    "rate_limit": 10000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "go_combat.png",
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_wait_freezes": {
+      "time": 3000,
+      "target": [
+        570,
+        632,
+        137,
+        39
+      ]
+    },
+    "next": [
+      "pvpWin",
+      "pvpFail"
+    ]
+  },
+  "useSoul": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "use_soul.png",
+        "threshold": 0.9
+      }
+    },
+    "action": "Click",
+    "next": [
+      "afterPvpConfirm"
+    ]
+  },
+  "notUseSoul": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "not_use_soul.png",
+        "threshold": 0.9
+      }
+    },
+    "action": "Click",
+    "next": [
+      "afterPvpConfirm"
+    ]
+  },
+  "afterPvpConfirm": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "after_pvp_confirm.png",
+        "threshold": 0.9
+      }
+    },
+    "post_wait_freezes": {
+      "time": 2500,
+      "target": [
+        563,
+        652,
+        137,
+        39
+      ]
+    },
+    "action": "Click",
+    "next": [
+      "clickAward"
+    ]
+  },
+  "clickAward": {
+    "recognition": "DirectHit",
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          522,
+          651,
+          209,
+          50
+        ]
+      }
+    },
+    "post_wait_freezes": {
+      "time": 2500,
+      "target": [
+        563,
+        652,
+        137,
+        39
+      ]
+    },
+    "next": [
+      "checkPvpVersionTime"
+    ]
+  },
+  "pvpWin": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "pvp_win3.png",
+          "pvp_win.png",
+          "pvp_win2.png",
+          "out_time_win.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "CombatResRecord",
+        "custom_action_param": {
+          "combatRes": true
+        }
+      }
+    },
+    "next": [
+      "useSoulOrNot"
+    ]
+  },
+  "pvpFail": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "pvp_fail3.png",
+          "pvp_fail.png",
+          "pvp_fail2.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "CombatResRecord",
+        "custom_action_param": {
+          "combatRes": false
+        }
+      }
+    },
+    "next": [
+      "useSoulOrNot"
+    ]
+  },
+  "useSoulOrNot": {
+    "recognition": {
+      "type": "Custom",
+      "param": {
+        "custom_recognition": "useSoulOrNot"
+      }
+    }
+  }
+}

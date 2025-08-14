@@ -1,84 +1,128 @@
 {
-    "controller": [
-        {
-            "name": "安卓端",
-            "type": "Adb"
-        },
-        {
-            "name": "桌面端",
-            "type": "Win32",
-            "win32": {
-                "class_regex": ".*",
-                "window_regex": "Visual Studio"
-            }
-        }
-    ],
-    "resource": [
-        {
-            "name": "官服",
-            "path": [
-                "{PROJECT_DIR}/resource"
-            ]
-        },
-        {
-            "name": "B 服",
-            "path": [
-                "{PROJECT_DIR}/resource",
-                "{PROJECT_DIR}/resource_bilibili"
-            ]
-        }
-    ],
-    "agent": {
-        "child_exec": "python",
-        "child_args": [
-            "{PROJECT_DIR}/agent/main.py"
-        ]
+  "controller": [
+    {
+      "name": "安卓端",
+      "type": "Adb"
     },
-    "task": [
-        {
-            "name": "普通任务",
-            "entry": "MyTask1"
-        },
-        {
-            "name": "选项任务",
-            "entry": "MyTask2",
-            "option": [
-                "任务选项1"
-            ]
-        },
-        {
-            "name": "参数任务",
-            "entry": "MyTask3",
-            "option": [
-                "任务选项1"
-            ],
-            "pipeline_override": {}
-        },
-        {
-            "name": "带Custom的任务",
-            "entry": "MyTask4"
-        }
-    ],
-    "option": {
-        "任务选项1": {
-            "cases": [
-                {
-                    "name": "文本1",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本1"
-                        }
-                    }
-                },
-                {
-                    "name": "文本2",
-                    "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本2"
-                        }
-                    }
-                }
-            ]
-        }
+    {
+      "name": "桌面端",
+      "type": "Win32",
+      "win32": {
+        "class_regex": ".*",
+        "window_regex": "Visual Studio"
+      }
     }
+  ],
+  "resource": [
+    {
+      "name": "官服",
+      "path": [
+        "{PROJECT_DIR}/resource"
+      ]
+    },
+    {
+      "name": "B 服",
+      "path": [
+        "{PROJECT_DIR}/resource",
+        "{PROJECT_DIR}/resource_bilibili"
+      ]
+    }
+  ],
+  "agent": {
+    "child_exec": "python",
+    "child_args": [
+      "{PROJECT_DIR}/agent/main.py"
+    ]
+  },
+  "task": [
+    {
+      "name": "金戈演武",
+      "entry": "clickBlankForPvp",
+      "option": [
+        "金戈选项",
+        "是否使用骁武魂"
+      ],
+      "doc": "[size:12][color:darkgray]所有功能次数统计均按照当天使用本软件自动金戈的次数[/color][/size]\n[size:18][color:black]首胜[/color][/size]\n[size:15][color:darkgray]胜利一次后退出金戈[/color][/size]\n[size:18][color:black]清符[/color][/size]\n[size:15][color:darkgray]清空枕戈符信后退出金戈，七段以及以上仅可在金戈时间内使用[/color][/size]\n[size:18][color:black]3场活跃度[/color][/size]\n[size:15][color:darkgray]七段以下可直接使用，七段以及以上仅在金戈时间内可用[/color][/size]"
+    }
+  ],
+  "option": {
+    "金戈选项": {
+      "cases": [
+        {
+          "name": "清符",
+          "pipeline_override": {
+            "checkPvpVersionTime": {
+              "recognition": {
+                "param": {
+                  "custom_recognition_param": {
+                    "type": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "首胜",
+          "pipeline_override": {
+            "checkPvpVersionTime": {
+              "recognition": {
+                "param": {
+                  "custom_recognition_param": {
+                    "type": 2
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "3场活跃度",
+          "pipeline_override": {
+            "checkPvpVersionTime": {
+              "recognition": {
+                "param": {
+                  "custom_recognition_param": {
+                    "type": 3
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "是否使用骁武魂": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {
+            "useSoulOrNot": {
+              "recognition": {
+                "param": {
+                  "custom_recognition_param": {
+                    "use": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "useSoulOrNot": {
+              "recognition": {
+                "param": {
+                  "custom_recognition_param": {
+                    "use": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
 }
