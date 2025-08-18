@@ -22,7 +22,7 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "pvp_enter.png"
+          "pvp/pvp_enter.png"
         ],
         "threshold": 0.9
       }
@@ -39,7 +39,7 @@
     "recognition": {
       "type": "TemplateMatch",
       "param": {
-        "template": "pvp_flag.png",
+        "template": "pvp/pvp_flag.png",
         "threshold": 0.9
       }
     },
@@ -65,7 +65,7 @@
     "recognition": {
       "type": "TemplateMatch",
       "param": {
-        "template": "last_week_result.png",
+        "template": ["pvp/last_week_result.png","pvp/last_week_result2.png"],
         "threshold": 0.9
       }
     },
@@ -99,7 +99,7 @@
     "recognition": {
       "type": "TemplateMatch",
       "param": {
-        "template": "this_week_start.png",
+        "template": ["pvp/this_week_start.png","pvp/this_week_start2.png"],
         "threshold": 0.9
       }
     },
@@ -137,7 +137,7 @@
     "recognition": {
       "type": "TemplateMatch",
       "param": {
-        "template": "back_to_pvp_flag.png",
+        "template": "pvp/back_to_pvp_flag.png",
         "threshold": 0.9
       }
     },
@@ -162,7 +162,7 @@
     "recognition": {
       "type": "TemplateMatch",
       "param": {
-        "template": "back_to_home.png",
+        "template": "pvp/back_to_home.png",
         "threshold": 0.9
       }
     },
@@ -189,7 +189,7 @@
     "recognition": {
       "type": "TemplateMatch",
       "param": {
-        "template": "start_combat.png",
+        "template": "pvp/start_combat.png",
         "threshold": 0.9
       }
     },
@@ -205,7 +205,7 @@
     "recognition": {
       "type": "TemplateMatch",
       "param": {
-        "template": "start_combat_out_time.png",
+        "template": "pvp/start_combat_out_time.png",
         "threshold": 0.9
       }
     },
@@ -223,7 +223,7 @@
     "recognition": {
       "type": "TemplateMatch",
       "param": {
-        "template": "go_combat.png",
+        "template": "pvp/go_combat.png",
         "threshold": 0.9
       }
     },
@@ -249,7 +249,7 @@
     "recognition": {
       "type": "TemplateMatch",
       "param": {
-        "template": "use_soul.png",
+        "template": "pvp/use_soul.png",
         "threshold": 0.9
       }
     },
@@ -263,7 +263,7 @@
     "recognition": {
       "type": "TemplateMatch",
       "param": {
-        "template": "not_use_soul.png",
+        "template": "pvp/not_use_soul.png",
         "threshold": 0.9
       }
     },
@@ -276,7 +276,7 @@
     "recognition": {
       "type": "TemplateMatch",
       "param": {
-        "template": "after_pvp_confirm.png",
+        "template": "pvp/after_pvp_confirm.png",
         "threshold": 0.9
       }
     },
@@ -325,10 +325,10 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "pvp_win3.png",
-          "pvp_win.png",
-          "pvp_win2.png",
-          "out_time_win.png"
+          "pvp/pvp_win3.png",
+          "pvp/pvp_win.png",
+          "pvp/pvp_win2.png",
+          "pvp/out_time_win.png"
         ],
         "threshold": 0.9
       }
@@ -351,9 +351,9 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "pvp_fail3.png",
-          "pvp_fail.png",
-          "pvp_fail2.png"
+          "pvp/pvp_fail3.png",
+          "pvp/pvp_fail.png",
+          "pvp/pvp_fail2.png"
         ],
         "threshold": 0.9
       }

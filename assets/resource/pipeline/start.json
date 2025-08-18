@@ -1,0 +1,288 @@
+{
+  "startApp": {
+    "post_delay": 3000,
+    "timeout": 60000,
+    "rate_limit": 5000,
+    "action": {
+      "type": "StartApp",
+      "param": {
+        "package": "com.netease.pm03"
+      }
+    },
+    "next": [
+      "updateAnno",
+      "enterGame"
+    ]
+  },
+  "updateAnno": {
+    "post_delay": 2500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/update_announcement.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          62,
+          80,
+          104,
+          475
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          1179,
+          65,
+          39,
+          33
+        ]
+      }
+    },
+    "next": [
+      "enterGame"
+    ]
+  },
+  "enterGame": {
+    "post_delay": 8000,
+    "timeout": 60000,
+    "rate_limit": 5000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/enter_game.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          471,
+          489,
+          325,
+          122
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          585,
+          539,
+          102,
+          22
+        ]
+      }
+    },
+    "next": [
+      "versionUpdate",
+      "weeklyAnno1",
+      "weeklyAnno2",
+      "weeklyAnno3",
+      "dailySignInGift",
+      "checkHome"
+    ]
+  },
+  "versionUpdate": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/version_update.png"
+        ],
+        "threshold": 0.7
+      }
+    }
+  },
+  "weeklyAnno1": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/weekly_anno_out.png"
+        ],
+        "threshold": 0.7,
+        "roi": [
+          1101,
+          4,
+          156,
+          155
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          1167,
+          71,
+          24,
+          20
+        ]
+      }
+    },
+    "next": [
+      "weeklyAnno2",
+      "weeklyAnno3",
+      "dailySignInGift",
+      "checkHome"
+    ]
+  },
+  "weeklyAnno2": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/weekly_anno_out.png"
+        ],
+        "threshold": 0.7,
+        "roi": [
+          1101,
+          4,
+          156,
+          155
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          1167,
+          71,
+          24,
+          20
+        ]
+      }
+    },
+    "next": [
+      "weeklyAnno3",
+      "dailySignInGift",
+      "checkHome"
+    ]
+  },
+  "weeklyAnno3": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/weekly_anno_out.png"
+        ],
+        "threshold": 0.7,
+        "roi": [
+          1101,
+          4,
+          156,
+          155
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          1167,
+          71,
+          24,
+          20
+        ]
+      }
+    },
+    "next": [
+      "dailySignInGift",
+      "checkHome"
+    ]
+  },
+  "dailySignInGift": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/daily_sign_in.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          1109,
+          537,
+          162,
+          161
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "roi": [
+          1109,
+          537,
+          162,
+          161
+        ]
+      }
+    },
+    "next": [
+      "giftGet"
+    ]
+  },
+  "giftGet": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/daily_sign_in_comfirm.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "roi": [
+          1109,
+          537,
+          162,
+          161
+        ]
+      }
+    },
+    "next": [
+      "giftToHome"
+    ]
+  },
+  "giftToHome": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/daily_sign_in_back.png"
+        ],
+        "threshold": 0.7
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "checkHome"
+    ]
+  },
+  "checkHome": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/daily_need.png"
+        ],
+        "threshold": 0.7
+      }
+    }
+  }
+}

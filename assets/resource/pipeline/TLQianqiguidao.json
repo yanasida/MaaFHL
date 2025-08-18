@@ -1,0 +1,299 @@
+{
+  "QQGDStart": {
+    "timeout": 600000,
+    "rate_limit": 10000,
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/qianqiguidao/start_meet.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "QQGDWaitForCombat"
+    ]
+  },
+  "QQGDWaitForCombat": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/qianqiguidao/combat.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "QQGDCountRoute"
+    ]
+  },
+  "QQGDEnd": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/qianqiguidao/end.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          428,
+          584,
+          426,
+          135
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "QQGDEnd2"
+    ]
+  },
+  "QQGDEnd2": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/qianqiguidao/end.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          428,
+          584,
+          426,
+          135
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "QQGDEndGet"
+    ]
+  },
+  "QQGDEndGet": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/qianqiguidao/end_get.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          456,
+          68,
+          386,
+          199
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "QQGDGoCombat": {
+    "timeout": 600000,
+    "rate_limit": 10000,
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/qianqiguidao/go_combat.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "QQGDEnd",
+      "QQGDWaitForCombat"
+    ]
+  },
+  "QQGDCountRoute": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "TLQQGDCount"
+      }
+    }
+  },
+  "QQGDRemoveAll": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "RemoveAllMember"
+      }
+    },
+    "next": ["QQGDBattlePreparation1"]
+  },
+  "QQGDBattlePreparation1": {
+    "on_error": "QQGDRemoveAll",
+    "timeout": 10000,
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/qianqiguidao/empty_point.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          262,
+          15,
+          192,
+          577
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "QQGDBattlePreparation1Add1"
+    ]
+  },
+  "QQGDBattlePreparation1Add1": {
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          289,
+          567,
+          35,
+          96
+        ]
+      }
+    },
+    "next": [
+      "QQGDBattleConfirm"
+    ]
+  },
+  "QQGDBattleConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/qianqiguidao/confirm.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "QQGDGoCombat"
+    ]
+  },
+  "QQGDBattlePreparation2": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/qianqiguidao/empty_point.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          502,
+          36,
+          197,
+          526
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "QQGDBattlePreparation2Add2"
+    ]
+  },
+  "QQGDBattlePreparation2Add2": {
+    "post_delay": 600,
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          58,
+          574,
+          37,
+          76
+        ]
+      }
+    },
+    "next": [
+      "QQGDBattlePreparation2Add3"
+    ]
+  },
+  "QQGDBattlePreparation2Add3": {
+    "post_delay": 600,
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          168,
+          564,
+          40,
+          103
+        ]
+      }
+    },
+    "next": [
+      "QQGDBattlePreparation2Add4"
+    ]
+  },
+  "QQGDBattlePreparation2Add4": {
+    "post_delay": 600,
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          411,
+          556,
+          31,
+          117
+        ]
+      }
+    },
+    "next": [
+      "QQGDBattlePreparation2Add5"
+    ]
+  },
+  "QQGDBattlePreparation2Add5": {
+    "post_delay": 600,
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          514,
+          567,
+          60,
+          106
+        ]
+      }
+    },
+    "next": [
+      "QQGDBattleConfirm"
+    ]
+  }
+}
