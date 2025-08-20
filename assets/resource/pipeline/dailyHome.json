@@ -228,6 +228,7 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
+          "msg": "第一次体力领取成功~~~",
           "logTask": "HomeReceiveVitality",
           "logKey": "HomeReceiveVitality1",
           "logValue": 1
@@ -255,6 +256,7 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
+          "msg": "第一次体力领取成功~~~",
           "logTask": "HomeReceiveVitality",
           "logKey": "HomeReceiveVitality1",
           "logValue": 1
@@ -271,6 +273,7 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
+          "msg": "第二次体力领取成功~~~",
           "logTask": "HomeReceiveVitality",
           "logKey": "HomeReceiveVitality2",
           "logValue": 1
@@ -300,6 +303,7 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
+          "msg": "第二次体力领取成功~~~",
           "logTask": "HomeReceiveVitality",
           "logKey": "HomeReceiveVitality2",
           "logValue": 1
