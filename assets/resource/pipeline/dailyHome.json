@@ -1,0 +1,446 @@
+{
+  "startReceiveVitalityCheck": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "ReceiveVitalityCheck"
+      }
+    }
+  },
+  "onHomePageCheckForEnterHome": {
+    "timeout": 5000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/daily_need.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          331,
+          651,
+          126,
+          50
+        ]
+      }
+    },
+    "next": [
+      "enterHome"
+    ],
+    "interrupt": [
+      "clickBlank"
+    ]
+  },
+  "exitTyPage": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "桃源居",
+        "threshold": 0.9,
+        "roi": [
+          17,
+          0,
+          234,
+          154
+        ]
+      }
+    }
+  },
+  "enterHome": {
+    "post_delay": 2000,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/home_enter.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          660,
+          228,
+          125,
+          176
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_wait_freezes": {
+      "time": 3000,
+      "target" : [533,641,729,56]
+    },
+    "next": [
+      "swipeForBless",
+      "enterReceiveVitalityInTime",
+      "enterReceiveVitalityOutTime"
+    ]
+  },
+  "blessConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/swipe_bless_comfirm.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          643,
+          525,
+          251,
+          145
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "enterReceiveVitalityInTime",
+      "enterReceiveVitalityOutTime"
+    ]
+  },
+  "enterReceiveVitalityInTime": {
+    "timeout": 7000,
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/receive_vitality_enter_in_time.png"
+        ],
+        "threshold": 0.65,
+        "roi": [
+          1142,
+          320,
+          138,
+          187
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "receiveVitalityInTime2",
+      "receiveVitalityOutTime1",
+      "receiveVitalityInTime1",
+      "recorderDoneVitality2",
+      "recorderDoneVitality1"
+    ]
+  },
+  "enterReceiveVitalityOutTime": {
+    "timeout": 7000,
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/receive_vitality_enter_out_time.png"
+        ],
+        "threshold": 0.65,
+        "roi": [
+          1142,
+          320,
+          138,
+          187
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "receiveVitalityOutTime2",
+      "receiveVitalityOutTime1",
+      "recorderDoneVitality2",
+      "recorderDoneVitality1"
+    ]
+  },
+  "exitReceiveVitalityEnter": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "用膳",
+        "threshold": 0.9,
+        "roi": [
+          0,
+          0,
+          271,
+          163
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "receiveVitalityInTime1": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/receive_vitality_in_time.png"
+        ],
+        "threshold": 0.96,
+        "roi": [
+          262,
+          373,
+          335,
+          304
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "recorderReceiveVitality1"
+    ]
+  },
+  "recorderReceiveVitality1": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "logTask": "HomeReceiveVitality",
+          "logKey": "HomeReceiveVitality1",
+          "logValue": 1
+        }
+      }
+    },
+    "next": [
+      "VitalityOutTimeConfirm",
+      "exitReceiveVitalityEnter"
+    ]
+  },
+  "recorderDoneVitality1": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/receive_vitality_done1.png"
+        ],
+        "threshold": 0.96,
+        "roi" : [248,381,368,307]
+      }
+    },
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "logTask": "HomeReceiveVitality",
+          "logKey": "HomeReceiveVitality1",
+          "logValue": 1
+        }
+      }
+    },
+    "next": [
+      "exitReceiveVitalityEnter"
+    ]
+  },
+  "recorderReceiveVitality2": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "logTask": "HomeReceiveVitality",
+          "logKey": "HomeReceiveVitality2",
+          "logValue": 1
+        }
+      }
+    },
+    "next": [
+      "VitalityOutTimeConfirm",
+      "recorderDoneVitality1",
+      "receiveVitalityOutTime1",
+      "exitReceiveVitalityEnter"
+    ]
+  },
+  "recorderDoneVitality2": {
+     "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/receive_vitality_done2.png"
+        ],
+        "threshold": 0.96,
+        "roi" : [663,378,395,303]
+      }
+    },
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "logTask": "HomeReceiveVitality",
+          "logKey": "HomeReceiveVitality2",
+          "logValue": 1
+        }
+      }
+    },
+    "next": [
+      "recorderDoneVitality1",
+      "VitalityOutTimeConfirm",
+      "exitReceiveVitalityEnter"
+    ]
+  },
+  "receiveVitalityOutTime1": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/receive_vitality_out_time.png"
+        ],
+        "threshold": 0.96,
+        "roi": [
+          262,
+          373,
+          335,
+          304
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "recorderReceiveVitality1"
+    ]
+  },
+  "receiveVitalityInTime2": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/receive_vitality_in_time2.png"
+        ],
+        "threshold": 0.96,
+        "roi": [
+          667,
+          285,
+          471,
+          426
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "recorderReceiveVitality2"
+    ]
+  },
+  "receiveVitalityOutTime2": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/receive_vitality_out_time2.png"
+        ],
+        "threshold": 0.96,
+        "roi": [
+          667,
+          285,
+          471,
+          426
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "recorderReceiveVitality2"
+    ]
+  },
+  "VitalityOutTimeConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/receive_vitality_enter_out_time_confirm.png"
+        ],
+        "threshold": 0.96,
+        "roi": [
+          675,
+          401,
+          207,
+          140
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "recorderDoneVitality1",
+      "receiveVitalityOutTime1",
+      "exitReceiveVitalityEnter"
+    ]
+  },
+  "clickBlank": {
+    "recognition": "DirectHit",
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          405,
+          623,
+          40,
+          26
+        ]
+      }
+    }
+  },
+  "swipeForBless": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/swipe_bless_start.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          572,
+          353,
+          137,
+          367
+        ]
+      }
+    },
+    "action": {
+      "type": "Swipe",
+      "param": {
+        "begin": [
+          600,
+          155,
+          37,
+          43
+        ],
+        "end": [
+          629,
+          599,
+          64,
+          41
+        ],
+        "duration": 1500
+      }
+    },
+    "next": [
+      "blessConfirm"
+    ]
+  }
+}

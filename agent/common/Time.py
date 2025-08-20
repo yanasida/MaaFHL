@@ -1,19 +1,38 @@
 from datetime import datetime, timedelta
 
 
+# 是不是金戈时间
 def is_battle_time() -> bool:
-    # 获取当前时间
     current_time = datetime.now().time()
 
-    # 定义时间区间
     start_time1 = datetime.strptime("11:00", "%H:%M").time()
     end_time1 = datetime.strptime("14:00", "%H:%M").time()
 
     start_time2 = datetime.strptime("19:00", "%H:%M").time()
     end_time2 = datetime.strptime("22:00", "%H:%M").time()
 
-    # 判断当前时间是否在指定区间内
     return (start_time1 <= current_time <= end_time1) or (start_time2 <= current_time <= end_time2)
+
+
+def is_tao_yuan_time() -> int:
+    current_time = datetime.now().time()
+
+    start_time1 = datetime.strptime("11:00", "%H:%M").time()
+    end_time1 = datetime.strptime("15:00", "%H:%M").time()
+
+    start_time2 = datetime.strptime("17:00", "%H:%M").time()
+    end_time2 = datetime.strptime("22:00", "%H:%M").time()
+
+    if current_time < start_time1:
+        return 0
+    elif start_time1 <= current_time <= end_time1:
+        return 1
+    elif end_time1 <= current_time <= start_time2:
+        return 2
+    elif start_time2 <= current_time <= end_time2:
+        return 3
+    else:
+        return -1
 
 
 # 判断是否在同一天（已给出）

@@ -2,4 +2,9 @@ from .PvpAction import *
 from .TimeLimitAct import *
 from .CommonAction import *
 
-__all__ = ['CombatResRecord', 'TLQQGDCount', 'RemoveAllMember']
+__all__ = [
+    'CombatResRecord',
+    'TLQQGDCount',
+    'RemoveAllMember',
+    'LoggerAndRecorder'
+]
