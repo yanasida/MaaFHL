@@ -5,10 +5,10 @@
       "type": "Click",
       "param": {
         "target": [
-          335,
-          603,
-          48,
-          36
+          405,
+          623,
+          40,
+          26
         ]
       }
     },
@@ -65,7 +65,10 @@
     "recognition": {
       "type": "TemplateMatch",
       "param": {
-        "template": ["pvp/last_week_result.png","pvp/last_week_result2.png"],
+        "template": [
+          "pvp/last_week_result.png",
+          "pvp/last_week_result2.png"
+        ],
         "threshold": 0.9
       }
     },
@@ -99,7 +102,10 @@
     "recognition": {
       "type": "TemplateMatch",
       "param": {
-        "template": ["pvp/this_week_start.png","pvp/this_week_start2.png"],
+        "template": [
+          "pvp/this_week_start.png",
+          "pvp/this_week_start2.png"
+        ],
         "threshold": 0.9
       }
     },
