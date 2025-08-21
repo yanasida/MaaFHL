@@ -203,34 +203,28 @@
     "timeout": 6000,
     "post_delay": 2000,
     "recognition": {
-      "type": "TemplateMatch",
+      "type": "OCR",
       "param": {
-        "template": [
-          "daily/quickStart/hide_and_seek.png"
-        ],
-        "threshold": 0.9,
-        "roi": [
-          0,
-          183,
-          519,
-          536
-        ]
-      }
-    },
-    "action": {
-      "type": "Click",
-      "param": {
-        "target": [
-          382,
-          705,
-          95,
-          14
-        ]
+        "expected" : "忘川躲猫猫",
+        "threshold": 0.7,
+        "roi" : [0,532,589,188]
       }
     },
     "next": [
-      "hideAndSeekReceive"
+      "hideAndSeekBtnClick"
     ]
+  },
+  "hideAndSeekBtnClick": {
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected" : "领取",
+        "threshold": 0.7,
+        "roi" : [374,601,110,117]
+      }
+    },
+    "action": "Click",
+    "next": ["hideAndSeekReceive"]
   },
   "hideAndSeekReceive": {
     "post_delay": 2000,
@@ -680,7 +674,8 @@
       }
     },
     "next": [
-      "hideAndSeekClearGo"
+      "hideAndSeekClearGo",
+      "hideAndSeekReceive"
     ]
   },
   "hideAndSeekClearGo": {
@@ -811,14 +806,14 @@
   "disableSeekClearSwipe": {
     "post_delay": 1000,
     "action": {
-            "type": "Custom",
-            "param": {
-                "custom_action": "DisableNode",
-                "custom_action_param": {
-                    "node_name": "hideAndSeekClearSwipe"
-                }
-            }
-        },
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "hideAndSeekClearSwipe"
+        }
+      }
+    },
     "next": [
       "hideAndSeekBack"
     ]
@@ -966,7 +961,7 @@
         "template": [
           "daily/quickStart/cat_found.png"
         ],
-        "threshold": 0.6
+        "threshold": 0.58
       }
     },
     "action": {
