@@ -204,15 +204,11 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "daily/home/receive_vitality_in_time.png"
+          "daily/home/receive_vitality_in_time.png",
+          "daily/home/receive_vitality_in_time2.png"
         ],
         "threshold": 0.96,
-        "roi": [
-          262,
-          373,
-          335,
-          304
-        ]
+        "roi" : [197,338,460,306]
       }
     },
     "action": {
@@ -245,7 +241,8 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "daily/home/receive_vitality_done1.png"
+          "daily/home/receive_vitality_done1.png",
+          "daily/home/receive_vitality_done2.png"
         ],
         "threshold": 0.96,
         "roi" : [248,381,368,307]
@@ -292,6 +289,7 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
+          "daily/home/receive_vitality_done1.png",
           "daily/home/receive_vitality_done2.png"
         ],
         "threshold": 0.96,
@@ -322,7 +320,8 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "daily/home/receive_vitality_out_time.png"
+          "daily/home/receive_vitality_out_time.png",
+          "daily/home/receive_vitality_out_time2.png"
         ],
         "threshold": 0.96,
         "roi": [
@@ -346,7 +345,8 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "daily/home/receive_vitality_in_time2.png"
+          "daily/home/receive_vitality_in_time2.png",
+          "daily/home/receive_vitality_in_time.png"
         ],
         "threshold": 0.96,
         "roi": [
@@ -370,7 +370,8 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "daily/home/receive_vitality_out_time2.png"
+          "daily/home/receive_vitality_out_time2.png",
+          "daily/home/receive_vitality_out_time.png"
         ],
         "threshold": 0.96,
         "roi": [
