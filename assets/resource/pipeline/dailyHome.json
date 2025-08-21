@@ -236,23 +236,6 @@
     },
     "action": {
       "type": "Click"
-    },
-    "next": [
-      "recorderReceiveVitality1"
-    ]
-  },
-  "recorderReceiveVitality1": {
-    "action": {
-      "type": "Custom",
-      "param": {
-        "custom_action": "LoggerAndRecorder",
-        "custom_action_param": {
-          "msg": "第一次体力领取成功~~~",
-          "logTask": "HomeReceiveVitality",
-          "logKey": "HomeReceiveVitality1",
-          "logValue": true
-        }
-      }
     }
   },
   "recorderDoneVitality1": {
@@ -288,20 +271,6 @@
     "next": [
       "disableRecorderDoneVitality1"
     ]
-  },
-  "recorderReceiveVitality2": {
-    "action": {
-      "type": "Custom",
-      "param": {
-        "custom_action": "LoggerAndRecorder",
-        "custom_action_param": {
-          "msg": "第二次体力领取成功~~~",
-          "logTask": "HomeReceiveVitality",
-          "logKey": "HomeReceiveVitality2",
-          "logValue": true
-        }
-      }
-    }
   },
   "recorderDoneVitality2": {
     "recognition": {
@@ -382,10 +351,7 @@
     },
     "action": {
       "type": "Click"
-    },
-    "next": [
-      "recorderReceiveVitality1"
-    ]
+    }
   },
   "receiveVitalityInTime2": {
     "post_delay": 2000,
@@ -408,10 +374,7 @@
     },
     "action": {
       "type": "Click"
-    },
-    "next": [
-      "recorderReceiveVitality2"
-    ]
+    }
   },
   "receiveVitalityOutTime2": {
     "post_delay": 2000,
@@ -434,10 +397,7 @@
     },
     "action": {
       "type": "Click"
-    },
-    "next": [
-      "recorderReceiveVitality2"
-    ]
+    }
   },
   "VitalityOutTimeConfirm": {
     "post_delay": 2000,
