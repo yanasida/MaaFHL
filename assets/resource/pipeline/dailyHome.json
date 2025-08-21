@@ -368,6 +368,7 @@
       "param": {
         "template": [
           "daily/home/receive_vitality_out_time.png",
+          "daily/home/receive_vitality_out_time3.png",
           "daily/home/receive_vitality_out_time2.png"
         ],
         "threshold": 0.96,
@@ -419,6 +420,7 @@
       "param": {
         "template": [
           "daily/home/receive_vitality_out_time2.png",
+          "daily/home/receive_vitality_out_time3.png",
           "daily/home/receive_vitality_out_time.png"
         ],
         "threshold": 0.96,
