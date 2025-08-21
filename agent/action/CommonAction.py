@@ -181,8 +181,12 @@ class QuickStartCheck(CustomAction):
         # send_gift = data.get("sendGift")
         # hide_and_seek = data.get("hideAndSeek")
 
-        if not is_same_day_with_offset(datetime.now().strftime("%Y-%m-%d %H:%M:%S")):
-            LocalStorage.remove_task("QuickStart")
+        start_time = LocalStorage.get(task='QuickStart', key="todayStartTime")
+        if start_time is not None:
+            if not is_same_day_with_offset(start_time):
+                LocalStorage.remove_task("QuickStart")
+        if start_time is None:
+            LocalStorage.set("QuickStart", "todayStartTime", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
         local_cat_gift = LocalStorage.get(task='QuickStart', key="catGift")
         local_cat_fish = LocalStorage.get(task='QuickStart', key="catFish")
