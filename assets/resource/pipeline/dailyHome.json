@@ -31,6 +31,22 @@
       "clickBlank"
     ]
   },
+  "checkTyPage": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "桃源居",
+        "threshold": 0.9,
+        "roi": [
+          17,
+          0,
+          234,
+          154
+        ]
+      }
+    }
+  },
   "exitTyPage1": {
     "post_delay": 2000,
     "recognition": {
@@ -47,7 +63,9 @@
       }
     },
     "action": "Click",
-    "next": ["exitTyPage2"]
+    "next": [
+      "exitTyPage2"
+    ]
   },
   "exitTyPage2": {
     "recognition": {
@@ -88,12 +106,22 @@
     },
     "post_wait_freezes": {
       "time": 3000,
-      "target" : [533,641,729,56]
+      "target": [
+        533,
+        641,
+        729,
+        56
+      ]
     },
+    "doc": "其他桃源居任务扩展点",
     "next": [
+      "checkHome"
+    ],
+    "interrupt": [
       "swipeForBless",
-      "enterReceiveVitalityInTime",
-      "enterReceiveVitalityOutTime"
+      "enterReceiveVitality",
+      "convertPicStart",
+      "exitTyPage1"
     ]
   },
   "blessConfirm": {
@@ -115,48 +143,16 @@
     },
     "action": {
       "type": "Click"
-    },
-    "next": [
-      "enterReceiveVitalityInTime",
-      "enterReceiveVitalityOutTime"
-    ]
+    }
   },
-  "enterReceiveVitalityInTime": {
+  "enterReceiveVitality": {
     "timeout": 7000,
     "post_delay": 2000,
     "recognition": {
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "daily/home/receive_vitality_enter_in_time.png"
-        ],
-        "threshold": 0.65,
-        "roi": [
-          1142,
-          320,
-          138,
-          187
-        ]
-      }
-    },
-    "action": {
-      "type": "Click"
-    },
-    "next": [
-      "receiveVitalityInTime2",
-      "receiveVitalityOutTime1",
-      "receiveVitalityInTime1",
-      "recorderDoneVitality2",
-      "recorderDoneVitality1"
-    ]
-  },
-  "enterReceiveVitalityOutTime": {
-    "timeout": 7000,
-    "post_delay": 2000,
-    "recognition": {
-      "type": "TemplateMatch",
-      "param": {
-        "template": [
+          "daily/home/receive_vitality_enter_in_time.png",
           "daily/home/receive_vitality_enter_out_time.png"
         ],
         "threshold": 0.65,
@@ -171,11 +167,33 @@
     "action": {
       "type": "Click"
     },
+    "doc": "桃源居体力扩展点",
     "next": [
+      "checkTyPage"
+    ],
+    "interrupt": [
+      "VitalityOutTimeConfirm",
+      "receiveVitalityInTime2",
+      "receiveVitalityInTime1",
       "receiveVitalityOutTime2",
       "receiveVitalityOutTime1",
       "recorderDoneVitality2",
-      "recorderDoneVitality1"
+      "recorderDoneVitality1",
+      "disableAndExitReceiveVitalityEnter"
+    ]
+  },
+  "disableAndExitReceiveVitalityEnter": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "enterReceiveVitality"
+        }
+      }
+    },
+    "next": [
+      "exitReceiveVitalityEnter"
     ]
   },
   "exitReceiveVitalityEnter": {
@@ -195,8 +213,7 @@
     },
     "action": {
       "type": "Click"
-    },
-    "next": ["exitTyPage1"]
+    }
   },
   "receiveVitalityInTime1": {
     "post_delay": 2000,
@@ -205,10 +222,16 @@
       "param": {
         "template": [
           "daily/home/receive_vitality_in_time.png",
+          "daily/home/receive_vitality_in_time3.png",
           "daily/home/receive_vitality_in_time2.png"
         ],
         "threshold": 0.96,
-        "roi" : [197,338,460,306]
+        "roi": [
+          197,
+          338,
+          460,
+          306
+        ]
       }
     },
     "action": {
@@ -230,11 +253,7 @@
           "logValue": 1
         }
       }
-    },
-    "next": [
-      "VitalityOutTimeConfirm",
-      "exitReceiveVitalityEnter"
-    ]
+    }
   },
   "recorderDoneVitality1": {
     "recognition": {
@@ -242,10 +261,16 @@
       "param": {
         "template": [
           "daily/home/receive_vitality_done1.png",
+          "daily/home/receive_vitality_done3.png",
           "daily/home/receive_vitality_done2.png"
         ],
         "threshold": 0.96,
-        "roi" : [248,381,368,307]
+        "roi": [
+          248,
+          381,
+          368,
+          307
+        ]
       }
     },
     "action": {
@@ -261,7 +286,7 @@
       }
     },
     "next": [
-      "exitReceiveVitalityEnter"
+      "disableRecorderDoneVitality1"
     ]
   },
   "recorderReceiveVitality2": {
@@ -276,24 +301,24 @@
           "logValue": 1
         }
       }
-    },
-    "next": [
-      "VitalityOutTimeConfirm",
-      "recorderDoneVitality1",
-      "receiveVitalityOutTime1",
-      "exitReceiveVitalityEnter"
-    ]
+    }
   },
   "recorderDoneVitality2": {
-     "recognition": {
+    "recognition": {
       "type": "TemplateMatch",
       "param": {
         "template": [
           "daily/home/receive_vitality_done1.png",
+          "daily/home/receive_vitality_done3.png",
           "daily/home/receive_vitality_done2.png"
         ],
         "threshold": 0.96,
-        "roi" : [663,378,395,303]
+        "roi": [
+          663,
+          378,
+          395,
+          303
+        ]
       }
     },
     "action": {
@@ -309,10 +334,32 @@
       }
     },
     "next": [
-      "recorderDoneVitality1",
-      "VitalityOutTimeConfirm",
-      "exitReceiveVitalityEnter"
+      "disableRecorderDoneVitality2"
     ]
+  },
+  "disableRecorderDoneVitality2": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "recorderDoneVitality2"
+        }
+      }
+    }
+  },
+  "disableRecorderDoneVitality1": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "recorderDoneVitality1"
+        }
+      }
+    }
   },
   "receiveVitalityOutTime1": {
     "post_delay": 2000,
@@ -346,6 +393,7 @@
       "param": {
         "template": [
           "daily/home/receive_vitality_in_time2.png",
+          "daily/home/receive_vitality_in_time3.png",
           "daily/home/receive_vitality_in_time.png"
         ],
         "threshold": 0.96,
@@ -408,12 +456,7 @@
     },
     "action": {
       "type": "Click"
-    },
-    "next": [
-      "recorderDoneVitality1",
-      "receiveVitalityOutTime1",
-      "exitReceiveVitalityEnter"
-    ]
+    }
   },
   "clickBlank": {
     "recognition": "DirectHit",
@@ -467,5 +510,205 @@
     "next": [
       "blessConfirm"
     ]
+  },
+  "convertPicStart": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/convert_pic_start.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          1113,
+          61,
+          166,
+          120
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "convertPicCheck"
+    ],
+    "interrupt": [
+      "convertPic"
+    ]
+  },
+  "convertPic": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/convert_pic_btn.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          117,
+          568,
+          189,
+          152
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "convertPicSelectAll"
+    ],
+    "interrupt": [
+      "convertPicAddToAll"
+    ]
+  },
+  "convertPicCheck": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/convert_pic_end_flag.png"
+        ],
+        "threshold": 0.98,
+        "roi": [
+          454,
+          0,
+          259,
+          126
+        ]
+      }
+    },
+    "next": [
+      "convertPicBack"
+    ]
+  },
+  "convertPicSelectAll": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/convert_pic_select_all.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          393,
+          343,
+          562,
+          180
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          612,
+          527,
+          118,
+          39
+        ]
+      }
+    },
+    "next": [
+      "convertPicConfirm"
+    ]
+  },
+  "convertPicAddToAll": {
+    "post_delay": 900,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/convert_pic_add_btn.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          797,
+          358,
+          161,
+          161
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "convertPicConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/receive_confirm.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          472,
+          86,
+          340,
+          159
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": ["convertPicConfirmExit"]
+  },
+  "convertPicConfirmExit": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/convert_pic_exit_btn.png"
+        ],
+        "threshold": 0.9,
+        "roi" : [837,49,336,279]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "convertPicRecord"
+    ]
+  },
+  "convertPicRecord": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "考工治图门票转换完成~~~",
+          "logTask": "HomeAct",
+          "logKey": "convertPic",
+          "logValue": true
+        }
+      }
+    },
+    "next": ["convertPicBack"]
+  },
+  "convertPicBack": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "考工治图",
+        "threshold": 0.9,
+        "roi": [
+          0,
+          0,
+          274,
+          149
+        ]
+      }
+    },
+    "action": "Click"
   }
 }

@@ -98,44 +98,45 @@ class ReceiveVitalityCheck(CustomAction):
 
         vitality1 = LocalStorage.get(task='HomeReceiveVitality', key="HomeReceiveVitality1")
         vitality2 = LocalStorage.get(task='HomeReceiveVitality', key="HomeReceiveVitality2")
+        convert_pic = LocalStorage.get(task='HomeAct', key="convertPicStart")
+
+        if convert_pic:
+            context.override_pipeline(
+                {"convertPicStart": {"enabled": False}}
+            )
 
         res = is_tao_yuan_time()
+        if vitality2 is not None and vitality1 is not None:
+            context.override_pipeline(
+                {"enterReceiveVitality": {"enabled": False}}
+            )
         # 11点前
-        if res == 0:
+        elif res == 0:
             print("当前时间不可领取体力")
-            return CustomAction.RunResult(success=True)
+            context.override_pipeline(
+                {"enterReceiveVitality": {"enabled": False}}
+            )
         # 11点到15点
-        elif res == 1:
-            if vitality1 is None:
-                print("开始领取第一次体力")
-                context.run_task("onHomePageCheckForEnterHome")
+        elif res == 1 and vitality1 is not None:
+            context.override_pipeline(
+                {"enterReceiveVitality": {"enabled": False}}
+            )
         # 15点到17点
-        elif res == 2:
-            if use_tong_bao and vitality1 is None:
-                print("开始补领第一次体力")
-                context.run_task("onHomePageCheckForEnterHome")
-        # 17点到22点,领取第二次，是否使用通宝补领第一次
-        elif res == 3:
-            if vitality2 is not None and not use_tong_bao:
-                print("已完成领取第二次体力")
-                return CustomAction.RunResult(success=True)
-            if not use_tong_bao:
-                print("开始领取第二次体力")
-                context.override_pipeline(
-                    {"enterReceiveVitalityOutTime": {"enabled": False},
-                     "receiveVitalityOutTime1": {"enabled": False}}
-                )
-            else:
-                print("开始领取第二次体力,补领第一次体力")
-                context.override_pipeline(
-                    {"enterReceiveVitalityOutTime": {"enabled": False}}
-                )
-                context.run_task("onHomePageCheckForEnterHome")
-        # 使用通宝补领第一、二次
-        elif use_tong_bao and (vitality1 is None or vitality2 is None):
-            print("开始补领体力")
-            context.run_task("onHomePageCheckForEnterHome")
-        print("已完成领取体力")
+        elif res == 2 and (not use_tong_bao or vitality1 is not None):
+            context.override_pipeline(
+                {"enterReceiveVitality": {"enabled": False}}
+            )
+        elif res == 3 and not use_tong_bao and vitality2 is not None:
+            context.override_pipeline(
+                {"enterReceiveVitality": {"enabled": False}}
+            )
+        elif res == -1 and not use_tong_bao:
+            context.override_pipeline(
+                {"enterReceiveVitality": {"enabled": False}}
+            )
+
+        context.run_task("onHomePageCheckForEnterHome")
+
         return CustomAction.RunResult(success=True)
 
 

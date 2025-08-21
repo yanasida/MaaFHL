@@ -25,10 +25,12 @@
       "entry": "startApp"
     },
     {
-      "name": "桃源居-体力",
+      "name": "桃源居",
       "entry": "startReceiveVitalityCheck",
       "option": [
-        "是否使用通宝购买体力"
+        "领取桃源居体力",
+        "是否使用通宝购买体力",
+        "考工治图 百工图转化"
       ]
     },
     {
@@ -136,6 +138,13 @@
         }
       ]
     },
+    "领取桃源居体力": {
+      "cases": [
+        {
+          "name": "Yes"
+        }
+      ]
+    },
     "是否使用通宝购买体力": {
       "cases": [
         {
@@ -163,6 +172,12 @@
                   }
                 }
               }
+            },
+            "receiveVitalityOutTime1": {
+              "enabled": false
+            },
+            "receiveVitalityOutTime2": {
+              "enabled": false
             }
           }
         }
@@ -242,6 +257,22 @@
           "name": "No",
           "pipeline_override": {
             "hideAndSeekClearSwipe": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "考工治图 百工图转化": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "convertPicStart": {
               "enabled": false
             }
           }
