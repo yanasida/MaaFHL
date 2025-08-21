@@ -8,5 +8,6 @@ __all__ = [
     'RemoveAllMember',
     'LoggerAndRecorder',
     "QuickStartCheck",
+    "ReceiveTyCheck",
     "DisableNode"
 ]

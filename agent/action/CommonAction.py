@@ -76,10 +76,10 @@ class LoggerAndRecorder(CustomAction):
         return CustomAction.RunResult(success=True)
 
 
-@AgentServer.custom_action("ReceiveVitalityCheck")
-class ReceiveVitalityCheck(CustomAction):
+@AgentServer.custom_action("ReceiveTyCheck")
+class ReceiveTyCheck(CustomAction):
     """
-    桃源居体力检查
+    桃源居检查
     """
 
     def run(
@@ -106,7 +106,7 @@ class ReceiveVitalityCheck(CustomAction):
             )
 
         res = is_tao_yuan_time()
-        if vitality2 is not None and vitality1 is not None:
+        if vitality2 and vitality1:
             context.override_pipeline(
                 {"enterReceiveVitality": {"enabled": False}}
             )
@@ -117,16 +117,16 @@ class ReceiveVitalityCheck(CustomAction):
                 {"enterReceiveVitality": {"enabled": False}}
             )
         # 11点到15点
-        elif res == 1 and vitality1 is not None:
+        elif res == 1 and vitality1:
             context.override_pipeline(
                 {"enterReceiveVitality": {"enabled": False}}
             )
         # 15点到17点
-        elif res == 2 and (not use_tong_bao or vitality1 is not None):
+        elif res == 2 and (not use_tong_bao or vitality1):
             context.override_pipeline(
                 {"enterReceiveVitality": {"enabled": False}}
             )
-        elif res == 3 and not use_tong_bao and vitality2 is not None:
+        elif res == 3 and not use_tong_bao and vitality2:
             context.override_pipeline(
                 {"enterReceiveVitality": {"enabled": False}}
             )

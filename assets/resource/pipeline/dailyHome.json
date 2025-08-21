@@ -1,9 +1,9 @@
 {
-  "startReceiveVitalityCheck": {
+  "startTyCheck": {
     "action": {
       "type": "Custom",
       "param": {
-        "custom_action": "ReceiveVitalityCheck"
+        "custom_action": "ReceiveTyCheck"
       }
     }
   },
@@ -250,7 +250,7 @@
           "msg": "第一次体力领取成功~~~",
           "logTask": "HomeReceiveVitality",
           "logKey": "HomeReceiveVitality1",
-          "logValue": 1
+          "logValue": true
         }
       }
     }
@@ -281,7 +281,7 @@
           "msg": "第一次体力领取成功~~~",
           "logTask": "HomeReceiveVitality",
           "logKey": "HomeReceiveVitality1",
-          "logValue": 1
+          "logValue": true
         }
       }
     },
@@ -298,7 +298,7 @@
           "msg": "第二次体力领取成功~~~",
           "logTask": "HomeReceiveVitality",
           "logKey": "HomeReceiveVitality2",
-          "logValue": 1
+          "logValue": true
         }
       }
     }
@@ -329,7 +329,7 @@
           "msg": "第二次体力领取成功~~~",
           "logTask": "HomeReceiveVitality",
           "logKey": "HomeReceiveVitality2",
-          "logValue": 1
+          "logValue": true
         }
       }
     },
@@ -583,7 +583,7 @@
       }
     },
     "next": [
-      "convertPicBack"
+      "convertPicRecord"
     ]
   },
   "convertPicSelectAll": {
@@ -657,7 +657,9 @@
     "action": {
       "type": "Click"
     },
-    "next": ["convertPicConfirmExit"]
+    "next": [
+      "convertPicConfirmExit"
+    ]
   },
   "convertPicConfirmExit": {
     "post_delay": 2000,
@@ -668,7 +670,12 @@
           "daily/home/convert_pic_exit_btn.png"
         ],
         "threshold": 0.9,
-        "roi" : [837,49,336,279]
+        "roi": [
+          837,
+          49,
+          336,
+          279
+        ]
       }
     },
     "action": {
@@ -692,7 +699,21 @@
         }
       }
     },
-    "next": ["convertPicBack"]
+    "next": [
+      "convertPicBack"
+    ]
+  },
+  "disableConvertPicStart": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "convertPicStart"
+        }
+      }
+    }
   },
   "convertPicBack": {
     "post_delay": 2000,
@@ -709,6 +730,7 @@
         ]
       }
     },
-    "action": "Click"
+    "action": "Click",
+    "next": ["disableConvertPicStart"]
   }
 }

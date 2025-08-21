@@ -26,7 +26,7 @@
     },
     {
       "name": "桃源居",
-      "entry": "startReceiveVitalityCheck",
+      "entry": "startTyCheck",
       "option": [
         "领取桃源居体力",
         "是否使用通宝购买体力",
@@ -150,7 +150,7 @@
         {
           "name": "Yes",
           "pipeline_override": {
-            "startReceiveVitalityCheck": {
+            "startTyCheck": {
               "action": {
                 "param": {
                   "custom_action_param": {
@@ -164,7 +164,7 @@
         {
           "name": "No",
           "pipeline_override": {
-            "startReceiveVitalityCheck": {
+            "startTyCheck": {
               "action": {
                 "param": {
                   "custom_action_param": {
