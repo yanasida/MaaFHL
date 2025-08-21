@@ -76,15 +76,29 @@
         ]
       }
     },
-    "next": [
+     "next": [
+      "checkHome"
+    ],
+    "interrupt": [
       "versionUpdate",
-      "weeklyAnno1",
-      "weeklyAnno2",
-      "weeklyAnno3",
+      "weeklyAnno",
       "dailySignInGift",
       "timeLimitSignInGift",
-      "checkHome"
+      "backClick"
     ]
+  },
+  "backClick": {
+       "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/back_btn.png.png"
+        ],
+        "threshold": 0.5,
+        "roi" : [0,0,138,148]
+      }
+    },
+    "action": "Click"
   },
   "versionUpdate": {
     "recognition": {
@@ -97,7 +111,7 @@
       }
     }
   },
-  "weeklyAnno1": {
+  "weeklyAnno": {
     "post_delay": 2000,
     "recognition": {
       "type": "TemplateMatch",
@@ -124,83 +138,7 @@
           20
         ]
       }
-    },
-    "next": [
-      "weeklyAnno2",
-      "weeklyAnno3",
-      "dailySignInGift",
-      "dailySignInRecord",
-      "checkHome"
-    ]
-  },
-  "weeklyAnno2": {
-    "post_delay": 2000,
-    "recognition": {
-      "type": "TemplateMatch",
-      "param": {
-        "template": [
-          "start/weekly_anno_out.png"
-        ],
-        "threshold": 0.7,
-        "roi": [
-          1101,
-          4,
-          156,
-          155
-        ]
-      }
-    },
-    "action": {
-      "type": "Click",
-      "param": {
-        "target": [
-          1167,
-          71,
-          24,
-          20
-        ]
-      }
-    },
-    "next": [
-      "weeklyAnno3",
-      "dailySignInGift",
-      "dailySignInRecord",
-      "checkHome"
-    ]
-  },
-  "weeklyAnno3": {
-    "post_delay": 2000,
-    "recognition": {
-      "type": "TemplateMatch",
-      "param": {
-        "template": [
-          "start/weekly_anno_out.png"
-        ],
-        "threshold": 0.7,
-        "roi": [
-          1101,
-          4,
-          156,
-          155
-        ]
-      }
-    },
-    "action": {
-      "type": "Click",
-      "param": {
-        "target": [
-          1167,
-          71,
-          24,
-          20
-        ]
-      }
-    },
-    "next": [
-      "dailySignInGift",
-      "dailySignInRecord",
-      "checkHome"
-    ]
+    }
   },
   "dailySignInGift": {
     "post_delay": 3000,
@@ -308,10 +246,7 @@
           "msg": "领取每日登录活动奖励完成"
         }
       }
-    },
-    "next": [
-      "giftToHome"
-    ]
+    }
   },
   "giftToHome": {
     "post_delay": 3000,
