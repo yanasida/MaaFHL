@@ -89,8 +89,12 @@ class ReceiveVitalityCheck(CustomAction):
     ) -> CustomAction.RunResult:
         use_tong_bao = json.loads(argv.custom_action_param)["useTongBao"]
 
-        if not is_same_day_with_offset(datetime.now().strftime("%Y-%m-%d %H:%M:%S")):
-            LocalStorage.remove_task("HomeReceiveVitality")
+        start_time = LocalStorage.get(task='HomeReceiveVitality', key="todayStartTime")
+        if start_time is not None:
+            if not is_same_day_with_offset(start_time):
+                LocalStorage.remove_task("HomeReceiveVitality")
+        if start_time is None:
+            LocalStorage.set("HomeReceiveVitality", "todayStartTime", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
         vitality1 = LocalStorage.get(task='HomeReceiveVitality', key="HomeReceiveVitality1")
         vitality2 = LocalStorage.get(task='HomeReceiveVitality', key="HomeReceiveVitality2")
@@ -98,31 +102,102 @@ class ReceiveVitalityCheck(CustomAction):
         res = is_tao_yuan_time()
         # 11点前
         if res == 0:
+            print("当前时间不可领取体力")
             return CustomAction.RunResult(success=True)
         # 11点到15点
         elif res == 1:
             if vitality1 is None:
+                print("开始领取第一次体力")
                 context.run_task("onHomePageCheckForEnterHome")
         # 15点到17点
         elif res == 2:
             if use_tong_bao and vitality1 is None:
+                print("开始补领第一次体力")
                 context.run_task("onHomePageCheckForEnterHome")
         # 17点到22点,领取第二次，是否使用通宝补领第一次
         elif res == 3:
             if vitality2 is not None and not use_tong_bao:
+                print("已完成领取第二次体力")
                 return CustomAction.RunResult(success=True)
             if not use_tong_bao:
+                print("开始领取第二次体力")
                 context.override_pipeline(
                     {"enterReceiveVitalityOutTime": {"enabled": False},
                      "receiveVitalityOutTime1": {"enabled": False}}
                 )
             else:
+                print("开始领取第二次体力,补领第一次体力")
                 context.override_pipeline(
                     {"enterReceiveVitalityOutTime": {"enabled": False}}
                 )
-            context.run_task("onHomePageCheckForEnterHome")
+                context.run_task("onHomePageCheckForEnterHome")
         # 使用通宝补领第一、二次
         elif use_tong_bao and (vitality1 is None or vitality2 is None):
+            print("开始补领体力")
             context.run_task("onHomePageCheckForEnterHome")
+        print("已完成领取体力")
+        return CustomAction.RunResult(success=True)
+
+
+@AgentServer.custom_action("DisableNode")
+class DisableNode(CustomAction):
+    """
+    将特定 node 设置为 disable 状态 。
+
+    参数格式:
+    {
+        "node_name": "结点名称"
+    }
+    """
+
+    def run(
+            self,
+            context: Context,
+            argv: CustomAction.RunArg,
+    ) -> CustomAction.RunResult:
+        node_name = json.loads(argv.custom_action_param)["node_name"]
+
+        context.override_pipeline({f"{node_name}": {"enabled": False}})
+
+        return CustomAction.RunResult(success=True)
+
+
+@AgentServer.custom_action("QuickStartCheck")
+class QuickStartCheck(CustomAction):
+    """
+    速办检查
+    """
+
+    def run(
+            self,
+            context: Context,
+            argv: CustomAction.RunArg,
+    ) -> CustomAction.RunResult:
+        # data = json.loads(argv.custom_action_param)
+        #
+        # cat_gift = data.get("catGift")
+        # cat_fish = data.get("catFish")
+        # send_gift = data.get("sendGift")
+        # hide_and_seek = data.get("hideAndSeek")
+
+        if not is_same_day_with_offset(datetime.now().strftime("%Y-%m-%d %H:%M:%S")):
+            LocalStorage.remove_task("QuickStart")
+
+        local_cat_gift = LocalStorage.get(task='QuickStart', key="catGift")
+        local_cat_fish = LocalStorage.get(task='QuickStart', key="catFish")
+        local_send_gift = LocalStorage.get(task='QuickStart', key="sendGift")
+        local_hide_and_seek = LocalStorage.get(task='QuickStart', key="hideAndSeek")
+        local_seek_cats = LocalStorage.get(task='QuickStart', key="hideAndSeekClearSwipe")
+
+        if local_cat_gift:
+            context.override_pipeline({"catGift": {"enabled": False}})
+        if local_cat_fish:
+            context.override_pipeline({"catFish": {"enabled": False}})
+        if local_send_gift:
+            context.override_pipeline({"sendGift": {"enabled": False}})
+        if local_hide_and_seek:
+            context.override_pipeline({"hideAndSeek": {"enabled": False}})
+        if local_seek_cats:
+            context.override_pipeline({"hideAndSeekClearSwipe": {"enabled": False}})
 
         return CustomAction.RunResult(success=True)

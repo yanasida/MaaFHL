@@ -1,0 +1,1008 @@
+{
+  "quickStartCheck": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "QuickStartCheck"
+      }
+    },
+    "next": [
+      "quickStartClick"
+    ]
+  },
+  "quickStartClick": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "速办",
+          "可领取"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          0,
+          321,
+          155,
+          133
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "checkHome"
+    ],
+    "interrupt": [
+      "catGift",
+      "catFish",
+      "sendGift",
+      "hideAndSeek",
+      "hideAndSeekClearSwipe",
+      "quickStartClickBack"
+    ]
+  },
+  "quickStartClickBack": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          570,
+          295,
+          20,
+          97
+        ]
+      }
+    }
+  },
+  "catGift": {
+    "timeout": 6000,
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/receive.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          328,
+          154,
+          199,
+          140
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          397,
+          212,
+          65,
+          26
+        ]
+      }
+    },
+    "next": [
+      "catGiftConfirm"
+    ]
+  },
+  "catGiftConfirm": {
+    "post_delay": 500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/receive_confirm.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          472,
+          86,
+          340,
+          159
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "catGiftRecord"
+    ]
+  },
+  "catGiftRecord": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "喵喵供台领取成功~~~",
+          "logTask": "QuickStart",
+          "logKey": "catGift",
+          "logValue": true
+        }
+      }
+    }
+  },
+  "catFish": {
+    "timeout": 6000,
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/receive.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          237,
+          274,
+          261,
+          97
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          387,
+          305,
+          81,
+          35
+        ]
+      }
+    },
+    "next": [
+      "catFishConfirm"
+    ]
+  },
+  "catFishConfirm": {
+    "post_delay": 500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/receive_confirm.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          472,
+          86,
+          340,
+          159
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "catFishRecord"
+    ]
+  },
+  "catFishRecord": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "喵宴居鲜虾球领取成功~~~",
+          "logTask": "QuickStart",
+          "logKey": "catFish",
+          "logValue": true
+        }
+      }
+    }
+  },
+  "hideAndSeek": {
+    "timeout": 6000,
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/hide_and_seek.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          0,
+          183,
+          519,
+          536
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          382,
+          705,
+          95,
+          14
+        ]
+      }
+    },
+    "next": [
+      "hideAndSeekReceive"
+    ]
+  },
+  "hideAndSeekReceive": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/hide_and_seek_receive.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          678,
+          511,
+          208,
+          133
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "hideAndSeekConfirm"
+    ]
+  },
+  "hideAndSeekConfirm": {
+    "post_delay": 500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/receive_confirm.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          472,
+          86,
+          340,
+          159
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "hideAndSeekRecord"
+    ]
+  },
+  "hideAndSeekBack": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "喵游之车",
+        "threshold": 0.9,
+        "roi": [
+          0,
+          0,
+          299,
+          166
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "hideAndSeekRecord": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "猫车领取成功~~~",
+          "logTask": "QuickStart",
+          "logKey": "hideAndSeek",
+          "logValue": true
+        }
+      }
+    },
+    "next": [
+      "hideAndSeekBack"
+    ]
+  },
+  "sendGift": {
+    "timeout": 6000,
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/send_gift_start.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          0,
+          327,
+          576,
+          198
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          267,
+          409,
+          80,
+          31
+        ]
+      }
+    },
+    "next": [
+      "sendGiftTopOff",
+      "sendGiftTopOn"
+    ]
+  },
+  "sendGiftTopOff": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/top_off.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          156,
+          194,
+          168,
+          150
+        ]
+      }
+    },
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "未发现置顶名士,退出送礼"
+        }
+      }
+    },
+    "next": [
+      "sendGiftBack"
+    ]
+  },
+  "sendGiftTopOn": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/top_on.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          156,
+          194,
+          168,
+          150
+        ]
+      }
+    },
+    "next": [
+      "addLv1",
+      "add10s"
+    ]
+  },
+  "add10s": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/send_gift.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          954,
+          612,
+          214,
+          108
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          1019,
+          666,
+          91,
+          27
+        ],
+        "duration": 7000
+      }
+    },
+    "next": [
+      "sendGiftNoReceiveConfirm",
+      "sendGiftConfirm",
+      "sendGiftConfirmRecord"
+    ]
+  },
+  "sendGiftNoReceiveConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/send_gift_no_receive.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          286,
+          148,
+          711,
+          422
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          471,
+          462,
+          34,
+          19
+        ]
+      }
+    },
+    "next": [
+      "sendGiftConfirmRecord"
+    ]
+  },
+  "levelUpdateConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/level10_down_update.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          562,
+          79,
+          161,
+          444
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "lv1AddRecord"
+    ]
+  },
+  "lv1AddRecord": {
+    "post_delay": 3000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "当前名士羁绊上升一级"
+        }
+      }
+    },
+    "next": [
+      "sendLv1Gift",
+      "sendGiftBack"
+    ]
+  },
+  "sendGiftBack": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "互动",
+        "threshold": 0.9,
+        "roi": [
+          8,
+          0,
+          284,
+          59
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          39,
+          18,
+          21,
+          16
+        ]
+      }
+    }
+  },
+  "addLv1": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/add_lv1.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          1015,
+          555,
+          265,
+          149
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          1081,
+          616,
+          25,
+          27
+        ]
+      }
+    },
+    "next": [
+      "sendLv1Gift"
+    ]
+  },
+  "sendLv1Gift": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/send_gift.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          954,
+          612,
+          214,
+          108
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          1019,
+          666,
+          93,
+          32
+        ]
+      }
+    },
+    "post_wait_freezes": {
+      "time": 3000,
+      "target": [
+        1241,
+        452,
+        24,
+        251
+      ]
+    },
+    "next": [
+      "levelUpdateConfirm",
+      "sendGiftConfirm",
+      "sendGiftBack"
+    ]
+  },
+  "sendGiftConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/receive_confirm.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          472,
+          86,
+          340,
+          159
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          397,
+          212,
+          65,
+          26
+        ]
+      }
+    },
+    "next": [
+      "sendGiftConfirmRecord"
+    ]
+  },
+  "sendGiftConfirmRecord": {
+    "post_delay": 3000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "2片名士信物领取成功~~~",
+          "logTask": "QuickStart",
+          "logKey": "sendGift",
+          "logValue": true
+        }
+      }
+    },
+    "next": [
+      "sendGiftBack"
+    ]
+  },
+  "hideAndSeekClearSwipe": {
+    "timeout": 6000,
+    "post_delay": 2000,
+    "action": {
+      "type": "Swipe",
+      "param": {
+        "begin": [
+          69,
+          560,
+          68,
+          32
+        ],
+        "end": [
+          65,
+          264,
+          71,
+          20
+        ],
+        "duration": 2000
+      }
+    },
+    "next": [
+      "hideAndSeekClearGo"
+    ]
+  },
+  "hideAndSeekClearGo": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "前往"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          5,
+          573,
+          491,
+          142
+        ]
+      }
+    },
+    "action": "Click",
+    "post_wait_freezes": {
+      "time": 5000,
+      "target": [
+        325,
+        226,
+        395,
+        481
+      ]
+    },
+    "next": [
+      "seekCatsGo"
+    ]
+  },
+  "seekCatsGo": {
+    "post_delay": 4000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "前往寻猫"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          1036,
+          534,
+          244,
+          146
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "checkCatNum"
+    ],
+    "interrupt": [
+      "seekCatFound",
+      "catReceiveConfirm",
+      "seekCat1",
+      "seekCat2",
+      "seekCat3",
+      "seekCat4",
+      "seekCat5",
+      "seekCat6",
+      "seekCat7",
+      "seekCat8",
+      "seekCat9"
+    ]
+  },
+  "checkCatNum": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/seek_cats_end.png"
+        ],
+        "threshold": 0.99,
+        "roi": [
+          835,
+          0,
+          268,
+          141
+        ]
+      }
+    },
+    "next": [
+      "seekCatsBack"
+    ]
+  },
+  "seekCatsBack": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "寻找猫灵",
+        "threshold": 0.9,
+        "roi": [
+          0,
+          0,
+          299,
+          166
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "SeekCatsRecord"
+    ]
+  },
+  "SeekCatsRecord": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "寻找猫灵完成~~~",
+          "logTask": "QuickStart",
+          "logKey": "hideAndSeekClearSwipe",
+          "logValue": true
+        }
+      }
+    },
+    "next": [
+      "disableSeekClearSwipe"
+    ]
+  },
+  "disableSeekClearSwipe": {
+    "post_delay": 1000,
+    "action": {
+            "type": "Custom",
+            "param": {
+                "custom_action": "DisableNode",
+                "custom_action_param": {
+                    "node_name": "hideAndSeekClearSwipe"
+                }
+            }
+        },
+    "next": [
+      "hideAndSeekBack"
+    ]
+  },
+  "seekCat1": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/seek_cat1.png"
+        ],
+        "threshold": 0.95
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "seekCat2": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/seek_cat2.png"
+        ],
+        "threshold": 0.95
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "seekCat3": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/seek_cat3.png"
+        ],
+        "threshold": 0.95
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "seekCat4": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/seek_cat4.png"
+        ],
+        "threshold": 0.95
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "seekCat5": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/seek_cat5.png"
+        ],
+        "threshold": 0.95
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "seekCat6": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/seek_cat6.png"
+        ],
+        "threshold": 0.95
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "seekCat7": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/seek_cat7.png"
+        ],
+        "threshold": 0.95
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "seekCat8": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/seek_cat8.png"
+        ],
+        "threshold": 0.95
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "seekCat9": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/seek_cat9.png"
+        ],
+        "threshold": 0.95
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "seekCatFound": {
+    "post_delay": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/cat_found.png"
+        ],
+        "threshold": 0.6
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target_offset": [
+          0,
+          0,
+          50,
+          50
+        ]
+      }
+    },
+    "next": [
+      "catReceiveConfirm"
+    ]
+  },
+  "catReceiveConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/receive_confirm.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          472,
+          86,
+          340,
+          159
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  }
+}

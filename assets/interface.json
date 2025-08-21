@@ -32,6 +32,17 @@
       ]
     },
     {
+      "name": "速办",
+      "entry": "quickStartCheck",
+      "option": [
+        "喵喵供台",
+        "喵宴居",
+        "名士赠礼",
+        "忘川躲猫猫",
+        "是否消耗猫爪找猫猫"
+      ]
+    },
+    {
       "name": "金戈演武",
       "entry": "clickBlankForPvp",
       "option": [
@@ -152,6 +163,86 @@
                   }
                 }
               }
+            }
+          }
+        }
+      ]
+    },
+    "喵喵供台": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "catGift": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "喵宴居": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "catFish": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "名士赠礼": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "sendGift": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "忘川躲猫猫": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "hideAndSeek": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "是否消耗猫爪找猫猫": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "hideAndSeekClearSwipe": {
+              "enabled": false
             }
           }
         }
