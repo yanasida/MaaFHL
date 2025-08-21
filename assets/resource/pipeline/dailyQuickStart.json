@@ -205,9 +205,14 @@
     "recognition": {
       "type": "OCR",
       "param": {
-        "expected" : "忘川躲猫猫",
+        "expected": "忘川躲猫猫",
         "threshold": 0.7,
-        "roi" : [0,532,589,188]
+        "roi": [
+          0,
+          532,
+          589,
+          188
+        ]
       }
     },
     "next": [
@@ -215,16 +220,27 @@
     ]
   },
   "hideAndSeekBtnClick": {
+    "timeout": 6000,
+    "on_error": [
+      "disableHideAndSeek"
+    ],
     "recognition": {
       "type": "OCR",
       "param": {
-        "expected" : "领取",
+        "expected": "领取",
         "threshold": 0.7,
-        "roi" : [374,601,110,117]
+        "roi": [
+          374,
+          601,
+          110,
+          117
+        ]
       }
     },
     "action": "Click",
-    "next": ["hideAndSeekReceive"]
+    "next": [
+      "hideAndSeekReceive"
+    ]
   },
   "hideAndSeekReceive": {
     "post_delay": 2000,
@@ -271,7 +287,7 @@
       "type": "Click"
     },
     "next": [
-      "hideAndSeekRecord"
+      "hideAndSeekBack"
     ]
   },
   "hideAndSeekBack": {
@@ -289,7 +305,10 @@
         ]
       }
     },
-    "action": "Click"
+    "action": "Click",
+    "next": [
+      "hideAndSeekRecord"
+    ]
   },
   "hideAndSeekRecord": {
     "post_delay": 2000,
@@ -304,10 +323,7 @@
           "logValue": true
         }
       }
-    },
-    "next": [
-      "hideAndSeekBack"
-    ]
+    }
   },
   "sendGift": {
     "timeout": 6000,
@@ -817,6 +833,19 @@
     "next": [
       "hideAndSeekBack"
     ]
+  },
+  "disableHideAndSeek": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "hideAndSeek"
+        }
+      }
+    },
+    "next": ["hideAndSeekRecord"]
   },
   "seekCat1": {
     "post_delay": 2000,
