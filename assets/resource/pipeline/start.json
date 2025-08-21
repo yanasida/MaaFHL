@@ -82,6 +82,7 @@
       "weeklyAnno2",
       "weeklyAnno3",
       "dailySignInGift",
+      "timeLimitSignInGift",
       "checkHome"
     ]
   },
@@ -128,6 +129,7 @@
       "weeklyAnno2",
       "weeklyAnno3",
       "dailySignInGift",
+      "dailySignInRecord",
       "checkHome"
     ]
   },
@@ -162,6 +164,7 @@
     "next": [
       "weeklyAnno3",
       "dailySignInGift",
+      "dailySignInRecord",
       "checkHome"
     ]
   },
@@ -195,6 +198,7 @@
     },
     "next": [
       "dailySignInGift",
+      "dailySignInRecord",
       "checkHome"
     ]
   },
@@ -218,7 +222,7 @@
     "action": {
       "type": "Click",
       "param": {
-        "roi": [
+        "target": [
           1109,
           537,
           162,
@@ -229,6 +233,44 @@
     "next": [
       "giftGet"
     ]
+  },
+  "timeLimitSignInGift": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/time_limit_sign_in.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          34,
+          5,
+          14,
+          33
+        ]
+      }
+    },
+    "next": [
+      "timeLimitSignInRecord"
+    ]
+  },
+  "timeLimitSignInRecord": {
+    "post_delay": 3000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "！！请手动领取限时活动奖励"
+        }
+      }
+    }
   },
   "giftGet": {
     "post_delay": 3000,
@@ -244,12 +286,27 @@
     "action": {
       "type": "Click",
       "param": {
-        "roi": [
+        "target": [
           1109,
           537,
           162,
           161
         ]
+      }
+    },
+    "next": [
+      "dailySignInRecord"
+    ]
+  },
+  "dailySignInRecord": {
+    "post_delay": 3000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "领取每日登录活动奖励完成"
+        }
       }
     },
     "next": [
@@ -271,6 +328,7 @@
       "type": "Click"
     },
     "next": [
+      "dailySignInRecord",
       "checkHome"
     ]
   },
