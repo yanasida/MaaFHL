@@ -686,7 +686,7 @@
           71,
           20
         ],
-        "duration": 2000
+        "duration": 1000
       }
     },
     "next": [
@@ -703,12 +703,7 @@
           "前往"
         ],
         "threshold": 0.9,
-        "roi": [
-          5,
-          573,
-          491,
-          142
-        ]
+        "roi" : [189,616,183,100]
       }
     },
     "action": "Click",
@@ -749,6 +744,7 @@
     "interrupt": [
       "seekCatFound",
       "catReceiveConfirm",
+      "seekCat9",
       "seekCat1",
       "seekCat2",
       "seekCat3",
@@ -756,8 +752,7 @@
       "seekCat5",
       "seekCat6",
       "seekCat7",
-      "seekCat8",
-      "seekCat9"
+      "seekCat8"
     ]
   },
   "checkCatNum": {
