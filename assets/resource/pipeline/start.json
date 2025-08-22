@@ -83,6 +83,7 @@
       "versionUpdate",
       "weeklyAnno",
       "dailySignInGift",
+      "giftGet",
       "timeLimitSignInGift",
       "backClick"
     ]
