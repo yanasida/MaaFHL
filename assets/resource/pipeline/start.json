@@ -76,7 +76,7 @@
         ]
       }
     },
-     "next": [
+    "next": [
       "checkHome"
     ],
     "interrupt": [
@@ -84,19 +84,24 @@
       "weeklyAnno",
       "dailySignInGift",
       "giftGet",
-      "timeLimitSignInGift",
-      "backClick"
+      "giftToHome",
+      "manualLimitSignInGift"
     ]
   },
   "backClick": {
-       "recognition": {
+    "recognition": {
       "type": "TemplateMatch",
       "param": {
         "template": [
           "start/back_btn.png.png"
         ],
         "threshold": 0.5,
-        "roi" : [0,0,138,148]
+        "roi": [
+          0,
+          0,
+          240,
+          269
+        ]
       }
     },
     "action": "Click"
@@ -168,12 +173,9 @@
           161
         ]
       }
-    },
-    "next": [
-      "giftGet"
-    ]
+    }
   },
-  "timeLimitSignInGift": {
+  "manualLimitSignInGift": {
     "post_delay": 3000,
     "recognition": {
       "type": "TemplateMatch",
@@ -232,10 +234,7 @@
           161
         ]
       }
-    },
-    "next": [
-      "dailySignInRecord"
-    ]
+    }
   },
   "dailySignInRecord": {
     "post_delay": 3000,
@@ -264,8 +263,7 @@
       "type": "Click"
     },
     "next": [
-      "dailySignInRecord",
-      "checkHome"
+      "dailySignInRecord"
     ]
   },
   "checkHome": {
@@ -276,6 +274,29 @@
           "start/daily_need.png"
         ],
         "threshold": 0.7
+      }
+    }
+  },
+  "goToDailyReceivePage": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/daily_need.png"
+        ],
+        "threshold": 0.7
+      }
+    },
+    "action": "Click"
+  },
+  "checkDailyReceivePage": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/daily_receive.png"
+        ],
+        "threshold": 0.8
       }
     }
   }

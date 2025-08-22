@@ -7,7 +7,7 @@ __all__ = [
     'TLQQGDCount',
     'RemoveAllMember',
     'LoggerAndRecorder',
-    "QuickStartCheck",
+    "DailyStartCheck",
     "ReceiveTyCheck",
     "DisableNode"
 ]

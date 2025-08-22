@@ -23,6 +23,11 @@ def is_tao_yuan_time() -> int:
     start_time2 = datetime.strptime("17:00", "%H:%M").time()
     end_time2 = datetime.strptime("22:00", "%H:%M").time()
 
+    start_time3 = datetime.strptime("00:00", "%H:%M").time()
+    end_time3 = datetime.strptime("05:00", "%H:%M").time()
+
+    if start_time3 <= current_time <= end_time3:
+        return 3
     if current_time < start_time1:
         return 0
     elif start_time1 <= current_time <= end_time1:

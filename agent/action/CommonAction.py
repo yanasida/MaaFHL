@@ -163,10 +163,10 @@ class DisableNode(CustomAction):
         return CustomAction.RunResult(success=True)
 
 
-@AgentServer.custom_action("QuickStartCheck")
-class QuickStartCheck(CustomAction):
+@AgentServer.custom_action("DailyStartCheck")
+class DailyStartCheck(CustomAction):
     """
-    速办检查
+    日常检查
     """
 
     def run(
@@ -181,28 +181,36 @@ class QuickStartCheck(CustomAction):
         # send_gift = data.get("sendGift")
         # hide_and_seek = data.get("hideAndSeek")
 
-        start_time = LocalStorage.get(task='QuickStart', key="todayStartTime")
+        start_time = LocalStorage.get(task='DailyStart', key="todayStartTime")
         if start_time is not None:
             if not is_same_day_with_offset(start_time):
-                LocalStorage.remove_task("QuickStart")
+                LocalStorage.remove_task("DailyStart")
         if start_time is None:
-            LocalStorage.set("QuickStart", "todayStartTime", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+            LocalStorage.set("DailyStart", "todayStartTime", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-        local_cat_gift = LocalStorage.get(task='QuickStart', key="catGift")
-        local_cat_fish = LocalStorage.get(task='QuickStart', key="catFish")
-        local_send_gift = LocalStorage.get(task='QuickStart', key="sendGift")
-        local_hide_and_seek = LocalStorage.get(task='QuickStart', key="hideAndSeek")
-        local_seek_cats = LocalStorage.get(task='QuickStart', key="hideAndSeekClearSwipe")
+        local_cat_gift = LocalStorage.get(task='DailyStart', key="catGift")
+        local_cat_fish = LocalStorage.get(task='DailyStart', key="catFish")
+        local_send_gift = LocalStorage.get(task='DailyStart', key="sendGift")
+        local_hide_and_seek = LocalStorage.get(task='DailyStart', key="hideAndSeek")
+        local_seek_cats = LocalStorage.get(task='DailyStart', key="hideAndSeekClearSwipe")
+        local_friends_gift = LocalStorage.get(task='DailyStart', key="friendsGift")
 
-        if local_cat_gift:
-            context.override_pipeline({"catGift": {"enabled": False}})
-        if local_cat_fish:
-            context.override_pipeline({"catFish": {"enabled": False}})
-        if local_send_gift:
-            context.override_pipeline({"sendGift": {"enabled": False}})
-        if local_hide_and_seek:
-            context.override_pipeline({"hideAndSeek": {"enabled": False}})
-        if local_seek_cats:
-            context.override_pipeline({"hideAndSeekClearSwipe": {"enabled": False}})
+        if local_cat_gift and local_cat_fish and local_send_gift and local_hide_and_seek and local_seek_cats:
+            context.override_pipeline(
+                {"quickStartClick": {"enabled": False}}
+            )
+        else:
+            if local_cat_gift:
+                context.override_pipeline({"catGift": {"enabled": False}})
+            if local_cat_fish:
+                context.override_pipeline({"catFish": {"enabled": False}})
+            if local_send_gift:
+                context.override_pipeline({"sendGift": {"enabled": False}})
+            if local_hide_and_seek:
+                context.override_pipeline({"hideAndSeek": {"enabled": False}})
+            if local_seek_cats:
+                context.override_pipeline({"hideAndSeekClearSwipe": {"enabled": False}})
+        if local_friends_gift:
+            context.override_pipeline({"friendsGiftStart": {"enabled": False}})
 
         return CustomAction.RunResult(success=True)

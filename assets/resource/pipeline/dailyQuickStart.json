@@ -1,13 +1,18 @@
 {
-  "quickStartCheck": {
+  "DailyStartCheck": {
     "action": {
       "type": "Custom",
       "param": {
-        "custom_action": "QuickStartCheck"
+        "custom_action": "DailyStartCheck"
       }
     },
     "next": [
-      "quickStartClick"
+      "checkDailyReceivePage"
+    ],
+    "interrupt": [
+      "quickStartClick",
+      "friendsGiftStart",
+      "goToDailyReceivePage"
     ]
   },
   "quickStartClick": {
@@ -52,6 +57,21 @@
           20,
           97
         ]
+      }
+    },
+    "next": [
+      "disableQuickStartClick"
+    ]
+  },
+  "disableQuickStartClick": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "quickStartClick"
+        }
       }
     }
   },
@@ -120,7 +140,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "喵喵供台领取成功~~~",
-          "logTask": "QuickStart",
+          "logTask": "DailyStart",
           "logKey": "catGift",
           "logValue": true
         }
@@ -192,7 +212,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "喵宴居鲜虾球领取成功~~~",
-          "logTask": "QuickStart",
+          "logTask": "DailyStart",
           "logKey": "catFish",
           "logValue": true
         }
@@ -287,7 +307,7 @@
       "type": "Click"
     },
     "next": [
-      "hideAndSeekBack"
+      "hideAndSeekRecord"
     ]
   },
   "hideAndSeekBack": {
@@ -306,9 +326,7 @@
       }
     },
     "action": "Click",
-    "next": [
-      "hideAndSeekRecord"
-    ]
+    "next": ["disableHideAndSeek"]
   },
   "hideAndSeekRecord": {
     "post_delay": 2000,
@@ -318,12 +336,13 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "猫车领取成功~~~",
-          "logTask": "QuickStart",
+          "logTask": "DailyStart",
           "logKey": "hideAndSeek",
           "logValue": true
         }
       }
-    }
+    },
+    "next": ["hideAndSeekBack"]
   },
   "sendGift": {
     "timeout": 6000,
@@ -658,7 +677,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "2片名士信物领取成功~~~",
-          "logTask": "QuickStart",
+          "logTask": "DailyStart",
           "logKey": "sendGift",
           "logValue": true
         }
@@ -703,7 +722,12 @@
           "前往"
         ],
         "threshold": 0.9,
-        "roi" : [189,616,183,100]
+        "roi": [
+          189,
+          616,
+          183,
+          100
+        ]
       }
     },
     "action": "Click",
@@ -804,7 +828,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "寻找猫灵完成~~~",
-          "logTask": "QuickStart",
+          "logTask": "DailyStart",
           "logKey": "hideAndSeekClearSwipe",
           "logValue": true
         }
@@ -840,7 +864,9 @@
         }
       }
     },
-    "next": ["hideAndSeekRecord"]
+    "next": [
+      "hideAndSeekRecord"
+    ]
   },
   "seekCat1": {
     "post_delay": 2000,

@@ -109,7 +109,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "好友赠礼领取成功~~~",
-          "logTask": "dailyFriends",
+          "logTask": "DailyStart",
           "logKey": "friendsGift",
           "logValue": true
         }

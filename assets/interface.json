@@ -34,14 +34,15 @@
       ]
     },
     {
-      "name": "速办",
-      "entry": "quickStartCheck",
+      "name": "日常",
+      "entry": "DailyStartCheck",
       "option": [
         "喵喵供台",
         "喵宴居",
         "名士赠礼",
         "忘川躲猫猫",
-        "是否消耗猫爪找猫猫"
+        "是否消耗猫爪找猫猫",
+        "赠领友情点"
       ]
     },
     {
@@ -193,6 +194,22 @@
           "name": "No",
           "pipeline_override": {
             "catGift": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "赠领友情点": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "friendsGiftStart": {
               "enabled": false
             }
           }
