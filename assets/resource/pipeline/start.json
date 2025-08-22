@@ -178,23 +178,24 @@
   "manualLimitSignInGift": {
     "post_delay": 3000,
     "recognition": {
-      "type": "TemplateMatch",
+      "type": "OCR",
       "param": {
-        "template": [
-          "start/time_limit_sign_in.png"
+        "expected": [
+          "限时签到",
+          "签到送天品名士",
+          "升级送三十抽",
+          "一元钜惠礼包",
+          "历行忘川",
+          "首充送荆轲"
         ],
-        "threshold": 0.8
+        "threshold": 0.9,
+        "roi" : [0,0,253,717]
       }
     },
     "action": {
       "type": "Click",
       "param": {
-        "target": [
-          34,
-          5,
-          14,
-          33
-        ]
+        "target" : [28,7,16,28]
       }
     },
     "next": [
