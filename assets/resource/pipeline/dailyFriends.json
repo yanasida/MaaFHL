@@ -1,0 +1,171 @@
+{
+  "friendsGiftStart": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/friends/friends_start_btn.png",
+          "daily/friends/friends_start_btn2.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          800,
+          3,
+          479,
+          69
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "checkHome"
+    ],
+    "interrupt": [
+      "friendsGiftThisServer",
+      "friendsGiftOtherServer",
+      "friendsGiftRecordBackToHome"
+    ]
+  },
+  "friendsGiftThisServer": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/friends/friends_this_server.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          114,
+          62,
+          277,
+          75
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "disableFriendsGiftThisServer"
+    ]
+  },
+  "disableFriendsGiftThisServer": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "friendsGiftThisServer"
+        }
+      }
+    },
+    "next": [
+      "friendsGiftSend"
+    ]
+  },
+  "disableFriendsGiftOtherServer": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "friendsGiftOtherServer"
+        }
+      }
+    },
+    "next": [
+      "friendsGiftSend"
+    ]
+  },
+  "friendsGiftOtherServer": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/friends/friends_other_server.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          101,
+          83,
+          228,
+          141
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "disableFriendsGiftOtherServer"
+    ]
+  },
+  "friendsGiftRecordBackToHome": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "好友赠礼领取成功~~~",
+          "logTask": "dailyFriends",
+          "logKey": "friendsGift",
+          "logValue": true
+        }
+      }
+    },
+    "next": [
+      "disableFriendsGiftStart"
+    ]
+  },
+  "disableFriendsGiftStart": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "friendsGiftStart"
+        }
+      }
+    },
+    "next": [
+      "friendsGiftBackToHome"
+    ]
+  },
+  "friendsGiftBackToHome": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          657,
+          310,
+          26,
+          120
+        ]
+      }
+    }
+  },
+  "friendsGiftSend": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/friends/friends_send_btn.png",
+          "daily/friends/friends_send_btn2.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          97,
+          604,
+          277,
+          116
+        ]
+      }
+    },
+    "action": "Click"
+  }
+}
