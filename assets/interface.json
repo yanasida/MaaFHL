@@ -256,11 +256,7 @@
         },
         {
           "name": "No",
-          "pipeline_override": {
-            "hideAndSeekReceive": {
-              "enabled": false
-            }
-          }
+          "pipeline_override": {}
         }
       ]
     },

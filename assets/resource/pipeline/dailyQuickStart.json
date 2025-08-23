@@ -261,10 +261,7 @@
     },
     "action": {
       "type": "Click"
-    },
-    "next": [
-      "hideAndSeekRecord"
-    ]
+    }
   },
   "hideAndSeekBack": {
     "post_delay": 2000,
@@ -281,7 +278,10 @@
         ]
       }
     },
-    "action": "Click"
+    "action": "Click",
+    "next": [
+      "disableSeekClearSwipe"
+    ]
   },
   "hideAndSeekRecord": {
     "post_delay": 2000,
@@ -296,25 +296,7 @@
           "logValue": true
         }
       }
-    },
-    "next": [
-      "disableHideAndSeekReceive"
-    ]
-  },
-  "disableHideAndSeekReceive": {
-    "post_delay": 1000,
-    "action": {
-      "type": "Custom",
-      "param": {
-        "custom_action": "DisableNode",
-        "custom_action_param": {
-          "node_name": "hideAndSeekReceive"
-        }
-      }
-    },
-    "next": [
-      "disableSeekClearSwipe"
-    ]
+    }
   },
   "sendGift": {
     "timeout": 6000,
@@ -842,10 +824,7 @@
           "node_name": "seekCatsGo"
         }
       }
-    },
-    "next": [
-      "disableSeekClearSwipe"
-    ]
+    }
   },
   "disableSeekClearSwipe": {
     "post_delay": 1000,
@@ -857,7 +836,10 @@
           "node_name": "hideAndSeekClearSwipe"
         }
       }
-    }
+    },
+    "next": [
+      "hideAndSeekRecord"
+    ]
   },
   "seekCat1": {
     "post_delay": 2000,
