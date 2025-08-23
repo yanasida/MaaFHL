@@ -298,6 +298,18 @@
       }
     }
   },
+  "disableSendGift": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "sendGift"
+        }
+      }
+    }
+  },
   "sendGift": {
     "timeout": 6000,
     "post_delay": 2000,
@@ -514,7 +526,8 @@
           16
         ]
       }
-    }
+    },
+    "next": ["disableSendGift"]
   },
   "addLv1": {
     "post_delay": 2000,
@@ -556,7 +569,7 @@
         "template": [
           "daily/quickStart/send_gift.png"
         ],
-        "threshold": 0.9,
+        "threshold": 0.7,
         "roi": [
           954,
           612,
