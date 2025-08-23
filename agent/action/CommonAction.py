@@ -194,6 +194,10 @@ class DailyStartCheck(CustomAction):
         local_hide_and_seek = LocalStorage.get(task='DailyStart', key="hideAndSeek")
         local_seek_cats = LocalStorage.get(task='DailyStart', key="hideAndSeekClear")
         local_friends_gift = LocalStorage.get(task='DailyStart', key="friendsGift")
+        local_world_speech = LocalStorage.get(task='DailyStart', key="worldSpeech")
+        local_email = LocalStorage.get(task='DailyStart', key="email")
+        local_cats_feed = LocalStorage.get(task='DailyStart', key="catsFeed")
+        local_cats_petting = LocalStorage.get(task='DailyStart', key="catsPetting")
 
         if local_cat_gift and local_cat_fish and local_send_gift and local_hide_and_seek and local_seek_cats:
             context.override_pipeline(
@@ -217,5 +221,16 @@ class DailyStartCheck(CustomAction):
                     context.override_pipeline({"seekCatsGo": {"enabled": False}})
         if local_friends_gift:
             context.override_pipeline({"friendsGiftStart": {"enabled": False}})
+        if local_world_speech:
+            context.override_pipeline({"worldSpeechStart": {"enabled": False}})
+        if local_email:
+            context.override_pipeline({"emailStart": {"enabled": False}})
+        if local_cats_feed and local_cats_petting:
+            context.override_pipeline({"catsHomeStart": {"enabled": False}})
+        else:
+            if local_cats_feed:
+                context.override_pipeline({"catsHomeFeed": {"enabled": False}})
+            if local_cats_petting:
+                context.override_pipeline({"catsHomePetting": {"enabled": False}})
 
         return CustomAction.RunResult(success=True)

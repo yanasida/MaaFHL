@@ -1,0 +1,242 @@
+{
+  "catsHomeStart": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/daily_need.png"
+        ],
+        "threshold": 0.7
+      }
+    },
+    "next": [
+      "catsHomeEnter"
+    ],
+    "interrupt": [
+      "clickBlank"
+    ]
+  },
+  "catsHomeEnter": {
+    "post_delay": 2000,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/catsHome/cats_home_btn.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          533,
+          401,
+          124,
+          189
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "post_wait_freezes": {
+      "time": 3000,
+      "target": [
+        577,
+        648,
+        701,
+        71
+      ]
+    },
+    "next": [
+      "checkHome"
+    ],
+    "interrupt": [
+      "catsHomeFeed",
+      "catsHomePetting",
+      "catsHomeExit"
+    ]
+  },
+  "catsHomePetting": {
+    "post_delay": 1800,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/catsHome/petting_cats1.png",
+          "daily/catsHome/petting_cats3.png",
+          "daily/catsHome/petting_cats2.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          152,
+          66,
+          357,
+          151
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "catsHomePettingSkip"
+    ]
+  },
+  "catsHomePettingSkip": {
+    "post_delay": 1800,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/catsHome/petting_cats_skip.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          962,
+          1,
+          317,
+          193
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "catsHomePettingRecord"
+    ]
+  },
+  "catsHomeFeed": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/catsHome/feed_cats.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          13,
+          53,
+          240,
+          237
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "catsHomeFeed2"
+    ]
+  },
+  "catsHomeFeed2": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/catsHome/feed_cats2.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          13,
+          53,
+          240,
+          237
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "catsHomeFeedRecord"
+    ]
+  },
+  "catsHomeConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/receive_confirm.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          472,
+          86,
+          340,
+          159
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          397,
+          212,
+          65,
+          26
+        ]
+      }
+    }
+  },
+  "catsHomeFeedRecord": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "logTask": "DailyStart",
+          "logKey": "catsFeed",
+          "logValue": true
+        }
+      }
+    },
+    "next": [
+      "catsHomeConfirm"
+    ]
+  },
+  "catsHomePettingRecord": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "logTask": "DailyStart",
+          "logKey": "catsPetting",
+          "logValue": true
+        }
+      }
+    },
+    "next": [
+      "catsHomeConfirm"
+    ]
+  },
+  "catsHomeExit": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "喵居",
+        "threshold": 0.9,
+        "roi": [
+          28,
+          0,
+          209,
+          147
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "disableCatsHomeStart"
+    ]
+  },
+  "disableCatsHomeStart": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "catsHomeStart"
+        }
+      }
+    }
+  }
+}

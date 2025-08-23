@@ -1,0 +1,173 @@
+{
+  "emailStart": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/emai/email_start_btn1.png",
+          "daily/emai/email_start_btn2.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          1035,
+          0,
+          244,
+          187
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "emailReceive"
+    ]
+  },
+  "emailReceive": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/emai/email_receive.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": [
+      "emailConfirm",
+      "emailDelete"
+    ]
+  },
+  "emailReceiveDoubleCheck": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/emai/email_receive.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": "Click",
+    "next": [
+      "emailNotReceiveRecord"
+    ]
+  },
+  "emailDelete": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/emai/email_delete.png",
+          "daily/emai/email_delete2.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": [
+      "emailReceiveDoubleCheck",
+      "emailBack"
+    ]
+  },
+  "emailConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/receive_confirm.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          472,
+          86,
+          340,
+          159
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          397,
+          212,
+          65,
+          26
+        ]
+      }
+    },
+    "next": [
+      "emailReceiveRecord"
+    ]
+  },
+  "emailReceiveRecord": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "logTask": "DailyStart",
+          "logKey": "email",
+          "logValue": true
+        }
+      }
+    },
+    "next": [
+      "emailDelete"
+    ]
+  },
+  "emailNotReceiveRecord": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "！！部分邮件需手动领取"
+        }
+      }
+    },
+    "next": [
+      "emailBack"
+    ]
+  },
+  "emailBack": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/emai/email_back.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          1125,
+          37,
+          134,
+          118
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "disableEmailStart"
+    ]
+  },
+  "disableEmailStart": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "emailStart"
+        }
+      }
+    }
+  }
+}

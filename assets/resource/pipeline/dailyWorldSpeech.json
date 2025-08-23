@@ -1,0 +1,249 @@
+{
+  "worldSpeechStart": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/daily_need.png"
+        ],
+        "threshold": 0.7
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          83,
+          620,
+          168,
+          72
+        ]
+      }
+    },
+    "next": [
+      "worldSpeechGoWorldPage"
+    ]
+  },
+  "worldSpeechGoWorldPage": {
+    "post_delay": 500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/worldSpeech/world_page_on.png",
+          "daily/worldSpeech/world_page_off.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          0,
+          0,
+          107,
+          451
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "worldSpeechEmoticons"
+    ]
+  },
+  "worldSpeechEmoticons": {
+    "post_delay": 500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/worldSpeech/emoticons.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          91,
+          398,
+          576,
+          321
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "worldSpeechSelect1"
+    ]
+  },
+  "worldSpeechSelect1": {
+    "post_delay": 500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/worldSpeech/emo_select1.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          32,
+          284,
+          162,
+          159
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "worldSpeechSelect2"
+    ]
+  },
+  "worldSpeechSelect2": {
+    "post_delay": 500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/worldSpeech/emo_select2.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          7,
+          327,
+          312,
+          185
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "worldSpeechSend"
+    ]
+  },
+  "worldSpeechSend": {
+    "post_delay": 500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/worldSpeech/send.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          436,
+          621,
+          230,
+          98
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "worldSpeechSend2"
+    ]
+  },
+  "worldSpeechSend2": {
+    "post_delay": 500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/worldSpeech/send.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          436,
+          621,
+          230,
+          98
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "worldSpeech2Bout"
+    ]
+  },
+  "worldSpeech2Bout": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "self": "hideAndSeekRecord",
+        "custom_action": "Count",
+        "custom_action_param": {
+          "count": 1,
+          "target_count": 2,
+          "next_node": [
+            "worldSpeechBack"
+          ],
+          "else_node": [
+            "worldSpeechEmoticons"
+          ],
+          "next_node_msg": "世界频道聊天已达到目标次数，退出该节点",
+          "count_msg": "世界频道聊天: {count}, 目标次数: {target_count}"
+        }
+      }
+    }
+  },
+  "worldSpeechBack": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/worldSpeech/world_page_on.png",
+          "daily/worldSpeech/world_page_off.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          0,
+          0,
+          107,
+          451
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          696,
+          244,
+          19,
+          63
+        ]
+      }
+    },
+    "next": [
+      "disableWorldSpeechStart"
+    ]
+  },
+  "disableWorldSpeechStart": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "worldSpeechStart"
+        }
+      }
+    },
+    "next": [
+      "worldSpeechRecord"
+    ]
+  },
+  "worldSpeechRecord": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "logTask": "DailyStart",
+          "logKey": "worldSpeech",
+          "logValue": true
+        }
+      }
+    }
+  }
+}

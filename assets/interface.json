@@ -42,7 +42,11 @@
         "名士赠礼",
         "忘川躲猫猫",
         "是否消耗猫爪找猫猫",
-        "赠领友情点"
+        "赠领友情点",
+        "邮件领取",
+        "喵居喂猫",
+        "喵居吸猫",
+        "世界频道对话2次"
       ]
     },
     {
@@ -200,6 +204,54 @@
         }
       ]
     },
+    "邮件领取": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "emailStart": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "喵居喂猫": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "catsHomeFeed": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "喵居吸猫": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "catsHomePetting": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
     "赠领友情点": {
       "cases": [
         {
@@ -226,6 +278,22 @@
           "name": "No",
           "pipeline_override": {
             "catFish": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "世界频道对话2次": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "worldSpeechStart": {
               "enabled": false
             }
           }

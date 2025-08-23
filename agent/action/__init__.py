@@ -1,6 +1,7 @@
 from .PvpAction import *
 from .TimeLimitAct import *
 from .CommonAction import *
+from .Count import *
 
 __all__ = [
     'CombatResRecord',
@@ -9,5 +10,6 @@ __all__ = [
     'LoggerAndRecorder',
     "DailyStartCheck",
     "ReceiveTyCheck",
+    "Count",
     "DisableNode"
 ]
