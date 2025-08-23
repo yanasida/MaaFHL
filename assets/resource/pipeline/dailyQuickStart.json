@@ -41,7 +41,6 @@
       "catGift",
       "catFish",
       "sendGift",
-      "hideAndSeek",
       "hideAndSeekClearSwipe",
       "quickStartClickBack"
     ]
@@ -219,49 +218,6 @@
       }
     }
   },
-  "hideAndSeek": {
-    "timeout": 6000,
-    "post_delay": 2000,
-    "recognition": {
-      "type": "OCR",
-      "param": {
-        "expected": "忘川躲猫猫",
-        "threshold": 0.7,
-        "roi": [
-          0,
-          532,
-          589,
-          188
-        ]
-      }
-    },
-    "next": [
-      "hideAndSeekBtnClick"
-    ]
-  },
-  "hideAndSeekBtnClick": {
-    "timeout": 6000,
-    "on_error": [
-      "disableHideAndSeek"
-    ],
-    "recognition": {
-      "type": "OCR",
-      "param": {
-        "expected": "领取",
-        "threshold": 0.7,
-        "roi": [
-          374,
-          601,
-          110,
-          117
-        ]
-      }
-    },
-    "action": "Click",
-    "next": [
-      "hideAndSeekReceive"
-    ]
-  },
   "hideAndSeekReceive": {
     "post_delay": 2000,
     "recognition": {
@@ -325,8 +281,7 @@
         ]
       }
     },
-    "action": "Click",
-    "next": ["disableHideAndSeek"]
+    "action": "Click"
   },
   "hideAndSeekRecord": {
     "post_delay": 2000,
@@ -342,7 +297,24 @@
         }
       }
     },
-    "next": ["hideAndSeekBack"]
+    "next": [
+      "disableHideAndSeekReceive"
+    ]
+  },
+  "disableHideAndSeekReceive": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "hideAndSeekReceive"
+        }
+      }
+    },
+    "next": [
+      "disableSeekClearSwipe"
+    ]
   },
   "sendGift": {
     "timeout": 6000,
@@ -669,6 +641,24 @@
       "sendGiftConfirmRecord"
     ]
   },
+  "checkOnQuickStart": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/cats_back_quick_start.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          188,
+          50,
+          345,
+          162
+        ]
+      }
+    }
+  },
   "sendGiftConfirmRecord": {
     "post_delay": 3000,
     "action": {
@@ -709,8 +699,7 @@
       }
     },
     "next": [
-      "hideAndSeekClearGo",
-      "hideAndSeekReceive"
+      "hideAndSeekClearGo"
     ]
   },
   "hideAndSeekClearGo": {
@@ -741,7 +730,12 @@
       ]
     },
     "next": [
-      "seekCatsGo"
+      "checkOnQuickStart"
+    ],
+    "interrupt": [
+      "hideAndSeekReceive",
+      "seekCatsGo",
+      "hideAndSeekBack"
     ]
   },
   "seekCatsGo": {
@@ -829,8 +823,23 @@
         "custom_action_param": {
           "msg": "寻找猫灵完成~~~",
           "logTask": "DailyStart",
-          "logKey": "hideAndSeekClearSwipe",
+          "logKey": "hideAndSeekClear",
           "logValue": true
+        }
+      }
+    },
+    "next": [
+      "disableSeekCatsGo"
+    ]
+  },
+  "disableSeekCatsGo": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "seekCatsGo"
         }
       }
     },
@@ -848,25 +857,7 @@
           "node_name": "hideAndSeekClearSwipe"
         }
       }
-    },
-    "next": [
-      "hideAndSeekBack"
-    ]
-  },
-  "disableHideAndSeek": {
-    "post_delay": 1000,
-    "action": {
-      "type": "Custom",
-      "param": {
-        "custom_action": "DisableNode",
-        "custom_action_param": {
-          "node_name": "hideAndSeek"
-        }
-      }
-    },
-    "next": [
-      "hideAndSeekRecord"
-    ]
+    }
   },
   "seekCat1": {
     "post_delay": 2000,

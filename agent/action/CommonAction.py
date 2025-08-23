@@ -192,7 +192,7 @@ class DailyStartCheck(CustomAction):
         local_cat_fish = LocalStorage.get(task='DailyStart', key="catFish")
         local_send_gift = LocalStorage.get(task='DailyStart', key="sendGift")
         local_hide_and_seek = LocalStorage.get(task='DailyStart', key="hideAndSeek")
-        local_seek_cats = LocalStorage.get(task='DailyStart', key="hideAndSeekClearSwipe")
+        local_seek_cats = LocalStorage.get(task='DailyStart', key="hideAndSeekClear")
         local_friends_gift = LocalStorage.get(task='DailyStart', key="friendsGift")
 
         if local_cat_gift and local_cat_fish and local_send_gift and local_hide_and_seek and local_seek_cats:
@@ -206,10 +206,15 @@ class DailyStartCheck(CustomAction):
                 context.override_pipeline({"catFish": {"enabled": False}})
             if local_send_gift:
                 context.override_pipeline({"sendGift": {"enabled": False}})
-            if local_hide_and_seek:
-                context.override_pipeline({"hideAndSeek": {"enabled": False}})
-            if local_seek_cats:
-                context.override_pipeline({"hideAndSeekClearSwipe": {"enabled": False}})
+            if local_hide_and_seek and local_seek_cats:
+                context.override_pipeline(
+                    {"disableSeekClearSwipe": {"enabled": False}}
+                )
+            else:
+                if local_hide_and_seek:
+                    context.override_pipeline({"hideAndSeekReceive": {"enabled": False}})
+                if local_seek_cats:
+                    context.override_pipeline({"seekCatsGo": {"enabled": False}})
         if local_friends_gift:
             context.override_pipeline({"friendsGiftStart": {"enabled": False}})
 

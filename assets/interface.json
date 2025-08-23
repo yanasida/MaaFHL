@@ -257,7 +257,7 @@
         {
           "name": "No",
           "pipeline_override": {
-            "hideAndSeek": {
+            "hideAndSeekReceive": {
               "enabled": false
             }
           }
@@ -273,7 +273,7 @@
         {
           "name": "No",
           "pipeline_override": {
-            "hideAndSeekClearSwipe": {
+            "seekCatsGo": {
               "enabled": false
             }
           }
