@@ -643,10 +643,7 @@
     },
     "action": {
       "type": "Click"
-    },
-    "next": [
-      "convertPicRecord"
-    ]
+    }
   },
   "convertPicRecord": {
     "post_delay": 1000,
