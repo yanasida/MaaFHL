@@ -89,16 +89,16 @@ class ReceiveTyCheck(CustomAction):
     ) -> CustomAction.RunResult:
         use_tong_bao = json.loads(argv.custom_action_param)["useTongBao"]
 
-        start_time = LocalStorage.get(task='HomeReceiveVitality', key="todayStartTime")
+        start_time = LocalStorage.get(task='TyHomeAct', key="todayStartTime")
         if start_time is not None:
             if not is_same_day_with_offset(start_time):
-                LocalStorage.remove_task("HomeReceiveVitality")
+                LocalStorage.remove_task("TyHomeAct")
         if start_time is None:
-            LocalStorage.set("HomeReceiveVitality", "todayStartTime", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+            LocalStorage.set("TyHomeAct", "todayStartTime", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-        vitality1 = LocalStorage.get(task='HomeReceiveVitality', key="HomeReceiveVitality1")
-        vitality2 = LocalStorage.get(task='HomeReceiveVitality', key="HomeReceiveVitality2")
-        convert_pic = LocalStorage.get(task='HomeAct', key="convertPicStart")
+        vitality1 = LocalStorage.get(task='TyHomeAct', key="HomeReceiveVitality1")
+        vitality2 = LocalStorage.get(task='TyHomeAct', key="HomeReceiveVitality2")
+        convert_pic = LocalStorage.get(task='TyHomeAct', key="convertPic")
 
         if convert_pic:
             context.override_pipeline(
@@ -208,7 +208,7 @@ class DailyStartCheck(CustomAction):
                 context.override_pipeline({"sendGift": {"enabled": False}})
             if local_hide_and_seek and local_seek_cats:
                 context.override_pipeline(
-                    {"disableSeekClearSwipe": {"enabled": False}}
+                    {"hideAndSeekClearSwipe": {"enabled": False}}
                 )
             else:
                 if local_hide_and_seek:

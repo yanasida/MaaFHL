@@ -263,7 +263,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "第一次体力领取成功~~~",
-          "logTask": "HomeReceiveVitality",
+          "logTask": "TyHomeAct",
           "logKey": "HomeReceiveVitality1",
           "logValue": true
         }
@@ -297,7 +297,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "第二次体力领取成功~~~",
-          "logTask": "HomeReceiveVitality",
+          "logTask": "TyHomeAct",
           "logKey": "HomeReceiveVitality2",
           "logValue": true
         }
@@ -656,7 +656,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "考工治图门票转换完成~~~",
-          "logTask": "HomeAct",
+          "logTask": "TyHomeAct",
           "logKey": "convertPic",
           "logValue": true
         }
