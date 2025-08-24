@@ -51,10 +51,63 @@
       "checkHome"
     ],
     "interrupt": [
+      "catsHomeAdopt",
       "catsHomeFeed",
       "catsHomePetting",
       "catsHomeExit"
     ]
+  },
+    "catsHomeAdopt": {
+    "post_delay": 1800,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/catsHome/adopt_cats.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          476,
+          173,
+          801,
+          546
+        ]
+      }
+    },
+    "action": {
+      "type": "LongPress",
+      "param": {
+        "target": [
+          1000,
+          480,
+          152,
+          25
+        ],
+        "duration": 3000
+      }
+    },
+    "next": [
+      "catsHomeAdoptSuccess"
+    ]
+  },
+  "catsHomeAdoptSuccess": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/catsHome/adopt_cats_success.png"
+        ],
+        "threshold": 0.7,
+        "roi" : [648,64,531,273]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target" : [315,608,99,27]
+      }
+    }
   },
   "catsHomePetting": {
     "on_error": ["catsHomePettingRecord"],
