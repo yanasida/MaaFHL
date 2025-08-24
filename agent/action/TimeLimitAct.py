@@ -32,6 +32,8 @@ class TLQQGDCount(CustomAction):
 
         real_count = count % 4
 
+        print(f"开始第{real_count}次战斗")
+
         if real_count == 1:
             context.run_task("QQGDBattlePreparation1")
         elif real_count == 2:

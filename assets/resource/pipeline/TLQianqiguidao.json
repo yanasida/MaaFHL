@@ -104,6 +104,25 @@
     },
     "action": {
       "type": "Click"
+    },
+    "next": ["QQGDCount"]
+  },
+   "QQGDCount": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "self": "QQGDCount",
+        "custom_action": "Count",
+        "custom_action_param": {
+          "count": 1,
+          "target_count": 1,
+          "else_node": [
+            "QQGDStart"
+          ],
+          "next_node_msg": "千奇诡道已达到目标次数，退出该节点",
+          "count_msg": "千奇诡道: {count}, 目标次数: {target_count}"
+        }
+      }
     }
   },
   "QQGDGoCombat": {

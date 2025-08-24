@@ -62,8 +62,11 @@
     },
     {
       "name": "限时活动-千奇诡道",
-      "entry": "QQGDStart",
-      "doc": "[size:12][color:darkgray]请保持当前页面位于活动首页[/color][/size]"
+      "entry": "QQGDCount",
+      "doc": "[size:12][color:darkgray]请保持当前页面位于活动首页[/color][/size]",
+      "advanced": [
+        "千奇诡道次数"
+      ]
     }
   ],
   "option": {
@@ -393,6 +396,37 @@
           }
         }
       ]
+    }
+  },
+  "advanced": {
+    "千奇诡道次数": {
+      "field": [
+        "作战次数"
+      ],
+      "type": [
+        "int"
+      ],
+      "default": [
+        "0"
+      ],
+      "pipeline_override": {
+        "QQGDCount": {
+          "action": {
+            "param": {
+              "custom_action_param": {
+                "target_count": "{作战次数}",
+                "count": 1,
+                "else_node": [
+                  "QQGDStart"
+                ],
+                "next_node_msg": "千奇诡道已达到目标次数，退出该节点",
+                "count_msg": "千奇诡道: {count}, 目标次数: {target_count}"
+              }
+            }
+          }
+        }
+      },
+      "doc": "按输入次数刷"
     }
   }
 }
