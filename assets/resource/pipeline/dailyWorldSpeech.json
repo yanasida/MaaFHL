@@ -168,11 +168,11 @@
     "action": {
       "type": "Custom",
       "param": {
-        "self": "hideAndSeekRecord",
+        "self": "worldSpeech2Bout",
         "custom_action": "Count",
         "custom_action_param": {
           "count": 1,
-          "target_count": 2,
+          "target_count": 1,
           "next_node": [
             "worldSpeechBack"
           ],

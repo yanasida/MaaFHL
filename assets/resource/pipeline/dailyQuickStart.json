@@ -12,6 +12,9 @@
     "interrupt": [
       "quickStartClick",
       "friendsGiftStart",
+      "emailStart",
+      "catsHomeStart",
+      "worldSpeechStart",
       "goToDailyReceivePage"
     ]
   },

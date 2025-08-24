@@ -57,6 +57,7 @@
     ]
   },
   "catsHomePetting": {
+    "on_error": ["catsHomePettingRecord"],
     "post_delay": 1800,
     "recognition": {
       "type": "TemplateMatch",
