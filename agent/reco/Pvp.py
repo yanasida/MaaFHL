@@ -160,10 +160,9 @@ class CheckPvpVersionTimeRecongition(CustomRecognition):
 
         # 仅保留当天pvp数据
         start_time = LocalStorage.get(task='pvpCombat', key="todayStartTime")
-        if start_time is not None:
-            if not is_same_day_with_offset(start_time):
-                LocalStorage.remove_task("pvpCombat")
-        if start_time is None:
+
+        if not is_same_day_with_today(start_time):
+            LocalStorage.remove_task("pvpCombat")
             LocalStorage.set(task='pvpCombat', key="todayStartTime", value=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
             LocalStorage.set(task='pvpCombat', key="todayStartSoul", value=soul)
             LocalStorage.set(task='pvpCombat', key="todayStartLv", value=lv)

@@ -90,10 +90,9 @@ class ReceiveTyCheck(CustomAction):
         use_tong_bao = json.loads(argv.custom_action_param)["useTongBao"]
 
         start_time = LocalStorage.get(task='TyHomeAct', key="todayStartTime")
-        if start_time is not None:
-            if not is_same_day_with_offset(start_time):
-                LocalStorage.remove_task("TyHomeAct")
-        if start_time is None:
+
+        if not is_same_day_with_today(start_time):
+            LocalStorage.remove_task("TyHomeAct")
             LocalStorage.set("TyHomeAct", "todayStartTime", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
         vitality1 = LocalStorage.get(task='TyHomeAct', key="HomeReceiveVitality1")
@@ -182,10 +181,9 @@ class DailyStartCheck(CustomAction):
         # hide_and_seek = data.get("hideAndSeek")
 
         start_time = LocalStorage.get(task='DailyStart', key="todayStartTime")
-        if start_time is not None:
-            if not is_same_day_with_offset(start_time):
-                LocalStorage.remove_task("DailyStart")
-        if start_time is None:
+
+        if not is_same_day_with_today(start_time):
+            LocalStorage.remove_task("DailyStart")
             LocalStorage.set("DailyStart", "todayStartTime", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
         local_cat_gift = LocalStorage.get(task='DailyStart', key="catGift")

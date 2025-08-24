@@ -40,42 +40,48 @@ def is_tao_yuan_time() -> int:
         return -1
 
 
-# 判断是否在同一天（已给出）
-def is_same_day_with_offset(date_str: str, offset_hour=5) -> bool:
+REFRESH_HOUR = 5
+
+
+def _adjust_datetime(arg_date: datetime, refresh_hour: int = REFRESH_HOUR) -> datetime:
+    """
+        根据刷新时间调整日期
+        如果当前时间小于刷新时间，则认为是前一天
+        """
+    if arg_date.hour < refresh_hour:
+        return arg_date - timedelta(days=1)
+    return arg_date
+
+
+def is_same_day_with_today(date_str: str) -> bool:
+    if date_str is None:
+        return False
     time_format = "%Y-%m-%d %H:%M:%S"
-    given_time = datetime.strptime(date_str, time_format)
-    now = datetime.now()
+    given_time = _adjust_datetime(datetime.strptime(date_str, time_format))
+    today = _adjust_datetime(datetime.now())
 
-    today_start = now.replace(hour=offset_hour, minute=0, second=0, microsecond=0)
-    if now < today_start:
-        today_start -= timedelta(days=1)
-
-    return today_start.date() == given_time.date()
+    return today.date() == given_time.date()
 
 
 # 判断是否在同一个月
-def is_same_month_with_offset(date_str: str, offset_hour=5) -> bool:
+def is_same_month_with_today(date_str: str) -> bool:
+    if date_str is None:
+        return False
     time_format = "%Y-%m-%d %H:%M:%S"
-    given_time = datetime.strptime(date_str, time_format)
-    now = datetime.now()
+    given_time = _adjust_datetime(datetime.strptime(date_str, time_format))
+    today = _adjust_datetime(datetime.now())
 
-    current_month_start = now.replace(hour=offset_hour, minute=0, second=0, microsecond=0, day=1)
-    if now < current_month_start:
-        current_month_start -= timedelta(days=1)
-
-    return current_month_start.year == given_time.year and current_month_start.month == given_time.month
+    return today.year == given_time.year and today.month == given_time.month
 
 
 # 判断是否在同一周
-def is_same_week_with_offset(date_str: str, offset_hour=5) -> bool:
+def is_same_week_with_today(date_str: str) -> bool:
+    if date_str is None:
+        return False
     time_format = "%Y-%m-%d %H:%M:%S"
-    given_time = datetime.strptime(date_str, time_format)
-    now = datetime.now()
+    given_time = _adjust_datetime(datetime.strptime(date_str, time_format))
+    today = _adjust_datetime(datetime.now())
 
-    current_week_start = now.replace(hour=offset_hour, minute=0, second=0, microsecond=0)
-    current_week_start -= timedelta(days=current_week_start.weekday())  # 调整到周一
-    if now < current_week_start:
-        current_week_start -= timedelta(weeks=1)
-
-    return current_week_start.isocalendar()[1] == given_time.isocalendar()[1] and \
-        current_week_start.year == given_time.year
+    y1, w1, _ = given_time.isocalendar()
+    y2, w2, _ = today.isocalendar()
+    return (y1 == y2) and (w1 == w2)
