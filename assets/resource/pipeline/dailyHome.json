@@ -121,7 +121,9 @@
     "interrupt": [
       "swipeForBless",
       "enterReceiveVitality",
+      "homeEventEnterStart",
       "convertPicStart",
+      "homeFurnitureMakingStart",
       "exitTyPage1"
     ]
   },
@@ -693,5 +695,334 @@
     },
     "action": "Click",
     "next": ["disableConvertPicStart"]
+  },
+  "homeEventEnterStart": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/event_enter.png",
+          "daily/home/event_enter2.png"
+        ],
+        "threshold": 0.65,
+        "roi": [
+          1094,
+          576,
+          185,
+          143
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "homeEventEnterEventPage"
+    ]
+  },
+  "homeEventEnterEventPage": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/event_page1.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          0,
+          27,
+          228,
+          260
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "homeEventWorkingPage",
+      "homeEventEndCheck"
+    ]
+  },
+  "homeEventWorkingPage": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/event_start4.png",
+          "daily/home/event_start3.png",
+          "daily/home/event_start1.png",
+          "daily/home/event_start2.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          188,
+          219,
+          508,
+          236
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "homeEventEndCheck"
+    ],
+    "interrupt": [
+      "homeEventWork",
+      "homeConfirm"
+    ]
+  },
+  "homeEventWork": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/event_work1.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          708,
+          344,
+          505,
+          221
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "homeConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/receive_confirm.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          472,
+          86,
+          340,
+          159
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          397,
+          212,
+          65,
+          26
+        ]
+      }
+    }
+  },
+  "homeEventEndCheck": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/event_end.png"
+        ],
+        "threshold": 0.95,
+        "roi": [
+          188,
+          219,
+          508,
+          236
+        ]
+      }
+    },
+    "next": [
+      "homeEventEndBack"
+    ]
+  },
+  "homeEventEndBack": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "桃源管理",
+        "threshold": 0.9,
+        "roi": [
+          0,
+          0,
+          212,
+          80
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "disableHomeEvent"
+    ]
+  },
+  "disableHomeEvent": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "homeEventEnterStart"
+        }
+      }
+    },
+    "next": [
+      "homeEventEndRecord"
+    ]
+  },
+  "homeEventEndRecord": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "桃源居事务完成~~~",
+          "logTask": "TyHomeAct",
+          "logKey": "homeEvent",
+          "logValue": true
+        }
+      }
+    }
+  },
+  "homeFurnitureMakingStart": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/furniture_making_start_btn.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          604,
+          595,
+          199,
+          125
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "homeFurnitureMakingEnd"
+    ],
+    "interrupt": [
+      "homeConfirm",
+      "homeFurnitureMakingConfirm",
+      "homeFurnitureMakingLimit"
+    ]
+  },
+  "homeFurnitureMakingLimit": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/furniture_making_limit_btn.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          38,
+          267,
+          228,
+          268
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "homeFurnitureMakingConfirm": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/furniture_making_confirm.png"
+        ],
+        "threshold": 0.96,
+        "roi": [
+          223,
+          106,
+          900,
+          529
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "homeFurnitureMakingEnd": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/furniture_making_end.png"
+        ],
+        "threshold": 0.96,
+        "roi": [
+          45,
+          258,
+          221,
+          335
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          16,
+          15,
+          81,
+          24
+        ]
+      }
+    },
+    "next": [
+      "disableHomeFurnitureMaking"
+    ]
+  },
+  "disableHomeFurnitureMaking": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "homeFurnitureMakingStart"
+        }
+      }
+    },
+    "next": [
+      "homeFurnitureMakingRecord"
+    ]
+  },
+  "homeFurnitureMakingRecord": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "每日随机家具制作完成~~~",
+          "logTask": "TyHomeAct",
+          "logKey": "furnitureMaking",
+          "logValue": true
+        }
+      }
+    }
   }
 }

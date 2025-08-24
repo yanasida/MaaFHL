@@ -98,10 +98,20 @@ class ReceiveTyCheck(CustomAction):
         vitality1 = LocalStorage.get(task='TyHomeAct', key="HomeReceiveVitality1")
         vitality2 = LocalStorage.get(task='TyHomeAct', key="HomeReceiveVitality2")
         convert_pic = LocalStorage.get(task='TyHomeAct', key="convertPic")
+        furniture_marking = LocalStorage.get(task='TyHomeAct', key="furnitureMaking")
+        event = LocalStorage.get(task='TyHomeAct', key="homeEvent")
 
         if convert_pic:
             context.override_pipeline(
                 {"convertPicStart": {"enabled": False}}
+            )
+        if furniture_marking:
+            context.override_pipeline(
+                {"homeFurnitureMakingStart": {"enabled": False}}
+            )
+        if event:
+            context.override_pipeline(
+                {"homeEventEnterStart": {"enabled": False}}
             )
 
         res = is_tao_yuan_time()
