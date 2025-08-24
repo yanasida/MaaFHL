@@ -45,7 +45,7 @@
     },
     "action": "Click",
     "next": [
-      "worldSpeechEmoticons"
+      "worldSpeech2Bout"
     ]
   },
   "worldSpeechEmoticons": {
@@ -172,7 +172,7 @@
         "custom_action": "Count",
         "custom_action_param": {
           "count": 1,
-          "target_count": 1,
+          "target_count": 2,
           "next_node": [
             "worldSpeechBack"
           ],
