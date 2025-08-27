@@ -1,0 +1,196 @@
+{
+  "momentsStart": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/moments/moments_btn1.png",
+          "daily/moments/moments_btn2.png"
+        ],
+        "threshold": 0.7,
+        "roi": [
+          976,
+          0,
+          130,
+          132
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "checkHome"
+    ],
+    "interrupt": [
+      "momentsCheckReceive",
+      "momentsBack"
+    ]
+  },
+  "momentsBack": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "知交圈",
+        "threshold": 0.9,
+        "roi": [
+          0,
+          0,
+          299,
+          166
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "disableMomentsStart"
+    ]
+  },
+  "disableMomentsStart": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "momentsStart"
+        }
+      }
+    },
+    "next": ["momentsReceiveRecord"]
+  },
+  "momentsCheckReceive": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/moments/moments_no_receive.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          982,
+          13,
+          293,
+          177
+        ]
+      }
+    },
+    "next": [
+      "redHeartCount"
+    ]
+  },
+  "redHeartCount": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "self": "redHeartCount",
+        "custom_action": "Count",
+        "custom_action_param": {
+          "count": 1,
+          "target_count": 6,
+          "next_node": [
+            "momentsReceive"
+          ],
+          "else_node": [
+            "momentsFindRedHeartOffAndClick"
+          ]
+        }
+      }
+    }
+  },
+  "momentsFindRedHeartOffAndClick": {
+    "post_delay": 800,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/moments/moments_red_heart_off.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          1100,
+          4,
+          145,
+          715
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "redHeartCount"
+    ]
+  },
+  "momentsReceive": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/moments/moments_3_receive.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          982,
+          13,
+          293,
+          177
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "momentsReceiveConfirm"
+    ]
+  },
+  "momentsReceiveConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/receive_confirm.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          472,
+          86,
+          340,
+          159
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          397,
+          212,
+          65,
+          26
+        ]
+      }
+    }
+  },
+  "momentsReceiveRecord": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "知交圈点赞3次已完成",
+          "logTask": "DailyStart",
+          "logKey": "moments",
+          "logValue": true
+        }
+      }
+    }
+  }
+}

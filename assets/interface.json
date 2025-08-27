@@ -44,6 +44,7 @@
         "名士赠礼",
         "忘川躲猫猫",
         "是否消耗猫爪找猫猫",
+        "知交圈点赞3次",
         "赠领友情点",
         "邮件领取",
         "喵居喂猫",
@@ -203,6 +204,22 @@
           "name": "No",
           "pipeline_override": {
             "catGift": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "知交圈点赞3次": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "momentsStart": {
               "enabled": false
             }
           }

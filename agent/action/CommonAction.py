@@ -206,6 +206,7 @@ class DailyStartCheck(CustomAction):
         local_email = LocalStorage.get(task='DailyStart', key="email")
         local_cats_feed = LocalStorage.get(task='DailyStart', key="catsFeed")
         local_cats_petting = LocalStorage.get(task='DailyStart', key="catsPetting")
+        local_moments = LocalStorage.get(task='DailyStart', key="moments")
 
         if local_cat_gift and local_cat_fish and local_send_gift and local_hide_and_seek and local_seek_cats:
             context.override_pipeline(
@@ -240,5 +241,6 @@ class DailyStartCheck(CustomAction):
                 context.override_pipeline({"catsHomeFeed": {"enabled": False}})
             if local_cats_petting:
                 context.override_pipeline({"catsHomePetting": {"enabled": False}})
-
+        if local_moments:
+            context.override_pipeline({"momentsStart": {"enabled": False}})
         return CustomAction.RunResult(success=True)
