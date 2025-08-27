@@ -783,7 +783,8 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "daily/home/event_work1.png"
+          "daily/home/event_work1.png",
+          "daily/home/event_work2.png"
         ],
         "threshold": 0.9,
         "roi": [
