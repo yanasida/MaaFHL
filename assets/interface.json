@@ -62,6 +62,14 @@
       "doc": "[size:12][color:darkgray]所有功能次数统计均按照当天使用本软件自动金戈的次数[/color][/size]\n[size:18][color:black]首胜[/color][/size]\n[size:15][color:darkgray]胜利一次后退出金戈[/color][/size]\n[size:18][color:black]清符[/color][/size]\n[size:15][color:darkgray]清空枕戈符信后退出金戈，七段以及以上仅可在金戈时间内使用[/color][/size]\n[size:18][color:black]3场活跃度[/color][/size]\n[size:15][color:darkgray]七段以下可直接使用，七段以及以上仅在金戈时间内可用[/color][/size]"
     },
     {
+      "name": "沙盘论义",
+      "entry": "spStartCheck",
+      "option": [
+        "沙盘次数",
+        "令旗购买数量"
+      ]
+    },
+    {
       "name": "限时活动-千奇诡道",
       "entry": "QQGDCount",
       "doc": "[size:12][color:darkgray]请保持当前页面位于活动首页[/color][/size]",
@@ -205,6 +213,84 @@
           "pipeline_override": {
             "catGift": {
               "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "沙盘次数": {
+      "cases": [
+        {
+          "name": "每日一次",
+          "pipeline_override": {
+            "spStartCheck": {
+              "action": {
+                "param": {
+                  "custom_action_param": {
+                    "combat": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "清符",
+          "pipeline_override": {
+            "spStartCheck": {
+              "action": {
+                "param": {
+                  "custom_action_param": {
+                    "combat": 2
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "令旗购买数量": {
+      "cases": [
+        {
+          "name": "0",
+          "pipeline_override": {
+            "spStartCheck": {
+              "action": {
+                "param": {
+                  "custom_action_param": {
+                    "buy": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "1",
+          "pipeline_override": {
+            "spStartCheck": {
+              "action": {
+                "param": {
+                  "custom_action_param": {
+                    "buy": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "2",
+          "pipeline_override": {
+            "spStartCheck": {
+              "action": {
+                "param": {
+                  "custom_action_param": {
+                    "buy": 2
+                  }
+                }
+              }
             }
           }
         }

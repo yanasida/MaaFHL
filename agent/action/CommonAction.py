@@ -244,3 +244,44 @@ class DailyStartCheck(CustomAction):
         if local_moments:
             context.override_pipeline({"momentsStart": {"enabled": False}})
         return CustomAction.RunResult(success=True)
+
+
+@AgentServer.custom_action("spStartCheck")
+class SpStartCheck(CustomAction):
+    """
+    沙盘检查
+    """
+
+    def run(
+            self,
+            context: Context,
+            argv: CustomAction.RunArg,
+    ) -> CustomAction.RunResult:
+
+        buy = json.loads(argv.custom_action_param)["buy"]
+        combat = json.loads(argv.custom_action_param)["combat"]
+
+        start_time = LocalStorage.get(task='sp', key="todayStartTime")
+
+        if not is_same_day_with_today(start_time):
+            LocalStorage.remove_task("sp")
+            LocalStorage.set("sp", "todayStartTime", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
+        local_buy = LocalStorage.get(task='sp', key="buy")
+        local_combat = LocalStorage.get(task='sp', key="combat")
+
+        if buy == local_buy or combat == local_combat or local_combat == 2:
+            context.override_pipeline({"spCheckOnHome": {"enabled": False}})
+            return CustomAction.RunResult(success=True)
+
+        if buy == 0 or local_buy == 2:
+            context.override_pipeline({"spEnterBuy": {"enabled": False}})
+        if buy == 1 or local_buy == 1:
+            context.override_pipeline({"spBuyAdd": {"enabled": False}})
+
+        if combat == 1:
+            context.override_pipeline({"spClearAndRecord": {"enabled": False}})
+        if combat == 2:
+            context.override_pipeline({"spCombat1Bout": {"enabled": False}})
+
+        return CustomAction.RunResult(success=True)

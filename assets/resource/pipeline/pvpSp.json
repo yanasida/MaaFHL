@@ -1,0 +1,542 @@
+{
+  "spStartCheck": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "spStartCheck"
+      }
+    },
+    "next": [
+      "spCheckOnHome"
+    ]
+  },
+  "spCheckOnHome": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "start/daily_need.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          331,
+          651,
+          126,
+          50
+        ]
+      }
+    },
+    "next": [
+      "spEnterFromHome"
+    ],
+    "interrupt": [
+      "clickBlank"
+    ]
+  },
+  "spEnterFromHome": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "pvp/pvp_enter.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          104,
+          139,
+          248,
+          285
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "spEnter"
+    ]
+  },
+  "spEnter": {
+    "post_delay": 5000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "sp/sp_enter_btn.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          1026,
+          18,
+          253,
+          554
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "checkHome"
+    ],
+    "interrupt": [
+      "spEnterBuy",
+      "spCombat1Bout",
+      "spClearAndRecord",
+      "spBack"
+    ]
+  },
+  "spClearAndRecord": {
+    "post_delay": 1000,
+    "next": [
+      "spCombatClearCheck"
+    ],
+    "interrupt": [
+      "spCombatEnterSafely"
+    ]
+  },
+  "spCombatClearCheck": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "sp/sp_clear_btn.png"
+        ],
+        "threshold": 0.98,
+        "roi": [
+          629,
+          0,
+          476,
+          121
+        ]
+      }
+    },
+    "next": [
+      "spCombatClearRecord"
+    ]
+  },
+  "spBack": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "沙盘论义",
+        "threshold": 0.9,
+        "roi": [
+          0,
+          0,
+          274,
+          149
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "spBack2": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "金戈馆",
+        "threshold": 0.9,
+        "roi": [
+          0,
+          0,
+          274,
+          149
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "spCombat1Bout": {
+    "next": [
+      "spCombatEnterSafely"
+    ]
+  },
+  "spEnterBuy": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "sp/sp_enter_buy.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          909,
+          0,
+          146,
+          149
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "spCombatPage"
+    ],
+    "interrupt": [
+      "spBuy1RecordAndDisable",
+      "spBuyAdd",
+      "spPay",
+      "spBuyBack"
+    ]
+  },
+  "spPay": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "sp/sp_buy_pay.png",
+          "sp/sp_buy_pay2.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          454,
+          516,
+          415,
+          147
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "spReceiveConfirm"
+    ]
+  },
+  "spReceiveConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/receive_confirm.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          472,
+          86,
+          340,
+          159
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "disableSpEnterBuy"
+    ]
+  },
+  "spCombatPage": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "sp/sp_combat_page_btn.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          435,
+          438,
+          499,
+          277
+        ]
+      }
+    }
+  },
+  "spBuyBack": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "sp/sp_buy_back.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          830,
+          3,
+          140,
+          136
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "disableSpEnterBuy"
+    ]
+  },
+  "disableSpEnterBuy": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "spEnterBuy"
+        }
+      }
+    }
+  },
+  "disableSpCombat1Bout": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "spCombat1Bout"
+        }
+      }
+    }
+  },
+  "disableSpBuy1Record": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "spBuy1RecordAndDisable"
+        }
+      }
+    }
+  },
+  "spBuyAdd": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "sp/sp_buy_add.png"
+        ],
+        "threshold": 0.95,
+        "roi": [
+          730,
+          427,
+          164,
+          131
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "spBuy2Record"
+    ]
+  },
+  "spCombatEnterSafely": {
+    "next": [
+      "spCheckRefreshAndEnter",
+      "spCombatEnter"
+    ]
+  },
+  "spCombatEnter": {
+    "timeout": 20000,
+    "post_delay": 2000,
+    "rate_limit": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "sp/sp_combat_enter.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          1131,
+          278,
+          148,
+          255
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "spCombatStart"
+    ]
+  },
+  "spCheckRefreshAndEnter": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "sp/sp_should_refresh1.png",
+          "sp/sp_should_refresh2.png",
+          "sp/sp_should_refresh3.png",
+          "sp/sp_should_refresh4.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "next": [
+      "spRefreshAndReEnter"
+    ]
+  },
+  "spRefreshAndReEnter": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "sp/sp_refresh_btn.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          1122,
+          553,
+          158,
+          167
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "spRefreshConfirm"
+    ]
+  },
+  "spRefreshConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "sp/sp_refresh_confirm.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          668,
+          397,
+          223,
+          144
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "spCombatEnter"
+    ]
+  },
+  "spCombatStart": {
+    "timeout": 65000,
+    "post_delay": 40000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "sp/sp_combat_start.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          1082,
+          536,
+          194,
+          178
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "spCombatReceive"
+    ]
+  },
+  "spCombatReceive": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "self": "spCombatReceive3",
+        "custom_action": "Count",
+        "custom_action_param": {
+          "count": 1,
+          "target_count": 3,
+          "else_node": [
+            "spReceiveClick"
+          ],
+          "next_node": [
+            "spCombat1Record"
+          ]
+        }
+      }
+    }
+  },
+  "spReceiveClick": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          437,
+          613,
+          13,
+          15
+        ]
+      }
+    },
+    "next": [
+      "spCombatReceive"
+    ]
+  },
+  "spCombat1Record": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "logTask": "sp",
+          "logKey": "combat",
+          "logValue": 1
+        }
+      }
+    },
+    "next": [
+      "disableSpCombat1Bout"
+    ]
+  },
+  "spCombatClearRecord": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "logTask": "sp",
+          "logKey": "combat",
+          "logValue": 2
+        }
+      }
+    }
+  },
+  "spBuy1RecordAndDisable": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "logTask": "sp",
+          "logKey": "buy",
+          "logValue": 1
+        }
+      }
+    },
+    "next": [
+      "disableSpBuy1Record"
+    ]
+  },
+  "spBuy2Record": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "logTask": "sp",
+          "logKey": "buy",
+          "logValue": 2
+        }
+      }
+    }
+  }
+}

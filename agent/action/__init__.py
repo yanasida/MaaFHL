@@ -11,5 +11,6 @@ __all__ = [
     "DailyStartCheck",
     "ReceiveTyCheck",
     "Count",
+    "SpStartCheck",
     "DisableNode"
 ]
