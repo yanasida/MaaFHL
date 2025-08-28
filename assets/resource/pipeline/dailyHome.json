@@ -747,6 +747,7 @@
     ]
   },
   "homeEventWorkingPage": {
+    "on_error": ["homeEventEndBack"],
     "post_delay": 1500,
     "recognition": {
       "type": "TemplateMatch",
