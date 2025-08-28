@@ -249,7 +249,41 @@ class DailyStartCheck(CustomAction):
 @AgentServer.custom_action("spStartCheck")
 class SpStartCheck(CustomAction):
     """
-    沙盘检查
+    沙盘战斗检查
+    """
+
+    def run(
+            self,
+            context: Context,
+            argv: CustomAction.RunArg,
+    ) -> CustomAction.RunResult:
+
+        combat = json.loads(argv.custom_action_param)["combat"]
+
+        start_time = LocalStorage.get(task='sp', key="todayStartTime")
+
+        if not is_same_day_with_today(start_time):
+            LocalStorage.remove_task("sp")
+            LocalStorage.set("sp", "todayStartTime", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
+        local_combat = LocalStorage.get(task='sp', key="combat")
+
+        if local_combat == combat or local_combat == 2:
+            context.override_pipeline({"spCheckOnHome": {"enabled": False}})
+            return CustomAction.RunResult(success=True)
+
+        if combat == 1:
+            context.override_pipeline({"spClearAndRecord": {"enabled": False}})
+        if combat == 2:
+            context.override_pipeline({"spCombat1Bout": {"enabled": False}})
+
+        return CustomAction.RunResult(success=True)
+
+
+@AgentServer.custom_action("spStartBuyCheck")
+class SpStartBuyCheck(CustomAction):
+    """
+    沙盘购买检查
     """
 
     def run(
@@ -259,7 +293,6 @@ class SpStartCheck(CustomAction):
     ) -> CustomAction.RunResult:
 
         buy = json.loads(argv.custom_action_param)["buy"]
-        combat = json.loads(argv.custom_action_param)["combat"]
 
         start_time = LocalStorage.get(task='sp', key="todayStartTime")
 
@@ -268,9 +301,8 @@ class SpStartCheck(CustomAction):
             LocalStorage.set("sp", "todayStartTime", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
         local_buy = LocalStorage.get(task='sp', key="buy")
-        local_combat = LocalStorage.get(task='sp', key="combat")
 
-        if buy == local_buy or combat == local_combat or local_combat == 2:
+        if buy == local_buy:
             context.override_pipeline({"spCheckOnHome": {"enabled": False}})
             return CustomAction.RunResult(success=True)
 
@@ -278,10 +310,5 @@ class SpStartCheck(CustomAction):
             context.override_pipeline({"spEnterBuy": {"enabled": False}})
         if buy == 1 or local_buy == 1:
             context.override_pipeline({"spBuyAdd": {"enabled": False}})
-
-        if combat == 1:
-            context.override_pipeline({"spClearAndRecord": {"enabled": False}})
-        if combat == 2:
-            context.override_pipeline({"spCombat1Bout": {"enabled": False}})
 
         return CustomAction.RunResult(success=True)

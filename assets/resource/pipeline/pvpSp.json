@@ -7,7 +7,19 @@
       }
     },
     "next": [
-      "spCheckOnHome"
+      "spStartBuyCheck"
+    ]
+  },
+  "spStartBuyCheck": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "spStartBuyCheck"
+      }
+    },
+    "next": [
+      "spCheckOnHome",
+      "checkHome"
     ]
   },
   "spCheckOnHome": {
@@ -128,10 +140,13 @@
         ]
       }
     },
-    "action": "Click"
+    "action": "Click",
+    "next": [
+      "spBack2"
+    ]
   },
   "spBack2": {
-    "post_delay": 2000,
+    "post_delay": 10000,
     "recognition": {
       "type": "OCR",
       "param": {
@@ -281,6 +296,18 @@
       }
     }
   },
+  "disableSpClearAndRecord": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "spClearAndRecord"
+        }
+      }
+    }
+  },
   "disableSpCombat1Bout": {
     "post_delay": 1000,
     "action": {
@@ -415,6 +442,20 @@
     },
     "action": "Click",
     "next": [
+      "spRefreshLog"
+    ]
+  },
+  "spRefreshLog": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "刷新完成~~~"
+        }
+      }
+    },
+    "next": [
       "spCombatEnter"
     ]
   },
@@ -484,6 +525,7 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
+          "msg": "沙盘挑战成功~~~",
           "logTask": "sp",
           "logKey": "combat",
           "logValue": 1
@@ -501,12 +543,16 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
+          "msg": "沙盘清符完成~~~",
           "logTask": "sp",
           "logKey": "combat",
           "logValue": 2
         }
       }
-    }
+    },
+    "next": [
+      "disableSpClearAndRecord"
+    ]
   },
   "spBuy1RecordAndDisable": {
     "post_delay": 2000,
@@ -515,6 +561,7 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
+          "msg": "购买令旗1成功~~~",
           "logTask": "sp",
           "logKey": "buy",
           "logValue": 1
@@ -532,6 +579,7 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
+          "msg": "购买令旗2成功~~~",
           "logTask": "sp",
           "logKey": "buy",
           "logValue": 2
