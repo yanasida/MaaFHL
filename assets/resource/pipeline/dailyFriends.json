@@ -146,6 +146,35 @@
           120
         ]
       }
+    },
+    "next": [
+      "friendsDoubleCheckLog"
+    ]
+  },
+  "friendsDoubleCheckLog": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/friends/friends_start_btn2.png"
+        ],
+        "threshold": 0.95,
+        "roi": [
+          800,
+          3,
+          479,
+          69
+        ]
+      }
+    },
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "!!部分好友赠礼需手动领取"
+        }
+      }
     }
   },
   "friendsGiftSend": {
