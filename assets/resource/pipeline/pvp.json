@@ -336,7 +336,7 @@
           "pvp/pvp_win2.png",
           "pvp/out_time_win.png"
         ],
-        "threshold": 0.9
+        "threshold": 0.93
       }
     },
     "action": {
@@ -361,7 +361,7 @@
           "pvp/pvp_fail.png",
           "pvp/pvp_fail2.png"
         ],
-        "threshold": 0.9
+        "threshold": 0.92
       }
     },
     "action": {
