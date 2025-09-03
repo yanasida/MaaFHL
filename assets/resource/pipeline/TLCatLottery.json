@@ -1,0 +1,221 @@
+{
+  "TLCatLotteryStart": {
+    "rate_limit": 3000,
+    "post_delay": 2000,
+    "next": [
+      "LotteryEnd"
+    ],
+    "interrupt": [
+      "checkFeed",
+      "blackAndWhiteCat",
+      "blackCat",
+      "clickBlankReceive",
+      "lotteryGo"
+    ]
+  },
+  "checkFeed": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/catLottery/end2.png"
+        ],
+        "threshold": 0.99999,
+        "roi": [
+          866,
+          0,
+          413,
+          71
+        ]
+      }
+    },
+    "next": [
+      "disableBlackAndWhiteCat"
+    ]
+  },
+  "disableBlackAndWhiteCat": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "blackAndWhiteCat"
+        }
+      }
+    },
+    "next": [
+      "disableBlackCat"
+    ]
+  },
+  "disableBlackCat": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "blackCat"
+        }
+      }
+    },
+    "next": [
+      "disableCheckFeed"
+    ]
+  },
+  "disableCheckFeed": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "checkFeed"
+        }
+      }
+    }
+  },
+  "LotteryEnd": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/catLottery/end1.png"
+        ],
+        "threshold": 0.99999,
+        "roi": [
+          866,
+          0,
+          413,
+          71
+        ]
+      }
+    }
+  },
+  "clickBlankReceive": {
+    "post_delay": 3500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/catLottery/receive1.png",
+          "timeLimit/catLottery/receive2.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          349,
+          49,
+          603,
+          631
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          257,
+          82,
+          9,
+          12
+        ]
+      }
+    }
+  },
+  "lotteryGo": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/catLottery/lottery_go.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          829,
+          533,
+          197,
+          187
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "blackAndWhiteCat": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/catLottery/black_cat_white.png",
+          "timeLimit/catLottery/black_cat_white3.png",
+          "timeLimit/catLottery/black_cat_white2.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          362,
+          60,
+          568,
+          565
+        ]
+      }
+    },
+    "next": [
+      "feedBlackAndWhite"
+    ]
+  },
+  "feedBlackAndWhite": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/catLottery/feed_black_white.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          45,
+          589,
+          319,
+          130
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "blackCat": {
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/catLottery/black_cat.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          362,
+          60,
+          568,
+          565
+        ]
+      }
+    },
+    "next": [
+      "feedBlack"
+    ]
+  },
+  "feedBlack": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/catLottery/feed_black.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          45,
+          589,
+          319,
+          130
+        ]
+      }
+    },
+    "action": "Click"
+  }
+}

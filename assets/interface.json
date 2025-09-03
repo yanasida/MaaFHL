@@ -76,6 +76,11 @@
       "advanced": [
         "千奇诡道次数"
       ]
+    },
+    {
+      "name": "限时活动-灵猫运转抽奖",
+      "entry": "TLCatLotteryStart",
+      "doc": "[size:12][color:darkgray]！！仅支持抽奖！！请保持当前页面位于喵运转盘页面并保证材料充足[/color][/size]\n[size:12][color:darkgray]将消耗材料喂全部的黑猫和花猫然后拿最高的奖励[/color][/size]"
     }
   ],
   "option": {
