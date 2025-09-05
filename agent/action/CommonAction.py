@@ -24,6 +24,23 @@ points = [POINT1, POINT2, POINT3, POINT4, POINT5]
 removes = [REMOVE1, REMOVE2, REMOVE3, REMOVE4, REMOVE5]
 
 
+@AgentServer.custom_action("DeleteLocalStorage")
+class DeleteLocalStorage(CustomAction):
+    """
+    删除本地账户缓存
+    todo 分日常和周常、活动等
+    """
+
+    def run(
+            self,
+            context: Context,
+            argv: CustomAction.RunArg,
+    ) -> CustomAction.RunResult:
+        LocalStorage.delete_storage_file()
+
+        return CustomAction.RunResult(success=True)
+
+
 @AgentServer.custom_action("RemoveAllMember")
 class RemoveAllMember(CustomAction):
     """

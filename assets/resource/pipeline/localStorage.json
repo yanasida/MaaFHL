@@ -1,0 +1,26 @@
+{
+  "deleteLocalStorage": {
+    "post_delay": 3000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DeleteLocalStorage"
+      }
+    },
+    "next": [
+      "deleteLog"
+    ]
+  },
+  "deleteLog": {
+    "post_delay": 2000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "账号本地数据清理成功~~~"
+        }
+      }
+    }
+  }
+}

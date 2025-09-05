@@ -82,3 +82,15 @@ class LocalStorage:
             return cls.write(storage)
         return False
 
+    # 删除整个存储文件
+    @classmethod
+    def delete_storage_file(cls) -> bool:
+        try:
+            if os.path.exists(cls.storage_path):
+                os.remove(cls.storage_path)
+                return True
+            return False
+        except Exception as e:
+            print(f"删除存储文件时出错: {e}")
+            return False
+

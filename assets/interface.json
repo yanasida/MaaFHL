@@ -71,6 +71,10 @@
       ]
     },
     {
+      "name": "清空本地数据",
+      "entry": "deleteLocalStorage"
+    },
+    {
       "name": "限时活动-千奇诡道",
       "entry": "QQGDCount",
       "doc": "[size:12][color:darkgray]请保持当前页面位于活动首页[/color][/size]",
