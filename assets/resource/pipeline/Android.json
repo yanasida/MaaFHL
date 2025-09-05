@@ -1,0 +1,11 @@
+{
+  "AndroidBackBtn": {
+     "post_delay": 2000,
+    "action": {
+      "type": "Key",
+      "param": {
+        "key": 4
+      }
+    }
+  }
+}

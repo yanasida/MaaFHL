@@ -100,10 +100,15 @@ class ReceiveTyCheck(CustomAction):
         convert_pic = LocalStorage.get(task='TyHomeAct', key="convertPic")
         furniture_marking = LocalStorage.get(task='TyHomeAct', key="furnitureMaking")
         event = LocalStorage.get(task='TyHomeAct', key="homeEvent")
+        share = LocalStorage.get(task='TyHomeAct', key="share")
 
         if convert_pic:
             context.override_pipeline(
                 {"convertPicStart": {"enabled": False}}
+            )
+        if share:
+            context.override_pipeline(
+                {"homeShareStart": {"enabled": False}}
             )
         if furniture_marking:
             context.override_pipeline(

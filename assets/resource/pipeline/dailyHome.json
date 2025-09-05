@@ -122,6 +122,7 @@
       "swipeForBless",
       "enterReceiveVitality",
       "homeEventEnterStart",
+      "homeShareStart",
       "convertPicStart",
       "homeFurnitureMakingStart",
       "exitTyPage1"
@@ -694,7 +695,9 @@
       }
     },
     "action": "Click",
-    "next": ["disableConvertPicStart"]
+    "next": [
+      "disableConvertPicStart"
+    ]
   },
   "homeEventEnterStart": {
     "post_delay": 2000,
@@ -720,6 +723,240 @@
     "next": [
       "homeEventEnterEventPage"
     ]
+  },
+  "homeShareStart": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/event_enter.png",
+          "daily/home/event_enter2.png"
+        ],
+        "threshold": 0.65,
+        "roi": [
+          1094,
+          576,
+          185,
+          143
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "homeEventNotePage"
+    ]
+  },
+  "homeEventNotePage": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/home_share_btn1.png",
+          "daily/home/home_share_btn2.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          44,
+          306,
+          101,
+          244
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "homeEventShareEnter"
+    ]
+  },
+  "homeEventShareEnter": {
+    "on_error": "homeShareRecordCheck",
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/share_enter_btn.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          290,
+          121,
+          127,
+          168
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "homeShareBtn"
+    ]
+  },
+  "homeShareBtn": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/share_btn.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          1101,
+          612,
+          132,
+          108
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "homeShareGodBtn"
+    ]
+  },
+  "homeShareGodBtn": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/share_god_btn.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          810,
+          558,
+          144,
+          146
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "homeShareConfirm"
+    ],
+    "interrupt": [
+      "AndroidBackBtn"
+    ]
+  },
+  "homeShareConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/quickStart/receive.png",
+          "daily/home/share_no_god.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          270,
+          46,
+          822,
+          624
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          464,
+          458,
+          73,
+          33
+        ]
+      }
+    },
+    "next": [
+      "homeShareRecordCheck"
+    ],
+    "interrupt": [
+      "homeShareBack"
+    ]
+  },
+  "homeShareRecordCheck": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": "桃源管理",
+        "threshold": 0.9,
+        "roi": [
+          0,
+          0,
+          212,
+          80
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "disableHomeShare"
+    ]
+  },
+  "disableHomeShare": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "homeShareStart"
+        }
+      }
+    },
+    "next": [
+      "homeShareRecord"
+    ]
+  },
+  "homeShareRecord": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "桃源管理记事分享完成~~~",
+          "logTask": "TyHomeAct",
+          "logKey": "share",
+          "logValue": true
+        }
+      }
+    }
+  },
+  "homeShareBack": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/share_back1.png",
+          "daily/home/share_back2.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          0,
+          0,
+          1272,
+          158
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
   },
   "homeEventEnterEventPage": {
     "post_delay": 1500,
@@ -747,7 +984,9 @@
     ]
   },
   "homeEventWorkingPage": {
-    "on_error": ["homeEventEndBack"],
+    "on_error": [
+      "homeEventEndBack"
+    ],
     "post_delay": 1500,
     "recognition": {
       "type": "TemplateMatch",

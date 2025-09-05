@@ -31,6 +31,7 @@
         "领取桃源居体力",
         "是否使用通宝购买体力",
         "桃源管理待办事务",
+        "桃源管理记事分享(30通宝)",
         "考工治图 百工图转化",
         "家具制作随机家具"
       ]
@@ -327,6 +328,22 @@
           "name": "No",
           "pipeline_override": {
             "emailStart": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "桃源管理记事分享(30通宝)": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "homeShareStart": {
               "enabled": false
             }
           }
