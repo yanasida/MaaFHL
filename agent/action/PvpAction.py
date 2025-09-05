@@ -10,6 +10,7 @@ from agent.common import *
 @AgentServer.custom_action("CombatResRecord")
 class CombatResRecord(CustomAction):
     """
+    todo 重新构建、支持九段以上的bp、减少等待时间
     记录pvp胜利、失败
     1:胜利
     2:失败
