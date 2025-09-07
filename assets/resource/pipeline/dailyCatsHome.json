@@ -65,7 +65,7 @@
         "template": [
           "daily/catsHome/adopt_cats.png"
         ],
-        "threshold": 0.9,
+        "threshold": 0.8,
         "roi": [
           476,
           173,
