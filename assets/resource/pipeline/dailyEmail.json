@@ -1,6 +1,10 @@
 {
   "emailStart": {
     "post_delay": 1500,
+    "timeout": 8000,
+    "on_error": [
+      "emailBack"
+    ],
     "recognition": {
       "type": "TemplateMatch",
       "param": {
