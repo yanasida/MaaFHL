@@ -90,7 +90,7 @@ class Count(CustomAction):
                 node_str = (
                     else_nodes if isinstance(else_nodes, str) else ", ".join(else_nodes)
                 )
-                self.custom_notify(context, else_node_msg.format(else_node=node_str))
+                self.custom_notify(context, else_node_msg.format(else_node=node_str), 2)
             self._run_nodes(context, else_nodes)
         else:
             # 计数达标时：重置计数并执行下一节点
