@@ -172,7 +172,7 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
-          "msg": "!!部分好友赠礼需手动领取"
+          "msg": "！！部分好友赠礼需手动领取"
         }
       }
     }

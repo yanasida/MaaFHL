@@ -105,7 +105,7 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
-          "msg": "!!紫薇备战已开启,需手动进行"
+          "msg": "！！紫薇备战已开启,需手动进行"
         }
       }
     }
