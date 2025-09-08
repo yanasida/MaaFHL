@@ -18,7 +18,8 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
-          "msg": "账号本地数据清理成功~~~"
+          "msg": "账号本地数据清理成功~~~",
+           "logLevel": 2
         }
       }
     }

@@ -235,6 +235,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "喂猫奖励领取成功~~~",
+          "logLevel": 2,
           "logTask": "DailyStart",
           "logKey": "catsFeed",
           "logValue": true
@@ -253,6 +254,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "吸猫奖励领取成功~~~",
+          "logLevel": 2,
           "logTask": "DailyStart",
           "logKey": "catsPetting",
           "logValue": true

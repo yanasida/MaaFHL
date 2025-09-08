@@ -26,6 +26,7 @@ MAA_Punish 计数程序
 from maa.agent.agent_server import AgentServer
 from maa.context import Context
 from maa.custom_action import CustomAction
+from agent.common import *
 import json
 
 
@@ -75,7 +76,7 @@ class Count(CustomAction):
             if count_msg:
                 self.custom_notify(
                     context,
-                    count_msg.format(count=new_count - 1, target_count=target_count),
+                    count_msg.format(count=new_count - 1, target_count=target_count)
                 )
 
             # 保存更新后的参数
@@ -115,7 +116,7 @@ class Count(CustomAction):
                 node_str = (
                     next_nodes if isinstance(next_nodes, str) else ", ".join(next_nodes)
                 )
-                self.custom_notify(context, next_node_msg.format(next_node=node_str))
+                self.custom_notify(context, next_node_msg.format(next_node=node_str), 2)
             self._run_nodes(context, next_nodes)
 
         return CustomAction.RunResult(success=True)
@@ -130,7 +131,5 @@ class Count(CustomAction):
         for node in nodes:
             context.run_task(node)
 
-    def custom_notify(self, context: Context, msg):
-        print(msg)
-        context.override_pipeline({"custom通知": {"focus": {"succeeded": msg}}})
-        context.run_task("custom通知")
+    def custom_notify(self, context: Context, msg, level=0):
+        log(context, msg)

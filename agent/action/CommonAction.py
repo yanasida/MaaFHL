@@ -70,6 +70,7 @@ class LoggerAndRecorder(CustomAction):
     logTask:taskID
     logKey：key
     logValue：value
+    logLevel：level
     """
 
     def run(
@@ -84,9 +85,10 @@ class LoggerAndRecorder(CustomAction):
         log_task = data.get("logTask")
         log_key = data.get("logKey")
         log_value = data.get("logValue")
+        log_level = data.get("logLevel")
 
         if msg is not None:
-            print(msg)
+            log(context, msg, log_level)
         if log_task is not None and log_key is not None and log_value is not None:
             LocalStorage.set(log_task, log_key, log_value)
 
@@ -143,7 +145,7 @@ class ReceiveTyCheck(CustomAction):
             )
         # 11点前
         elif res == 0:
-            print("当前时间不可领取体力")
+            log(context, "当前时间不可领取体力", 4)
             context.override_pipeline(
                 {"enterReceiveVitality": {"enabled": False}}
             )

@@ -116,6 +116,8 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
+          "msg": "邮件领取完成~~~",
+          "logLevel": 2,
           "logTask": "DailyStart",
           "logKey": "email",
           "logValue": true
@@ -133,7 +135,8 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
-          "msg": "！！部分邮件需手动领取"
+          "msg": "！！部分邮件需手动领取",
+          "logLevel": 3
         }
       }
     },

@@ -185,7 +185,8 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
-          "msg": "知交圈点赞3次已完成",
+          "msg": "知交圈点赞3次已完成~~~",
+           "logLevel": 2,
           "logTask": "DailyStart",
           "logKey": "moments",
           "logValue": true

@@ -267,6 +267,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "第一次体力领取成功~~~",
+           "logLevel": 2,
           "logTask": "TyHomeAct",
           "logKey": "HomeReceiveVitality1",
           "logValue": true
@@ -301,6 +302,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "第二次体力领取成功~~~",
+           "logLevel": 2,
           "logTask": "TyHomeAct",
           "logKey": "HomeReceiveVitality2",
           "logValue": true
@@ -657,6 +659,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "考工治图门票转换完成~~~",
+           "logLevel": 2,
           "logTask": "TyHomeAct",
           "logKey": "convertPic",
           "logValue": true
@@ -929,6 +932,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "桃源管理记事分享完成~~~",
+           "logLevel": 2,
           "logTask": "TyHomeAct",
           "logKey": "share",
           "logValue": true
@@ -1132,6 +1136,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "桃源居事务完成~~~",
+           "logLevel": 2,
           "logTask": "TyHomeAct",
           "logKey": "homeEvent",
           "logValue": true
@@ -1259,6 +1264,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "每日随机家具制作完成~~~",
+           "logLevel": 2,
           "logTask": "TyHomeAct",
           "logKey": "furnitureMaking",
           "logValue": true

@@ -27,7 +27,7 @@ class CombatResRecord(CustomAction):
     ) -> CustomAction.RunResult:
         combat_res = json.loads(argv.custom_action_param)["combatRes"]
 
-        print(f"当前战斗结果: {combat_res}")
+        log(context, f"当前战斗结果: {combat_res}")
 
         # 总战斗次数
         total_combat = LocalStorage.get(task='pvpCombat', key="totalCombat")

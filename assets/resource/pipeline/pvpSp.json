@@ -544,6 +544,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "沙盘清符完成~~~",
+           "logLevel": 2,
           "logTask": "sp",
           "logKey": "combat",
           "logValue": 2

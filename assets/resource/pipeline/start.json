@@ -105,7 +105,8 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
-          "msg": "！！紫薇备战已开启,需手动进行"
+          "msg": "！！紫薇备战已开启,需手动进行",
+          "logLevel": 3
         }
       }
     }
@@ -231,7 +232,8 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
-          "msg": "！！请手动领取限时活动奖励"
+          "msg": "！！请手动领取限时活动奖励",
+          "logLevel": 3
         }
       }
     }
@@ -266,7 +268,8 @@
       "param": {
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
-          "msg": "领取每日登录活动奖励完成"
+          "msg": "领取每日登录活动奖励完成",
+          "logLevel": 2
         }
       }
     }
