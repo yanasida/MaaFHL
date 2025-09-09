@@ -55,7 +55,7 @@
     },
     {
       "name": "金戈演武",
-      "entry": "clickBlankForPvp",
+      "entry": "pvpStart",
       "option": [
         "金戈选项",
         "是否使用骁武魂"

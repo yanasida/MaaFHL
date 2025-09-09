@@ -1,4 +1,14 @@
 {
+  "pvpStart": {
+    "rate_limit": 1500,
+    "next": [
+      "enterPvp"
+    ],
+    "interrupt": [
+      "newbieBack",
+      "clickBlankForPvp"
+    ]
+  },
   "clickBlankForPvp": {
     "recognition": "DirectHit",
     "action": {
@@ -11,10 +21,7 @@
           26
         ]
       }
-    },
-    "next": [
-      "enterPvp"
-    ]
+    }
   },
   "enterPvp": {
     "post_delay": 3000,
@@ -33,6 +40,27 @@
     "next": [
       "enterPvpFlag"
     ]
+  },
+  "newbieBack": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": "pvp/newbie.png",
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          25,
+          156,
+          11,
+          19
+        ]
+      }
+    }
   },
   "enterPvpFlag": {
     "post_delay": 2000,
