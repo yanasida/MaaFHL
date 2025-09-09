@@ -784,15 +784,30 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "daily/home/share_enter_btn.png"
+          "daily/home/share_history_btn.png"
         ],
         "threshold": 0.8,
-        "roi": [
-          290,
-          121,
-          127,
-          168
-        ]
+        "roi" : [1095,50,134,143]
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "homeEventShareFindOne"
+    ]
+  },
+  "homeEventShareFindOne": {
+    "on_error": "homeShareRecordCheck",
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/home/share_in_btn.png"
+        ],
+        "threshold": 0.8,
+        "roi" : [727,58,439,627]
       }
     },
     "action": {
