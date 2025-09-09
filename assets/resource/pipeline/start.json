@@ -47,6 +47,9 @@
     ]
   },
   "enterGame": {
+    "on_error": [
+      "TLUnknownLog"
+    ],
     "post_delay": 8000,
     "timeout": 60000,
     "rate_limit": 5000,
@@ -89,15 +92,32 @@
       "manualLimitSignInGift"
     ]
   },
+  "TLUnknownLog": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "！！未知页面, 清手动领取进入游戏首页继续任务",
+          "logLevel": 3
+        }
+      }
+    }
+  },
   "ziWeiStartCheckAndLog": {
-       "recognition": {
+    "recognition": {
       "type": "TemplateMatch",
       "param": {
         "template": [
           "start/ziwei_star_start_btn.png.png"
         ],
         "threshold": 0.5,
-        "roi" : [54,370,314,135]
+        "roi": [
+          54,
+          370,
+          314,
+          135
+        ]
       }
     },
     "action": {
@@ -212,13 +232,23 @@
           "首充送荆轲"
         ],
         "threshold": 0.9,
-        "roi" : [0,0,253,717]
+        "roi": [
+          0,
+          0,
+          253,
+          717
+        ]
       }
     },
     "action": {
       "type": "Click",
       "param": {
-        "target" : [28,7,16,28]
+        "target": [
+          28,
+          7,
+          16,
+          28
+        ]
       }
     },
     "next": [
