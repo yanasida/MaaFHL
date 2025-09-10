@@ -150,8 +150,8 @@
     }
   },
   "enterReceiveVitality": {
-    "timeout": 7000,
-    "rate_limit": 2000,
+    "timeout": 20000,
+    "rate_limit": 3000,
     "post_delay": 2000,
     "recognition": {
       "type": "TemplateMatch",
@@ -230,7 +230,7 @@
           "daily/home/receive_vitality_in_time3.png",
           "daily/home/receive_vitality_in_time2.png"
         ],
-        "threshold": 0.96,
+        "threshold": 0.9,
         "roi": [
           197,
           338,
@@ -252,7 +252,7 @@
           "daily/home/receive_vitality_done3.png",
           "daily/home/receive_vitality_done2.png"
         ],
-        "threshold": 0.96,
+        "threshold": 0.9,
         "roi": [
           248,
           381,
@@ -287,7 +287,7 @@
           "daily/home/receive_vitality_done3.png",
           "daily/home/receive_vitality_done2.png"
         ],
-        "threshold": 0.96,
+        "threshold": 0.9,
         "roi": [
           663,
           378,
@@ -347,7 +347,7 @@
           "daily/home/receive_vitality_out_time3.png",
           "daily/home/receive_vitality_out_time2.png"
         ],
-        "threshold": 0.96,
+        "threshold": 0.9,
         "roi": [
           262,
           373,
@@ -370,7 +370,7 @@
           "daily/home/receive_vitality_in_time3.png",
           "daily/home/receive_vitality_in_time.png"
         ],
-        "threshold": 0.96,
+        "threshold": 0.9,
         "roi": [
           667,
           285,
@@ -393,7 +393,7 @@
           "daily/home/receive_vitality_out_time3.png",
           "daily/home/receive_vitality_out_time.png"
         ],
-        "threshold": 0.96,
+        "threshold": 0.9,
         "roi": [
           667,
           285,
@@ -414,7 +414,7 @@
         "template": [
           "daily/home/receive_vitality_enter_out_time_confirm.png"
         ],
-        "threshold": 0.96,
+        "threshold": 0.9,
         "roi": [
           675,
           401,
