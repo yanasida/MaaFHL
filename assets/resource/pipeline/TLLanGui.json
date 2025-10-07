@@ -1,0 +1,179 @@
+{
+  "TLLGCount": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "self": "TLLGCount",
+        "custom_action": "Count",
+        "custom_action_param": {
+          "count": 1,
+          "target_count": 3,
+          "next_node_msg": "桂月夜市已达到目标次数，退出该节点",
+          "count_msg": "桂月夜市: {count}, 目标次数: {target_count}",
+          "else_node": [
+            "LGEnterStart"
+          ]
+        }
+      }
+    }
+  },
+  "LGEnterStart": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/languiyeshi/进入.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": [
+      "消耗商事小书确认"
+    ]
+  },
+  "消耗商事小书确认": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/languiyeshi/消耗商事小书确认.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": [
+      "processing"
+    ]
+  },
+  "processing": {
+    "rate_limit": 2000,
+    "next": [
+      "摆摊结束",
+      "mock胜利结算"
+    ],
+    "interrupt": [
+      "空白继续",
+      "初始怪物确认",
+      "收下全部",
+      "知道啦",
+      "选择",
+      "布置"
+    ]
+  },
+  "选择": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/languiyeshi/选择.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          251,
+          550,
+          266,
+          105
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "摆摊结束": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/languiyeshi/摆摊结束.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": "TLLGCount"
+  },
+  "mock胜利结算": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/languiyeshi/mock胜利结算.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": "TLLGCount"
+  },
+  "空白继续": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/languiyeshi/空白继续.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click"
+  },
+  "初始怪物确认": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/languiyeshi/初始怪物确认.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click"
+  },
+  "布置": {
+    "post_delay": 6500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/languiyeshi/布置.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click"
+  },
+  "知道啦": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/languiyeshi/知道啦.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click"
+  },
+  "收下全部": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/languiyeshi/收下全部.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click"
+  }
+}

@@ -83,6 +83,14 @@
       ]
     },
     {
+      "name": "限时活动-桂月夜市",
+      "entry": "TLLGCount",
+      "doc": "[size:12][color:darkgray]请保持当前页面位于活动难度页面,该页面需要有进入按钮[/color][/size]",
+      "advanced": [
+        "桂月夜市次数"
+      ]
+    },
+    {
       "name": "限时活动-灵猫运转抽奖",
       "entry": "TLCatLotteryStart",
       "doc": "[size:12][color:darkgray]！！仅支持抽奖！！请保持当前页面位于喵运转盘页面并保证材料充足[/color][/size]\n[size:12][color:darkgray]将消耗材料喂全部的黑猫和花猫然后拿最高的奖励[/color][/size]"
@@ -556,6 +564,35 @@
         }
       },
       "doc": "按输入次数刷"
+    },
+    "桂月夜市次数": {
+      "field": [
+        "作战次数"
+      ],
+      "type": [
+        "int"
+      ],
+      "default": [
+        "0"
+      ],
+      "pipeline_override": {
+        "TLLGCount": {
+          "action": {
+            "param": {
+              "custom_action_param": {
+                "target_count": "{作战次数}",
+                "count": 1,
+                "else_node": [
+                  "LGEnterStart"
+                ],
+                "next_node_msg": "桂月夜市已达到目标次数，退出该节点",
+                "count_msg": "桂月夜市: {count}, 目标次数: {target_count}"
+              }
+            }
+          }
+        }
+      },
+      "doc": "起始页面应该为具体难度页面,需要有进入按钮,默认策略为选择第一个物品然后布置,按输入次数刷"
     }
   }
 }
