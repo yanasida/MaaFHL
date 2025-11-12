@@ -70,7 +70,7 @@
     ]
   },
   "tangOEWork": {
-    "post_delay": 2000,
+    "post_delay": 1000,
     "recognition": {
       "type": "TemplateMatch",
       "param": {
@@ -84,7 +84,7 @@
     "next": "disableTangOEWork"
   },
   "tangOEWork2": {
-    "post_delay": 2000,
+    "post_delay": 1000,
     "recognition": {
       "type": "TemplateMatch",
       "param": {
@@ -98,7 +98,7 @@
     "next": "disableTangOEWork2"
   },
   "tangOEConfirm": {
-    "post_delay": 2000,
+    "post_delay": 1000,
     "recognition": {
       "type": "TemplateMatch",
       "param": {
@@ -111,7 +111,7 @@
     "action": "Click"
   },
   "tangOEWorkFunc1": {
-    "post_delay": 2000,
+    "post_delay": 1000,
     "recognition": {
       "type": "TemplateMatch",
       "param": {
@@ -130,7 +130,7 @@
     "action": "Click"
   },
   "tangOEEvent1": {
-    "post_delay": 2000,
+    "post_delay": 1000,
     "recognition": {
       "type": "TemplateMatch",
       "param": {
@@ -149,7 +149,7 @@
     "action": "Click"
   },
   "tangOEBet": {
-    "post_delay": 2000,
+    "post_delay": 1000,
     "recognition": {
       "type": "TemplateMatch",
       "param": {
@@ -231,7 +231,7 @@
     }
   },
   "tangOEBet3000": {
-    "post_delay": 2000,
+    "post_delay": 1000,
     "recognition": {
       "type": "TemplateMatch",
       "param": {
@@ -245,7 +245,7 @@
     "action": "Click"
   },
   "tangOEEnd": {
-    "post_delay": 2000,
+    "post_delay": 1000,
     "recognition": {
       "type": "TemplateMatch",
       "param": {
@@ -259,7 +259,7 @@
     "next": "enableTangOEBet"
   },
   "tangEnd": {
-    "post_delay": 2000,
+    "post_delay": 1000,
     "recognition": {
       "type": "TemplateMatch",
       "param": {
