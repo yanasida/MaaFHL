@@ -1,0 +1,283 @@
+{
+  "tangOneTimeEvent": {
+    "post_delay": 5000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/datang/梦唐百观.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": "tangAllDone",
+    "interrupt": [
+      "tangOEStart"
+    ]
+  },
+  "tangAllDone": {
+    "post_delay": 5000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/datang/清空.png"
+        ],
+        "threshold": 0.8
+      }
+    }
+  },
+  "tangOEStart": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/datang/就他了.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": "tangOEEnter"
+  },
+  "tangOEEnter": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/datang/进入游戏.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": "tangEnd",
+    "interrupt": [
+      "tangOEConfirm",
+      "tangOEWorkFunc1",
+      "tangOEEvent1",
+      "tangOEBet3000",
+      "tangOEWork",
+      "tangOEWork2",
+      "tangOEBet",
+      "tangOEEnd"
+    ]
+  },
+  "tangOEWork": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/datang/劳作.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": "disableTangOEWork"
+  },
+  "tangOEWork2": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/datang/劳作.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": "disableTangOEWork2"
+  },
+  "tangOEConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/datang/确定.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click"
+  },
+  "tangOEWorkFunc1": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/datang/劳作1.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          786,
+          325,
+          58,
+          59
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "tangOEEvent1": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/datang/突发事件.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          304,
+          288,
+          570,
+          190
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "tangOEBet": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/datang/投琼.png"
+        ],
+        "threshold": 0.99
+      }
+    },
+    "action": "Click",
+    "next": "disableTangOEBet"
+  },
+  "disableTangOEBet": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "tangOEBet"
+        }
+      }
+    }
+  },
+  "enableTangOEBet": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "EnableNode",
+        "custom_action_param": {
+          "node_name": "tangOEBet"
+        }
+      }
+    },
+    "next": "enableTangOEWork"
+  },
+  "disableTangOEWork": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "tangOEWork"
+        }
+      }
+    }
+  },
+  "enableTangOEWork": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "EnableNode",
+        "custom_action_param": {
+          "node_name": "tangOEWork"
+        }
+      }
+    },
+    "next": "enableTangOEWork2"
+  },
+  "disableTangOEWork2": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "tangOEWork2"
+        }
+      }
+    }
+  },
+  "enableTangOEWork2": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "EnableNode",
+        "custom_action_param": {
+          "node_name": "tangOEWork2"
+        }
+      }
+    }
+  },
+  "tangOEBet3000": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/datang/投琼3000.png",
+          "timeLimit/datang/投琼1000.png"
+        ],
+        "threshold": 0.99
+      }
+    },
+    "action": "Click"
+  },
+  "tangOEEnd": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/datang/结束本轮.png"
+        ],
+        "threshold": 0.97
+      }
+    },
+    "action": "Click",
+    "next": "enableTangOEBet"
+  },
+  "tangEnd": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/datang/一次结束.png"
+        ],
+        "threshold": 0.97
+      }
+    },
+    "action": "Click",
+    "next": "tangOneLog"
+  },
+  "tangOneLog": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "大唐枕中观完成+1"
+        }
+      }
+    }
+  }
+}

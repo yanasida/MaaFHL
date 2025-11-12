@@ -13,5 +13,6 @@ __all__ = [
     "Count",
     "SpStartCheck",
     "SpStartBuyCheck",
-    "DisableNode"
+    "DisableNode",
+    "EnableNode"
 ]
