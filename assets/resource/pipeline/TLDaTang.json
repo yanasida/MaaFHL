@@ -1,4 +1,10 @@
 {
+  "tangStart": {
+    "next": "tangAllDone",
+    "interrupt": [
+      "tangOneTimeEvent"
+    ]
+  },
   "tangOneTimeEvent": {
     "post_delay": 5000,
     "recognition": {
@@ -11,10 +17,7 @@
       }
     },
     "action": "Click",
-    "next": "tangAllDone",
-    "interrupt": [
-      "tangOEStart"
-    ]
+    "next": "tangOEStart"
   },
   "tangAllDone": {
     "post_delay": 5000,

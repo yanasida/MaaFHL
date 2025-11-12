@@ -97,7 +97,7 @@
     },
     {
       "name": "限时活动-大唐枕中观",
-      "entry": "tangOneTimeEvent",
+      "entry": "tangStart",
       "doc": "[size:12][color:darkgray]清空所有名帖任务结束[/color][/size]\n[size:12][color:darkgray]策略:两次劳动一次投琼,投琼3000铜钱[/color][/size]"
     }
   ],
