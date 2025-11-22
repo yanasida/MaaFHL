@@ -54,6 +54,16 @@
       ]
     },
     {
+      "name": "雅舍",
+      "entry": "clubsStart",
+      "option": [
+        "捐赠20通宝",
+        "捐赠60通宝",
+        "放河灯"
+      ],
+      "doc": "[size:12][color:darkgray]默认捐赠铜币,放河灯默认第一个名士(最近捐赠)[/color][/size]"
+    },
+    {
       "name": "金戈演武",
       "entry": "pvpStart",
       "option": [
@@ -235,6 +245,54 @@
           "name": "No",
           "pipeline_override": {
             "catGift": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "捐赠20通宝": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "clubsSignIn20": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "捐赠60通宝": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "clubsSignIn60": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "放河灯": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "clubsWish": {
               "enabled": false
             }
           }

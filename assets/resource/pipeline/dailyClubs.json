@@ -1,0 +1,403 @@
+{
+  "clubsStart": {
+    "post_delay": 4000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/雅舍1.png",
+          "daily/clubs/雅舍2.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          561,
+          649,
+          90,
+          55
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "checkHome"
+    ],
+    "interrupt": [
+      "clubsPost",
+      "clubsSignIn",
+      "clubsWish",
+      "clubsBack"
+    ]
+  },
+  "clubsBack": {
+    "post_delay": 1500,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/退出雅舍.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          3,
+          5,
+          167,
+          42
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "clubsWish": {
+    "post_delay": 4000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/河灯1.png",
+          "daily/clubs/河灯2.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": [
+      "clubsCheck"
+    ],
+    "interrupt": [
+      "clubsWishToday",
+      "clubsWishSelectFirst",
+      "clubsWishSelectConfirm",
+      "clubsWishBack"
+    ]
+  },
+  "clubsPost": {
+    "post_delay": 1500,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/最新布告.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          372,
+          102,
+          37,
+          131
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          345,
+          542,
+          40,
+          37
+        ]
+      }
+    }
+  },
+  "clubsWishToday": {
+    "post_delay": 4000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/今日放灯.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          1082,
+          641,
+          80,
+          72
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "clubsWishSelectFirst": {
+    "post_delay": 3000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/放河灯灰色.png"
+        ],
+        "threshold": 0.99,
+        "roi": [
+          1127,
+          531,
+          136,
+          153
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          45,
+          554,
+          46,
+          100
+        ]
+      }
+    }
+  },
+  "clubsWishSelectConfirm": {
+    "post_delay": 3000,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/放河灯黄色.png"
+        ],
+        "threshold": 0.99,
+        "roi": [
+          1127,
+          531,
+          136,
+          153
+        ]
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "clubsSignIn": {
+    "post_delay": 1500,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/签到1.png",
+          "daily/clubs/签到2.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": [
+      "clubsCheck"
+    ],
+    "interrupt": [
+      "clubsSignInFree",
+      "clubsSignIn20",
+      "clubsSignIn60",
+      "clubsSignIConfirm",
+      "clubsSignIDoneConfirm",
+      "clubsSignInBack"
+    ]
+  },
+  "clubsCheck": {
+    "post_delay": 1500,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/退出雅舍.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          3,
+          5,
+          167,
+          42
+        ]
+      }
+    }
+  },
+  "clubsSignInFree": {
+    "post_delay": 1500,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/免费.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          231,
+          574,
+          138,
+          44
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "clubsSignInBack": {
+    "post_delay": 1500,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/点击空白处关闭.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          559,
+          665,
+          166,
+          32
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "disableClubsSignIn"
+    ]
+  },
+  "disableClubsSignIn": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "clubsSignIn"
+        }
+      }
+    }
+  },
+  "disableClubsWish": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "clubsWish"
+        }
+      }
+    }
+  },
+  "clubsWishBack": {
+    "post_delay": 3000,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/河灯返回.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          0,
+          0,
+          297,
+          82
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "disableClubsWish"
+    ]
+  },
+  "clubsSignIDoneConfirm": {
+    "post_delay": 1500,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/恭喜获得.png"
+        ],
+        "threshold": 0.97
+      }
+    },
+    "action": "Click"
+  },
+  "clubsSignIConfirm": {
+    "post_delay": 1500,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/确认.png"
+        ],
+        "threshold": 0.97
+      }
+    },
+    "action": "Click"
+  },
+  "clubsSignIn20": {
+    "post_delay": 1500,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/捐赠20.png"
+        ],
+        "threshold": 0.97,
+        "roi": [
+          476,
+          315,
+          330,
+          351
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          562,
+          574,
+          161,
+          45
+        ]
+      }
+    }
+  },
+  "clubsSignIn60": {
+    "post_delay": 1500,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/捐赠60.png"
+        ],
+        "threshold": 0.97,
+        "roi": [
+          854,
+          308,
+          260,
+          354
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          905,
+          577,
+          149,
+          40
+        ]
+      }
+    }
+  }
+}
