@@ -109,6 +109,11 @@
       "name": "限时活动-大唐枕中观",
       "entry": "tangStart",
       "doc": "[size:12][color:darkgray]清空所有名帖任务结束[/color][/size]\n[size:12][color:darkgray]策略:两次劳动一次投琼,投琼3000铜钱[/color][/size]"
+    },
+    {
+      "name": "限时活动-幻域行商",
+      "entry": "TSStart",
+      "doc": "[size:12][color:darkgray]仅在第一关(墟烟遗市)测试完成,理论通用[/color][/size]\n[size:12][color:darkgray]策略:行商筹略随机,在降价时买入,可以卖出时直接卖出,清符后结束任务[/color][/size]\n[size:12][color:darkgray]注意:开始使用前请完成新手指引(第一次进入会有),开始时选中具体关卡,使用千灯画船,页面应存在“进入”或者“继续”图标[/color][/size]"
     }
   ],
   "option": {

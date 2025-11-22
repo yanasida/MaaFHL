@@ -1,0 +1,659 @@
+{
+  "TSStart": {
+    "next": [
+      "TSAllDone"
+    ],
+    "interrupt": [
+      "TSOnceStartConfirmAgain",
+      "TSOnceStartConfirm",
+      "TSOnceStart",
+      "TSSelect",
+      "TSDiscount1st",
+      "TSDiscount2ed",
+      "TSSell",
+      "TSOnceDone"
+    ]
+  },
+  "TSAllDone": {
+    "post_delay": 2000,
+    "timeout": 20000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/千灯画船0.png"
+        ],
+        "threshold": 0.99,
+        "roi": [
+          593,
+          0,
+          292,
+          59
+        ]
+      }
+    }
+  },
+  "TSOnceStart": {
+    "post_delay": 8000,
+    "timeout": 20000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/进入.png",
+          "timeLimit/tradingStrategies/继续.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          904,
+          515,
+          375,
+          204
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "TSOnceStartConfirm": {
+    "post_delay": 4000,
+    "timeout": 20000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/确认.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": "Click"
+  },
+  "TSOnceStartConfirmAgain": {
+    "post_delay": 4000,
+    "timeout": 20000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/好的.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": "Click"
+  },
+  "TSSelect": {
+    "post_delay": 8000,
+    "timeout": 20000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/选择.png"
+        ],
+        "threshold": 0.7,
+        "roi": [
+          243,
+          87,
+          106,
+          388
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "enableSellFirstPoint"
+    ]
+  },
+  "TSOnceDone": {
+    "post_delay": 8000,
+    "timeout": 20000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/关闭.png"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          1072,
+          560,
+          207,
+          159
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "TSSell": {
+    "post_delay": 2000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/行囊卖出.png"
+        ],
+        "threshold": 0.7,
+        "roi": [
+          553,
+          296,
+          28,
+          113
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "checkTs"
+    ],
+    "interrupt": [
+      "checkSellFirstPoint",
+      "checkSell2edPoint",
+      "TSSellMax",
+      "TSSellClickFirstPoint",
+      "TSSellClick2edPoint",
+      "TSSellEnd"
+    ]
+  },
+  "checkTs": {
+    "post_delay": 3000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/行商.png"
+        ],
+        "threshold": 0.8
+      }
+    }
+  },
+  "TSSellEnd": {
+    "post_delay": 6000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/结束交易.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click"
+  },
+  "TSDiscount1st": {
+    "post_delay": 2000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/降价.png"
+        ],
+        "roi": [
+          607,
+          115,
+          152,
+          226
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": [
+      "TSDiscountBuyMax1st"
+    ]
+  },
+  "TSDiscountBuyMax1st": {
+    "post_delay": 2000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/max.png"
+        ],
+        "roi": [
+          394,
+          439,
+          505,
+          122
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": [
+      "TSDiscountBuy1st",
+      "TSDiscountExitBuy1st"
+    ]
+  },
+  "TSDiscountExitBuy1st": {
+    "post_delay": 2000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/买入0.png"
+        ],
+        "roi": [
+          495,
+          555,
+          306,
+          109
+        ],
+        "threshold": 0.95
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          883,
+          55,
+          29,
+          31
+        ]
+      }
+    },
+    "next": [
+      "disableTSDiscount1st"
+    ]
+  },
+  "TSDiscountBuy1st": {
+    "post_delay": 2000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/买入.png"
+        ],
+        "roi": [
+          404,
+          542,
+          485,
+          107
+        ],
+        "threshold": 0.95
+      }
+    },
+    "action": "Click",
+    "next": [
+      "disableTSDiscount1st"
+    ]
+  },
+  "TSDiscount2ed": {
+    "post_delay": 2000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/降价.png"
+        ],
+        "roi": [
+          607,
+          115,
+          152,
+          226
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": [
+      "TSDiscountBuyMax2ed"
+    ]
+  },
+  "TSDiscountBuyMax2ed": {
+    "post_delay": 2000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/max.png"
+        ],
+        "roi": [
+          394,
+          439,
+          505,
+          122
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": "Click",
+    "next": [
+      "TSDiscountBuy2ed",
+      "TSDiscountExitBuy2ed"
+    ]
+  },
+  "TSDiscountBuy2ed": {
+    "post_delay": 2000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/买入.png"
+        ],
+        "roi": [
+          404,
+          542,
+          485,
+          107
+        ],
+        "threshold": 0.95
+      }
+    },
+    "action": "Click",
+    "next": [
+      "disableTSDiscount2ed"
+    ]
+  },
+  "TSDiscountExitBuy2ed": {
+    "post_delay": 2000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/买入0.png"
+        ],
+        "roi": [
+          495,
+          555,
+          306,
+          109
+        ],
+        "threshold": 0.95
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          883,
+          55,
+          29,
+          31
+        ]
+      }
+    },
+    "next": [
+      "disableTSDiscount2ed"
+    ]
+  },
+  "TSSellMax": {
+    "post_delay": 3000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/max.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "TSSellConfirm"
+    ]
+  },
+  "TSSellConfirm": {
+    "post_delay": 3000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/卖出.png"
+        ],
+        "threshold": 0.99
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "TSSellClickFirstPoint": {
+    "post_delay": 1000,
+    "timeout": 12000,
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          637,
+          185,
+          83,
+          54
+        ]
+      }
+    }
+  },
+  "TSSellClick2edPoint": {
+    "post_delay": 1000,
+    "timeout": 12000,
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          812,
+          184,
+          50,
+          69
+        ]
+      }
+    }
+  },
+  "checkSellFirstPoint": {
+    "post_delay": 1000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/卖出0.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          881,
+          53,
+          32,
+          29
+        ]
+      }
+    },
+    "next": [
+      "disableSellFirstPoint"
+    ]
+  },
+  "checkSell2edPoint": {
+    "post_delay": 1000,
+    "timeout": 12000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/tradingStrategies/卖出0.png"
+        ],
+        "threshold": 0.8
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          881,
+          53,
+          32,
+          29
+        ]
+      }
+    },
+    "next": [
+      "disableSell2edPoint"
+    ]
+  },
+  "disableSellFirstPoint": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "TSSellClickFirstPoint"
+        }
+      }
+    },
+    "next": [
+      "disableCheckSellFirstPoint"
+    ]
+  },
+  "enableSellFirstPoint": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "EnableNode",
+        "custom_action_param": {
+          "node_name": "TSSellClickFirstPoint"
+        }
+      }
+    },
+    "next": [
+      "enableCheckSellFirstPoint"
+    ]
+  },
+  "disableCheckSellFirstPoint": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "checkSellFirstPoint"
+        }
+      }
+    }
+  },
+  "enableCheckSellFirstPoint": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "EnableNode",
+        "custom_action_param": {
+          "node_name": "checkSellFirstPoint"
+        }
+      }
+    },
+    "next": "enableTSDiscount1st"
+  },
+  "disableTSDiscount1st": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "TSDiscount1st"
+        }
+      }
+    }
+  },
+  "enableTSDiscount1st": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "EnableNode",
+        "custom_action_param": {
+          "node_name": "TSDiscount1st"
+        }
+      }
+    },
+    "next": "enableTSDiscount2ed"
+  },
+  "disableTSDiscount2ed": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "TSDiscount2ed"
+        }
+      }
+    }
+  },
+  "enableTSDiscount2ed": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "EnableNode",
+        "custom_action_param": {
+          "node_name": "TSDiscount2ed"
+        }
+      }
+    },
+    "next": "enableSell2edPoint"
+  },
+  "disableSell2edPoint": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "TSSellClick2edPoint"
+        }
+      }
+    }
+  },
+  "enableSell2edPoint": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "EnableNode",
+        "custom_action_param": {
+          "node_name": "TSSellClick2edPoint"
+        }
+      }
+    },
+    "next": "enableCheckSell2edPoint"
+  },
+  "disableCheckSell2edPoint": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "checkSell2edPoint"
+        }
+      }
+    }
+  },
+  "enableCheckSell2edPoint": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "EnableNode",
+        "custom_action_param": {
+          "node_name": "checkSell2edPoint"
+        }
+      }
+    }
+  }
+}
