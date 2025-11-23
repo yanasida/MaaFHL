@@ -1,5 +1,9 @@
 name: install
 
+permissions:
+  contents: write
+
+
 on:
   push:
     tags:
@@ -68,7 +72,7 @@ jobs:
         with:
           repository: MaaXYZ/MaaFramework
           fileName: "MAA-${{ matrix.os }}-${{ matrix.arch }}*"
-          latest: true
+          tag: "v4.4.1"
           out-file-path: "deps"
           extract: true
 
@@ -79,7 +83,7 @@ jobs:
         with:
           repository: SweetSmellFox/MFAAvalonia
           fileName: "MFAAvalonia-*-${{ (matrix.os == 'win' && 'win') || (matrix.os == 'macos' && 'osx') || (matrix.os == 'linux' && 'linux') }}-${{ (matrix.arch == 'x86_64' && 'x64') || (matrix.arch == 'aarch64' && 'arm64') }}*"
-          latest: true
+          tag: "v1.6.2"
           out-file-path: "MFA"
           extract: true
 
@@ -110,7 +114,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MaaXXX-${{ matrix.os }}-${{ matrix.arch }}
+          name: MaaFHL-${{ matrix.os }}-${{ matrix.arch }}
           path: "install"
 
   changelog:

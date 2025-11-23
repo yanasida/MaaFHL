@@ -4,7 +4,7 @@ from maa.agent.agent_server import AgentServer
 from maa.context import Context
 from maa.custom_action import CustomAction
 
-from agent.common import *
+from common import *
 
 
 @AgentServer.custom_action("TLQQGDCount")

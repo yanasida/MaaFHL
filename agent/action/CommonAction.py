@@ -6,7 +6,7 @@ from maa.context import Context
 from maa.custom_action import CustomAction
 from datetime import datetime
 
-from agent.common import *
+from common import *
 
 POINT1 = [371, 303]
 POINT2 = [626, 164]

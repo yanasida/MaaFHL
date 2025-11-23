@@ -5,7 +5,7 @@ from maa.agent.agent_server import AgentServer
 from maa.context import Context
 from maa.custom_recognition import CustomRecognition
 
-from agent.common import *
+from common import *
 
 # 符信 段位 武魂
 roi_data = [[129, 667, 86, 44], [1030, 298, 38, 67], [1137, 357, 74, 58]]

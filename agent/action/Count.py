@@ -26,7 +26,7 @@ MAA_Punish 计数程序
 from maa.agent.agent_server import AgentServer
 from maa.context import Context
 from maa.custom_action import CustomAction
-from agent.common import *
+from common import *
 import json
 
 
