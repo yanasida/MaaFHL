@@ -47,7 +47,8 @@
       "option": [
         "捐赠20通宝",
         "捐赠60通宝",
-        "放河灯"
+        "放河灯",
+        "刷新悬赏任务"
       ],
       "doc": "[size:12][color:darkgray]默认捐赠铜币,放河灯默认第一个名士(最近捐赠)[/color][/size]"
     },
@@ -299,6 +300,22 @@
           "name": "No",
           "pipeline_override": {
             "clubsWish": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "刷新悬赏任务": {
+      "cases": [
+        {
+          "name": "Yes",
+          "pipeline_override": {}
+        },
+        {
+          "name": "No",
+          "pipeline_override": {
+            "clubsBounty": {
               "enabled": false
             }
           }

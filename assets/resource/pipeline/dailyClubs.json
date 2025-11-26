@@ -24,6 +24,7 @@
     ],
     "interrupt": [
       "clubsPost",
+      "clubsBounty",
       "clubsSignIn",
       "clubsWish",
       "clubsBack"
@@ -48,6 +49,76 @@
       }
     },
     "action": "Click"
+  },
+  "clubsBountyBack": {
+    "post_delay": 1500,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/悬赏任务.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          0,
+          0,
+          320,
+          130
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "disableClubsBounty"
+    ]
+  },
+  "clubsBountyRefresh": {
+    "post_delay": 1500,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/刷新.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          92,
+          631,
+          1092,
+          65
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "clubsBounty": {
+    "post_delay": 1500,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/悬赏.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          809,
+          617,
+          468,
+          102
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "clubsCheck"
+    ],
+    "interrupt": [
+      "clubsBountyRefresh",
+      "clubsBountyBack"
+    ]
   },
   "clubsWish": {
     "post_delay": 4000,
@@ -309,6 +380,18 @@
         "custom_action": "DisableNode",
         "custom_action_param": {
           "node_name": "clubsSignIn"
+        }
+      }
+    }
+  },
+  "disableClubsBounty": {
+    "post_delay": 1000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": "clubsBounty"
         }
       }
     }
