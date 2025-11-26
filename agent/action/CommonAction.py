@@ -180,7 +180,7 @@ class DisableNode(CustomAction):
 
     参数格式:
     {
-        "node_name": "结点名称"
+         "node_name": "结点名称"/["name1", "name2", "name3"]
     }
     """
 
@@ -191,9 +191,19 @@ class DisableNode(CustomAction):
     ) -> CustomAction.RunResult:
         node_name = json.loads(argv.custom_action_param)["node_name"]
 
-        context.override_pipeline({f"{node_name}": {"enabled": False}})
+        if isinstance(node_name, str):
+            node_names = [node_name]
+        elif isinstance(node_name, (list, tuple)):
+            node_names = node_name
+        else:
+            return CustomAction.RunResult(success=True)
+
+        # disable
+        for name in node_names:
+            context.override_pipeline({name: {"enabled": False}})
 
         return CustomAction.RunResult(success=True)
+
 
 @AgentServer.custom_action("EnableNode")
 class EnableNode(CustomAction):
@@ -202,7 +212,7 @@ class EnableNode(CustomAction):
 
     参数格式:
     {
-        "node_name": "结点名称"
+        "node_name": "结点名称"/["name1", "name2", "name3"]
     }
     """
 
@@ -213,7 +223,16 @@ class EnableNode(CustomAction):
     ) -> CustomAction.RunResult:
         node_name = json.loads(argv.custom_action_param)["node_name"]
 
-        context.override_pipeline({f"{node_name}": {"enabled": True}})
+        if isinstance(node_name, str):
+            node_names = [node_name]
+        elif isinstance(node_name, (list, tuple)):
+            node_names = node_name
+        else:
+            return CustomAction.RunResult(success=True)
+
+        # enable
+        for name in node_names:
+            context.override_pipeline({name: {"enabled": True}})
 
         return CustomAction.RunResult(success=True)
 
