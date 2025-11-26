@@ -67,6 +67,7 @@
       "clubsCheck"
     ],
     "interrupt": [
+      "clubsWishGot",
       "clubsWishToday",
       "clubsWishSelectFirst",
       "clubsWishSelectConfirm",
@@ -101,6 +102,41 @@
           37
         ]
       }
+    }
+  },
+  "clubsWishGot": {
+    "post_delay": 3000,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/感谢一下.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "clubsWishGot2"
+    ]
+  },
+  "clubsWishGot2": {
+    "post_delay": 3000,
+    "timeout": 8000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/感谢一下2.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
     }
   },
   "clubsWishToday": {
