@@ -87,6 +87,11 @@
       ]
     },
     {
+      "name": "九世至契",
+      "entry": "BTLJSStart",
+      "doc": "[size:12][color:darkgray]请位于九世至契活动页面,提前调整阵容,打完12层后自动领取奖励,失败时返回游戏首页[/color][/size]\n[size:12][color:darkgray]将消耗材料喂全部的黑猫和花猫然后拿最高的奖励[/color][/size]"
+    },
+    {
       "name": "限时活动-千奇诡道",
       "entry": "QQGDCount",
       "doc": "[size:12][color:darkgray]请保持当前页面位于活动首页[/color][/size]",

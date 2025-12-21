@@ -1,0 +1,364 @@
+{
+  "BTLJSStart": {
+    "post_delay": 1000,
+    "timeout": 360000,
+    "rate_limit": 5000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/九世至契.png"
+        ],
+        "threshold": 0.9,
+        "roi": [
+          0,
+          0,
+          296,
+          102
+        ]
+      }
+    },
+    "next": [
+      "checkHome",
+      "checkBTLJSStart"
+    ],
+    "interrupt": [
+      "BTLJSReceive",
+      "BTLJSReceiveConfirm",
+      "BTLJSStartCombatWin",
+      "BTLJSStartCombatFail",
+      "BTLJSStartCombatAuto",
+      "BTLJSStartCombatGo",
+      "BTLJSStartCombat",
+      "BTLJSSelectLevel12",
+      "BTLJSSelectLevel11",
+      "BTLJSSelectLevel10",
+      "BTLJSSelectLevel9",
+      "BTLJSSelectLevel8",
+      "BTLJSSelectLevel7",
+      "BTLJSSelectLevel6",
+      "BTLJSSelectLevel5",
+      "BTLJSSelectLevel4",
+      "BTLJSSelectLevel3",
+      "BTLJSSelectLevel2",
+      "BTLJSSelectLevel1",
+      "BTLJSBack1"
+    ]
+  },
+  "BTLJSReceive": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/本周奖励.png"
+        ],
+        "threshold": 0.7
+      },
+      "roi": [
+        1073,
+        570,
+        206,
+        149
+      ]
+    },
+    "action": "Click"
+  },
+  "BTLJSReceiveConfirm": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/恭喜获得.png"
+        ],
+        "threshold": 0.7
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSSelectLevel12": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/level_12.png"
+        ],
+        "threshold": 0.98
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSSelectLevel11": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/level_11.png"
+        ],
+        "threshold": 0.98
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSSelectLevel10": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/level_10.png"
+        ],
+        "threshold": 0.98
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSSelectLevel9": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/level_9.png"
+        ],
+        "threshold": 0.98
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSSelectLevel8": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/level_8.png"
+        ],
+        "threshold": 0.98
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSSelectLevel7": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/level_7.png"
+        ],
+        "threshold": 0.98
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSSelectLevel6": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/level_6.png"
+        ],
+        "threshold": 0.98
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSSelectLevel5": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/level_5.png"
+        ],
+        "threshold": 0.98
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSSelectLevel4": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/level_4.png"
+        ],
+        "threshold": 0.98
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSSelectLevel3": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/level_3.png"
+        ],
+        "threshold": 0.98
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSSelectLevel2": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/level_2.png"
+        ],
+        "threshold": 0.98
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSSelectLevel1": {
+    "post_delay": 1000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/level_1.png"
+        ],
+        "threshold": 0.98
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSStartCombat": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "挑战"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          896,
+          580,
+          339,
+          140
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSStartCombatAuto": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/手动.png"
+        ],
+        "threshold": 0.83,
+        "roi": [
+          1000,
+          531,
+          130,
+          163
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSStartCombatGo": {
+    "post_delay": 50000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/出战.png"
+        ],
+        "threshold": 0.98,
+        "roi": [
+          945,
+          548,
+          334,
+          171
+        ]
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSStartCombatWin": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/胜利.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": "Click"
+  },
+  "BTLJSStartCombatFail": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/失败.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": "Click",
+    "next": [
+      "BTLJSStartCombatFailLog"
+    ]
+  },
+  "BTLJSBack1": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/九世至契.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": "Click",
+    "next": [
+      "clubsBack"
+    ]
+  },
+  "BTLJSStartCombatFailLog": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "挑战失败,请调整阵容或手动尝试!",
+          "logLevel": 3
+        }
+      }
+    },
+    "next": "BTLJSBack1"
+  },
+  "checkBTLJSStart": {
+    "post_delay": 3000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "daily/clubs/jiushi/雅舍赛季.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": "Click"
+  }
+}
