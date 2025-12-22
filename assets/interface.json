@@ -121,6 +121,18 @@
       "name": "限时活动-幻域行商",
       "entry": "TSStart",
       "doc": "[size:12][color:darkgray]仅在第一关(墟烟遗市)测试完成,理论通用[/color][/size]\n[size:12][color:darkgray]策略:行商筹略随机,在降价时买入,可以卖出时直接卖出,清符后结束任务[/color][/size]\n[size:12][color:darkgray]注意:开始使用前请完成新手指引(第一次进入会有),开始时选中具体关卡,使用千灯画船,页面应存在“进入”或者“继续”图标[/color][/size]"
+    },
+    {
+      "name": "限时活动-百象轮转",
+      "entry": "TLBXCount",
+      "doc": "[size:12][color:darkgray]请确认所选关卡和难度均已解锁[/color][/size]\n[size:12][color:darkgray]策略:按次数选择几号位名士出站,自动调整打的位置,可能漏怪需要手动完成[/color][/size]\n[size:12][color:darkgray]注意:开始使用前请完成新手指引(第一次进入会有),普通难度即可拿满奖励,推荐普通,页面应为关卡选择页面[/color][/size]",
+      "option": [
+        "百象轮转_关卡",
+        "百象轮转_难度"
+      ],
+      "advanced": [
+        "百象轮转_次数"
+      ]
     }
   ],
   "option": {
@@ -354,6 +366,241 @@
                   }
                 }
               }
+            }
+          }
+        }
+      ]
+    },
+    "百象轮转_难度": {
+      "cases": [
+        {
+          "name": "普通",
+          "pipeline_override": {
+            "TLBXSelectDifficulty2": {
+              "post_delay": 1500,
+              "recognition": {
+                "type": "OCR",
+                "param": {
+                  "expected": [
+                    "普通"
+                  ],
+                  "threshold": 0.8,
+                  "roi": [
+                    867,
+                    244,
+                    184,
+                    373
+                  ]
+                }
+              },
+              "action": "Click",
+              "next": [
+                "TLBXStartCombat"
+              ]
+            }
+          }
+        },
+        {
+          "name": "困难",
+          "pipeline_override": {
+            "TLBXSelectDifficulty2": {
+              "post_delay": 1500,
+              "recognition": {
+                "type": "OCR",
+                "param": {
+                  "expected": [
+                    "困难"
+                  ],
+                  "threshold": 0.8,
+                  "roi": [
+                    867,
+                    244,
+                    184,
+                    373
+                  ]
+                }
+              },
+              "action": "Click",
+              "next": [
+                "TLBXStartCombat"
+              ]
+            }
+          }
+        },
+        {
+          "name": "精英",
+          "pipeline_override": {
+            "TLBXSelectDifficulty2": {
+              "post_delay": 1500,
+              "recognition": {
+                "type": "OCR",
+                "param": {
+                  "expected": [
+                    "精英"
+                  ],
+                  "threshold": 0.8,
+                  "roi": [
+                    867,
+                    244,
+                    184,
+                    373
+                  ]
+                }
+              },
+              "action": "Click",
+              "next": [
+                "TLBXStartCombat"
+              ]
+            }
+          }
+        },
+        {
+          "name": "噩梦",
+          "pipeline_override": {
+            "TLBXSelectDifficulty2": {
+              "post_delay": 1500,
+              "recognition": {
+                "type": "OCR",
+                "param": {
+                  "expected": [
+                    "噩梦"
+                  ],
+                  "threshold": 0.8,
+                  "roi": [
+                    867,
+                    244,
+                    184,
+                    373
+                  ]
+                }
+              },
+              "action": "Click",
+              "next": [
+                "TLBXStartCombat"
+              ]
+            }
+          }
+        },
+        {
+          "name": "绝境",
+          "pipeline_override": {
+            "TLBXSelectDifficulty2": {
+              "post_delay": 1500,
+              "recognition": {
+                "type": "OCR",
+                "param": {
+                  "expected": [
+                    "绝境"
+                  ],
+                  "threshold": 0.8,
+                  "roi": [
+                    867,
+                    244,
+                    184,
+                    373
+                  ]
+                }
+              },
+              "action": "Click",
+              "next": [
+                "TLBXStartCombat"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "百象轮转_关卡": {
+      "cases": [
+        {
+          "name": "关卡1_玄都护法",
+          "pipeline_override": {
+            "TLBXSelectLevel1": {
+              "post_delay": 2000,
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "timeLimit/baixiang/关卡1_玄都护法.png"
+                  ],
+                  "threshold": 0.9
+                }
+              },
+              "action": {
+                "type": "Click"
+              },
+              "next": [
+                "TLBXSelectDifficulty"
+              ]
+            }
+          }
+        },
+        {
+          "name": "关卡2_无常双煞",
+          "pipeline_override": {
+            "TLBXSelectLevel1": {
+              "post_delay": 2000,
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "timeLimit/baixiang/关卡2_无常双煞.png"
+                  ],
+                  "threshold": 0.9
+                }
+              },
+              "action": {
+                "type": "Click"
+              },
+              "next": [
+                "TLBXSelectDifficulty"
+              ]
+            }
+          }
+        },
+        {
+          "name": "关卡3_五德禽象",
+          "pipeline_override": {
+            "TLBXSelectLevel1": {
+              "post_delay": 2000,
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "timeLimit/baixiang/关卡3_五德禽象.png"
+                  ],
+                  "threshold": 0.9
+                }
+              },
+              "action": {
+                "type": "Click"
+              },
+              "next": [
+                "TLBXSelectDifficulty"
+              ]
+            }
+          }
+        },
+        {
+          "name": "关卡4_森罗殿府",
+          "pipeline_override": {
+            "TLBXSelectLevel1": {
+              "post_delay": 2000,
+              "recognition": {
+                "type": "TemplateMatch",
+                "param": {
+                  "template": [
+                    "timeLimit/baixiang/关卡4_森罗殿府.png"
+                  ],
+                  "threshold": 0.9
+                }
+              },
+              "action": {
+                "type": "Click"
+              },
+              "next": [
+                "TLBXSelectDifficulty"
+              ]
             }
           }
         }
@@ -684,6 +931,34 @@
         }
       },
       "doc": "起始页面应该为具体难度页面,需要有进入按钮,默认策略为选择第一个物品然后布置,按输入次数刷"
+    },
+    "百象轮转_次数": {
+      "field": [
+        "作战次数"
+      ],
+      "type": [
+        "int"
+      ],
+      "default": [
+        "1"
+      ],
+      "pipeline_override": {
+        "TLBXCount": {
+          "action": {
+            "param": {
+              "custom_action_param": {
+                "target_count": "{作战次数}",
+                "count": 1,
+                "else_node": [
+                  "TLBXSelectLevel1"
+                ],
+                "next_node_msg": "百象轮转已达到目标次数，退出该节点",
+                "count_msg": "百象轮转: {count}, 目标次数: {target_count}"
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

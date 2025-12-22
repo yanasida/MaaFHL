@@ -1,0 +1,728 @@
+{
+  "TLBXCount": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "self": "TLBXCount",
+        "custom_action": "Count",
+        "custom_action_param": {
+          "count": 1,
+          "target_count": 3,
+          "next_node_msg": "百象轮转已达到目标次数，退出该节点",
+          "count_msg": "百象轮转: {count}, 目标次数: {target_count}",
+          "else_node": [
+            "TLBXSelectLevel1"
+          ]
+        }
+      }
+    }
+  },
+  "TLBXSelectLevel1": {
+    "post_delay": 1200,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/关卡2_无常双煞.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "TLBXSelectDifficulty"
+    ]
+  },
+  "TLBXSelectDifficulty": {
+    "post_delay": 1200,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/切换难度.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "TLBXSelectDifficulty2",
+      "TLBXContinueCombat"
+    ]
+  },
+  "TLBXSelectDifficulty2": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "OCR",
+      "param": {
+        "expected": [
+          "普通"
+        ],
+        "threshold": 0.8,
+        "roi": [
+          867,
+          244,
+          184,
+          373
+        ]
+      }
+    },
+    "action": "Click",
+    "next": [
+      "TLBXStartCombat"
+    ]
+  },
+  "TLBXContinueCombat": {
+    "post_delay": 1200,
+    "timeout": 360000,
+    "rate_limit": 10000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/继续挑战.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "checkTLBXOnceEnd"
+    ],
+    "interrupt": [
+      "TLBXCombatConfirm",
+      "TLBXCombat1",
+      "TLBXCombat3",
+      "TLBXCombat4",
+      "TLBXCombat2",
+      "TLBXEndConfirm",
+      "TLBXCombatResultConfirm",
+      "TLBXCombatSuccess",
+      "TLBXCombatFail"
+    ]
+  },
+  "TLBXStartCombat": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/挑战.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "TLBXStartCombatConfirm"
+    ]
+  },
+  "TLBXStartCombatConfirm": {
+    "post_delay": 1200,
+    "timeout": 360000,
+    "rate_limit": 10000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/确认.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "checkTLBXOnceEnd"
+    ],
+    "interrupt": [
+      "TLBXCombatConfirm",
+      "TLBXCombat1",
+      "TLBXCombat3",
+      "TLBXCombat4",
+      "TLBXCombat2",
+      "TLBXEndConfirm",
+      "TLBXCombatResultConfirm",
+      "TLBXCombatSuccess",
+      "TLBXCombatFail"
+    ]
+  },
+  "TLBXCombatConfirm": {
+    "post_delay": 2000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/战斗确认.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "checkInCombat",
+      "TLBXCombatRotationCountStart"
+    ]
+  },
+  "TLBXCombatResultConfirm": {
+    "post_delay": 15000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/战斗失败.png",
+          "timeLimit/baixiang/点击屏幕继续.png",
+          "timeLimit/baixiang/战斗胜利.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "checkTLBXOnceEnd": {
+    "post_delay": 1200,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/关卡1_玄都护法.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "next": [
+      "TLBXCount"
+    ]
+  },
+  "checkInCombat": {
+    "post_delay": 1200,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/战斗中.png",
+          "timeLimit/baixiang/战斗中2.png"
+        ],
+        "threshold": 0.9
+      }
+    }
+  },
+  "TLBXEndConfirm": {
+    "post_delay": 1200,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/完成奖励.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "TLBXCombatSuccess": {
+    "post_delay": 1200,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/通关成功.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          549,
+          630,
+          165,
+          48
+        ]
+      }
+    },
+    "next": [
+      "TLBXEndSuccessLog"
+    ]
+  },
+  "TLBXCombatFail": {
+    "post_delay": 1200,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/通关失败.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          549,
+          630,
+          165,
+          48
+        ]
+      }
+    },
+    "next": [
+      "TLBXEndFailLog"
+    ]
+  },
+  "TLBXCombat1": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/次数1.png"
+        ],
+        "threshold": 0.97,
+        "roi": [
+          0,
+          0,
+          350,
+          188
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          87,
+          161,
+          89,
+          74
+        ]
+      }
+    }
+  },
+  "TLBXCombat2": {
+    "post_delay": 10000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/次数2.png"
+        ],
+        "threshold": 0.97,
+        "roi": [
+          0,
+          0,
+          350,
+          188
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          310,
+          179,
+          68,
+          60
+        ]
+      }
+    }
+  },
+  "TLBXCombat3": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/次数3.png"
+        ],
+        "threshold": 0.97,
+        "roi": [
+          0,
+          0,
+          350,
+          188
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          94,
+          340,
+          105,
+          90
+        ]
+      }
+    }
+  },
+  "TLBXCombat4": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/次数4.png"
+        ],
+        "threshold": 0.97,
+        "roi": [
+          0,
+          0,
+          350,
+          188
+        ]
+      }
+    },
+    "action": {
+      "type": "Click",
+      "param": {
+        "target": [
+          302,
+          338,
+          75,
+          71
+        ]
+      }
+    }
+  },
+  "TLBXCombatRotationCountStart": {
+    "timeout": 300000,
+    "next": [
+      "checkInCombat",
+      "TLBXCombatResultConfirm",
+      "TLBXCombatSuccess",
+      "TLBXCombatFail",
+      "TLBXEndConfirm"
+    ],
+    "interrupt": [
+      "TLBXCombatRight",
+      "TLBXCombatLeft",
+      "TLBXCombatUp",
+      "TLBXCombatDown",
+      "TLBXCombatRotationCount"
+    ]
+  },
+  "TLBXCombatRotationCount": {
+    "timeout": 10000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "self": "TLBXCombatRotationCount",
+        "custom_action": "Count",
+        "custom_action_param": {
+          "count": 1,
+          "target_count": 4,
+          "next_node_msg": "旋转调整位置",
+          "count_msg": "旋转次数: {count}, 目标次数: {target_count}",
+          "else_node": [
+            "TLBXCombatRotation",
+            "enableAllTryNode"
+          ],
+          "next_node": [
+            "TLBXCombatRotationFailLog"
+          ]
+        }
+      }
+    }
+  },
+  "TLBXCombatRight": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/移动标志.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Swipe",
+      "param": {
+        "end": [
+          964,
+          350,
+          49,
+          43
+        ],
+        "duration": 200
+      }
+    },
+    "next": [
+      "disableTLBXCombatRight"
+    ]
+  },
+  "TLBXCombatLeft": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/移动标志.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Swipe",
+      "param": {
+        "end": [
+          625,
+          341,
+          33,
+          30
+        ],
+        "duration": 200
+      }
+    },
+    "next": [
+      "disableTLBXCombatLeft"
+    ]
+  },
+  "TLBXCombatUp": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/移动标志.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Swipe",
+      "param": {
+        "end": [
+          820,
+          148,
+          44,
+          21
+        ],
+        "duration": 200
+      }
+    },
+    "next": [
+      "disableTLBXCombatUp"
+    ]
+  },
+  "TLBXCombatDown": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/移动标志.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Swipe",
+      "param": {
+        "end": [
+          818,
+          569,
+          37,
+          21
+        ],
+        "duration": 200
+      }
+    },
+    "next": [
+      "disableTLBXCombatDown"
+    ]
+  },
+  "TLBXCombatConfirm2": {
+    "post_delay": 2000,
+    "timeout": 360000,
+    "rate_limit": 10000,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/战斗确认.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    }
+  },
+  "TLBXCombatRotation": {
+    "post_delay": 1500,
+    "recognition": {
+      "type": "TemplateMatch",
+      "param": {
+        "template": [
+          "timeLimit/baixiang/旋转.png"
+        ],
+        "threshold": 0.9
+      }
+    },
+    "action": {
+      "type": "Click"
+    },
+    "next": [
+      "enableAllTryNode"
+    ]
+  },
+  "enableAllTryNode": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "EnableNode",
+        "custom_action_param": {
+          "node_name": [
+            "TLBXCombatRight",
+            "TLBXCombatLeft",
+            "TLBXCombatUp",
+            "TLBXCombatDown"
+          ]
+        }
+      }
+    }
+  },
+  "disableAllTryNode": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": [
+            "TLBXCombatRight",
+            "TLBXCombatLeft",
+            "TLBXCombatUp",
+            "TLBXCombatDown",
+            "TLBXCombatRotationCount"
+          ]
+        }
+      }
+    }
+  },
+  "disableTLBXCombatDown": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": [
+            "TLBXCombatDown"
+          ]
+        }
+      }
+    },
+    "next": [
+      "TLBXCombatConfirm2"
+    ]
+  },
+  "disableTLBXCombatUp": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": [
+            "TLBXCombatUp"
+          ]
+        }
+      }
+    },
+    "next": [
+      "TLBXCombatConfirm2"
+    ]
+  },
+  "disableTLBXCombatLeft": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": [
+            "TLBXCombatLeft"
+          ]
+        }
+      }
+    },
+    "next": [
+      "TLBXCombatConfirm2"
+    ]
+  },
+  "disableTLBXCombatRight": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "DisableNode",
+        "custom_action_param": {
+          "node_name": [
+            "TLBXCombatRight"
+          ]
+        }
+      }
+    },
+    "next": [
+      "TLBXCombatConfirm2"
+    ]
+  },
+  "TLBXEndSuccessLog": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "挑战成功!",
+          "logLevel": 0
+        }
+      }
+    }
+  },
+  "TLBXEndFailLog": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "挑战失败,提前结束本次挑战!",
+          "logLevel": 0
+        }
+      }
+    }
+  },
+  "TLBXCombatRotationFailLog": {
+    "action": {
+      "type": "Custom",
+      "param": {
+        "custom_action": "LoggerAndRecorder",
+        "custom_action_param": {
+          "msg": "旋转匹配失败,当前节点需手动进行!",
+          "logLevel": 3
+        }
+      }
+    },
+    "next": [
+      "stopTLBX"
+    ]
+  },
+  "stopTLBX": {
+    "action": "StopTask"
+  }
+}
