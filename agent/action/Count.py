@@ -133,3 +133,37 @@ class Count(CustomAction):
 
     def custom_notify(self, context: Context, msg, level=0):
         log(context, msg)
+
+
+@AgentServer.custom_action("ResetCount")
+class ResetCount(CustomAction):
+    def run(
+            self, context: Context, argv: CustomAction.RunArg
+    ) -> CustomAction.RunResult:
+        argv_dict: dict = json.loads(argv.custom_action_param)
+        if not argv_dict:
+            return CustomAction.RunResult(success=True)
+
+        # 提取参数
+        target_count: int = argv_dict.get("target_count", 0)
+        next_node_msg: str = argv_dict.get("next_node_msg", "")
+        else_node_msg: str = argv_dict.get("else_node_msg", "")
+        count_msg: str = argv_dict.get("count_msg", "")
+        reset_node: str = argv_dict.get("reset_node", "")
+
+        # 重置计数
+        reset_params = {
+            "count": 0,
+            "target_count": target_count,
+            "else_node": argv_dict.get("else_node"),
+            "next_node": argv_dict.get("next_node"),
+            # 保留消息参数避免丢失
+            "next_node_msg": next_node_msg,
+            "else_node_msg": else_node_msg,
+            "count_msg": count_msg,
+        }
+
+        # 保存重置后的参数
+        context.override_pipeline(
+            {reset_node: {"custom_action_param": reset_params}}
+        )

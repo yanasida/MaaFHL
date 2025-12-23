@@ -23,7 +23,7 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "timeLimit/baixiang/关卡2_无常双煞.png"
+          "timeLimit/baixiang/关卡3_五德禽象.png"
         ],
         "threshold": 0.9
       }
@@ -172,7 +172,7 @@
     },
     "next": [
       "checkInCombat",
-      "TLBXCombatRotationCountStart"
+      "TLBXCombatRotationCountReset"
     ]
   },
   "TLBXCombatResultConfirm": {
@@ -403,6 +403,33 @@
       }
     }
   },
+  "TLBXCombatRotationCountReset": {
+    "timeout": 10000,
+    "action": {
+      "type": "Custom",
+      "param": {
+        "self": "TLBXCombatRotationCountReset",
+        "custom_action": "ResetCount",
+        "custom_action_param": {
+          "reset_node": "TLBXCombatRotationCount",
+          "count": 1,
+          "target_count": 4,
+          "next_node_msg": "旋转调整位置",
+          "count_msg": "旋转次数: {count}, 目标次数: {target_count}",
+          "else_node": [
+            "TLBXCombatRotation",
+            "enableAllTryNode"
+          ],
+          "next_node": [
+            "TLBXCombatRotationFailLog"
+          ]
+        }
+      }
+    },
+    "next": [
+      "TLBXCombatRotationCountStart"
+    ]
+  },
   "TLBXCombatRotationCountStart": {
     "timeout": 300000,
     "next": [
@@ -553,8 +580,6 @@
   },
   "TLBXCombatConfirm2": {
     "post_delay": 2000,
-    "timeout": 360000,
-    "rate_limit": 10000,
     "recognition": {
       "type": "TemplateMatch",
       "param": {
