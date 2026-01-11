@@ -83,7 +83,8 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "daily/clubs/jiushi/level_12.png"
+          "daily/clubs/jiushi/level_12.png",
+          "daily/clubs/jiushi/level_12_2.png"
         ],
         "threshold": 0.98
       }
@@ -109,7 +110,8 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "daily/clubs/jiushi/level_10.png"
+          "daily/clubs/jiushi/level_10.png",
+          "daily/clubs/jiushi/level_10_2.png"
         ],
         "threshold": 0.98
       }
@@ -135,7 +137,8 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "daily/clubs/jiushi/level_8.png"
+          "daily/clubs/jiushi/level_8.png",
+          "daily/clubs/jiushi/level_8_2.png"
         ],
         "threshold": 0.98
       }
@@ -161,7 +164,8 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "daily/clubs/jiushi/level_6.png"
+          "daily/clubs/jiushi/level_6.png",
+          "daily/clubs/jiushi/level_6_2.png"
         ],
         "threshold": 0.98
       }
@@ -187,7 +191,8 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "daily/clubs/jiushi/level_4.png"
+          "daily/clubs/jiushi/level_4.png",
+          "daily/clubs/jiushi/level_4_2.png"
         ],
         "threshold": 0.98
       }
@@ -213,7 +218,8 @@
       "type": "TemplateMatch",
       "param": {
         "template": [
-          "daily/clubs/jiushi/level_2.png"
+          "daily/clubs/jiushi/level_2.png",
+          "daily/clubs/jiushi/level_2_2.png"
         ],
         "threshold": 0.98
       }
