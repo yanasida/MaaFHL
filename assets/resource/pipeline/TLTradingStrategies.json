@@ -15,7 +15,7 @@
     ]
   },
   "TSAllDone": {
-    "post_delay": 2000,
+    "post_delay": 1200,
     "timeout": 20000,
     "recognition": {
       "type": "TemplateMatch",
@@ -34,7 +34,7 @@
     }
   },
   "TSOnceStart": {
-    "post_delay": 8000,
+    "post_delay": 4000,
     "timeout": 20000,
     "recognition": {
       "type": "TemplateMatch",
@@ -55,7 +55,7 @@
     "action": "Click"
   },
   "TSOnceStartConfirm": {
-    "post_delay": 4000,
+    "post_delay": 1200,
     "timeout": 20000,
     "recognition": {
       "type": "TemplateMatch",
@@ -69,7 +69,7 @@
     "action": "Click"
   },
   "TSOnceStartConfirmAgain": {
-    "post_delay": 4000,
+    "post_delay": 1200,
     "timeout": 20000,
     "recognition": {
       "type": "TemplateMatch",
@@ -83,7 +83,7 @@
     "action": "Click"
   },
   "TSSelect": {
-    "post_delay": 8000,
+    "post_delay": 4000,
     "timeout": 20000,
     "recognition": {
       "type": "TemplateMatch",
@@ -102,11 +102,11 @@
     },
     "action": "Click",
     "next": [
-      "enableSellFirstPoint"
+      "enableAll"
     ]
   },
   "TSOnceDone": {
-    "post_delay": 8000,
+    "post_delay": 4000,
     "timeout": 20000,
     "recognition": {
       "type": "TemplateMatch",
@@ -126,7 +126,7 @@
     "action": "Click"
   },
   "TSSell": {
-    "post_delay": 2000,
+    "post_delay": 1200,
     "timeout": 12000,
     "recognition": {
       "type": "TemplateMatch",
@@ -148,8 +148,6 @@
       "checkTs"
     ],
     "interrupt": [
-      "checkSellFirstPoint",
-      "checkSell2edPoint",
       "TSSellMax",
       "TSSellClickFirstPoint",
       "TSSellClick2edPoint",
@@ -157,7 +155,7 @@
     ]
   },
   "checkTs": {
-    "post_delay": 3000,
+    "post_delay": 1500,
     "timeout": 12000,
     "recognition": {
       "type": "TemplateMatch",
@@ -170,7 +168,7 @@
     }
   },
   "TSSellEnd": {
-    "post_delay": 6000,
+    "post_delay": 4000,
     "timeout": 12000,
     "recognition": {
       "type": "TemplateMatch",
@@ -184,7 +182,7 @@
     "action": "Click"
   },
   "TSDiscount1st": {
-    "post_delay": 2000,
+    "post_delay": 1200,
     "timeout": 12000,
     "recognition": {
       "type": "TemplateMatch",
@@ -203,11 +201,12 @@
     },
     "action": "Click",
     "next": [
-      "TSDiscountBuyMax1st"
+      "TSDiscountBuyMax1st",
+      "disableTSDiscount1st"
     ]
   },
   "TSDiscountBuyMax1st": {
-    "post_delay": 2000,
+    "post_delay": 1200,
     "timeout": 12000,
     "recognition": {
       "type": "TemplateMatch",
@@ -231,7 +230,7 @@
     ]
   },
   "TSDiscountExitBuy1st": {
-    "post_delay": 2000,
+    "post_delay": 1200,
     "timeout": 12000,
     "recognition": {
       "type": "TemplateMatch",
@@ -264,7 +263,7 @@
     ]
   },
   "TSDiscountBuy1st": {
-    "post_delay": 2000,
+    "post_delay": 1200,
     "timeout": 12000,
     "recognition": {
       "type": "TemplateMatch",
@@ -287,7 +286,7 @@
     ]
   },
   "TSDiscount2ed": {
-    "post_delay": 2000,
+    "post_delay": 1200,
     "timeout": 12000,
     "recognition": {
       "type": "TemplateMatch",
@@ -306,11 +305,12 @@
     },
     "action": "Click",
     "next": [
-      "TSDiscountBuyMax2ed"
+      "TSDiscountBuyMax2ed",
+      "disableTSDiscount2ed"
     ]
   },
   "TSDiscountBuyMax2ed": {
-    "post_delay": 2000,
+    "post_delay": 1200,
     "timeout": 12000,
     "recognition": {
       "type": "TemplateMatch",
@@ -334,7 +334,7 @@
     ]
   },
   "TSDiscountBuy2ed": {
-    "post_delay": 2000,
+    "post_delay": 1200,
     "timeout": 12000,
     "recognition": {
       "type": "TemplateMatch",
@@ -357,7 +357,7 @@
     ]
   },
   "TSDiscountExitBuy2ed": {
-    "post_delay": 2000,
+    "post_delay": 1200,
     "timeout": 12000,
     "recognition": {
       "type": "TemplateMatch",
@@ -390,7 +390,7 @@
     ]
   },
   "TSSellMax": {
-    "post_delay": 3000,
+    "post_delay": 1500,
     "timeout": 12000,
     "recognition": {
       "type": "TemplateMatch",
@@ -409,7 +409,7 @@
     ]
   },
   "TSSellConfirm": {
-    "post_delay": 3000,
+    "post_delay": 1500,
     "timeout": 12000,
     "recognition": {
       "type": "TemplateMatch",
@@ -437,7 +437,11 @@
           54
         ]
       }
-    }
+    },
+    "next": [
+      "checkSellFirstPoint",
+      "disableSellFirstPoint"
+    ]
   },
   "TSSellClick2edPoint": {
     "post_delay": 1000,
@@ -452,7 +456,11 @@
           69
         ]
       }
-    }
+    },
+    "next": [
+      "checkSell2edPoint",
+      "disableSell2edPoint"
+    ]
   },
   "checkSellFirstPoint": {
     "post_delay": 1000,
@@ -523,19 +531,23 @@
       "disableCheckSellFirstPoint"
     ]
   },
-  "enableSellFirstPoint": {
+  "enableAll": {
     "action": {
       "type": "Custom",
       "param": {
         "custom_action": "EnableNode",
         "custom_action_param": {
-          "node_name": "TSSellClickFirstPoint"
+          "node_name": [
+            "TSSellClickFirstPoint",
+            "checkSellFirstPoint",
+            "checkSell2edPoint",
+            "TSDiscount1st",
+            "TSDiscount2ed",
+            "TSSellClick2edPoint"
+          ]
         }
       }
-    },
-    "next": [
-      "enableCheckSellFirstPoint"
-    ]
+    }
   },
   "disableCheckSellFirstPoint": {
     "post_delay": 1000,
@@ -549,18 +561,6 @@
       }
     }
   },
-  "enableCheckSellFirstPoint": {
-    "action": {
-      "type": "Custom",
-      "param": {
-        "custom_action": "EnableNode",
-        "custom_action_param": {
-          "node_name": "checkSellFirstPoint"
-        }
-      }
-    },
-    "next": "enableTSDiscount1st"
-  },
   "disableTSDiscount1st": {
     "post_delay": 1000,
     "action": {
@@ -572,18 +572,6 @@
         }
       }
     }
-  },
-  "enableTSDiscount1st": {
-    "action": {
-      "type": "Custom",
-      "param": {
-        "custom_action": "EnableNode",
-        "custom_action_param": {
-          "node_name": "TSDiscount1st"
-        }
-      }
-    },
-    "next": "enableTSDiscount2ed"
   },
   "disableTSDiscount2ed": {
     "post_delay": 1000,
@@ -597,18 +585,6 @@
       }
     }
   },
-  "enableTSDiscount2ed": {
-    "action": {
-      "type": "Custom",
-      "param": {
-        "custom_action": "EnableNode",
-        "custom_action_param": {
-          "node_name": "TSDiscount2ed"
-        }
-      }
-    },
-    "next": "enableSell2edPoint"
-  },
   "disableSell2edPoint": {
     "post_delay": 1000,
     "action": {
@@ -621,35 +597,12 @@
       }
     }
   },
-  "enableSell2edPoint": {
-    "action": {
-      "type": "Custom",
-      "param": {
-        "custom_action": "EnableNode",
-        "custom_action_param": {
-          "node_name": "TSSellClick2edPoint"
-        }
-      }
-    },
-    "next": "enableCheckSell2edPoint"
-  },
   "disableCheckSell2edPoint": {
     "post_delay": 1000,
     "action": {
       "type": "Custom",
       "param": {
         "custom_action": "DisableNode",
-        "custom_action_param": {
-          "node_name": "checkSell2edPoint"
-        }
-      }
-    }
-  },
-  "enableCheckSell2edPoint": {
-    "action": {
-      "type": "Custom",
-      "param": {
-        "custom_action": "EnableNode",
         "custom_action_param": {
           "node_name": "checkSell2edPoint"
         }

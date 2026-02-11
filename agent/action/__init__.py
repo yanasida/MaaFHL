@@ -14,5 +14,6 @@ __all__ = [
     "SpStartCheck",
     "SpStartBuyCheck",
     "DisableNode",
+    "ResetCount",
     "EnableNode"
 ]

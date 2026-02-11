@@ -1,5 +1,10 @@
 ## MAAFHL 忘川风华录
 
+### start
+```txt
+python -m pip install maafw==4.4.1
+```
+
 ## 功能列表
 
 #### 桃源居

@@ -143,7 +143,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "喵喵供台领取成功~~~",
-           "logLevel": 2,
+          "logLevel": 2,
           "logTask": "DailyStart",
           "logKey": "catGift",
           "logValue": true
@@ -216,7 +216,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "喵宴居鲜虾球领取成功~~~",
-           "logLevel": 2,
+          "logLevel": 2,
           "logTask": "DailyStart",
           "logKey": "catFish",
           "logValue": true
@@ -297,7 +297,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "猫车领取成功~~~",
-           "logLevel": 2,
+          "logLevel": 2,
           "logTask": "DailyStart",
           "logKey": "hideAndSeek",
           "logValue": true
@@ -374,7 +374,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "未发现置顶名士,退出送礼",
-           "logLevel": 3
+          "logLevel": 3
         }
       }
     },
@@ -440,7 +440,7 @@
     ]
   },
   "sendGiftNoReceiveConfirm": {
-    "post_delay": 2000,
+    "post_delay": 5000,
     "recognition": {
       "type": "TemplateMatch",
       "param": {
@@ -468,6 +468,7 @@
       }
     },
     "next": [
+      "sendGiftConfirm",
       "sendGiftConfirmRecord"
     ]
   },
@@ -501,7 +502,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "当前名士羁绊上升一级",
-           "logLevel": 3
+          "logLevel": 3
         }
       }
     },
@@ -536,7 +537,9 @@
         ]
       }
     },
-    "next": ["disableSendGift"]
+    "next": [
+      "disableSendGift"
+    ]
   },
   "addLv1": {
     "post_delay": 2000,
@@ -671,7 +674,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "2片名士信物领取成功~~~",
-           "logLevel": 2,
+          "logLevel": 2,
           "logTask": "DailyStart",
           "logKey": "sendGift",
           "logValue": true
@@ -828,7 +831,7 @@
         "custom_action": "LoggerAndRecorder",
         "custom_action_param": {
           "msg": "寻找猫灵完成~~~",
-           "logLevel": 2,
+          "logLevel": 2,
           "logTask": "DailyStart",
           "logKey": "hideAndSeekClear",
           "logValue": true
